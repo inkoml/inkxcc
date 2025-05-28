@@ -8,12 +8,14 @@ hugo_stats.json
 
 # Obsidian 相关
 .obsidian/           # Obsidian 配置目录（包括插件和主题）
-.obsidian/workspace # 工作区状态，个人化设置
 *.excalidraw        # Obsidian Excalidraw 插件的图形文件
 *.canvas            # Obsidian Canvas 文件
 Thumbs.db           # Windows 缓存文件
+content/_模版/       # Obsidian 模板文件夹
 
 # 临时/编辑器缓存
 *.swp
 *.tmp
 *~
+
+
