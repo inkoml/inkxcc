@@ -1,3 +1,6 @@
 [
-  "obsidian-git"
+  "obsidian-shellcommands",
+  "cmdr",
+  "quickadd",
+  "templater-obsidian"
 ]

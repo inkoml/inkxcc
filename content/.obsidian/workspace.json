@@ -143,19 +143,9 @@
               "icon": "lucide-list",
               "title": "大纲"
             }
-          },
-          {
-            "id": "cd981e49e1229e3b",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -172,6 +162,6 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6fcd0641255a102e",
+  "active": "2b2b893f6711c62f",
   "lastOpenFiles": []
 }
