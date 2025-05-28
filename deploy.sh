@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# vpn
+export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
+
 # 自动生成提交信息（当前日期）
 commit_msg="内容更新：$(date '+%Y-%m-%d %H:%M:%S')"
 
