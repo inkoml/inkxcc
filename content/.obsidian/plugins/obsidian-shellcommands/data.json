@@ -32,7 +32,7 @@
       "shells": {},
       "alias": "部署 Hugo 网站",
       "icon": null,
-      "confirm_execution": true,
+      "confirm_execution": false,
       "ignore_error_codes": [],
       "input_contents": {
         "stdin": null
