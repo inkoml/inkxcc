@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "artwork/一小部分无限 1 1aa.md",
+                "file": "artwork/一小部分无限.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "一小部分无限 1 1aa"
+              "title": "一小部分无限"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "artwork/一小部分无限 1 1aa.md",
+                "file": "artwork/一小部分无限.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "一小部分无限 1 1aa 的反向链接列表"
+              "title": "一小部分无限 的反向链接列表"
             }
           },
           {
@@ -113,13 +113,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "artwork/一小部分无限 1 1aa.md",
+                "file": "artwork/一小部分无限.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "一小部分无限 1 1aa 的大纲"
+              "title": "一小部分无限 的大纲"
             }
           }
         ],
@@ -147,11 +147,11 @@
   "active": "6fcd0641255a102e",
   "lastOpenFiles": [
     "artwork/一小部分无限 1 1 1aaa.md",
-    "artwork/一小部分无限.md",
-    "artwork/一小部分无限 1s 1 1.md",
-    "artwork/一小部分无限 1s 1.md",
-    "artwork/一小部分无限 1s.md",
     "artwork/一小部分无限 1 1aa.md",
+    "artwork/一小部分无限 1s.md",
+    "artwork/一小部分无限 1s 1.md",
+    "artwork/一小部分无限 1s 1 1.md",
+    "artwork/一小部分无限.md",
     "_模版.md",
     "artwork/index.md",
     "index.md",
