@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "artwork/一小部分无限.md",
+                "file": "artwork/一小部分无限 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "一小部分无限"
+              "title": "一小部分无限 1"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "artwork/一小部分无限.md",
+                "file": "artwork/一小部分无限 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "一小部分无限 的反向链接列表"
+              "title": "一小部分无限 1 的反向链接列表"
             }
           },
           {
@@ -113,13 +113,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "artwork/一小部分无限.md",
+                "file": "artwork/一小部分无限 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "一小部分无限 的大纲"
+              "title": "一小部分无限 1 的大纲"
             }
           }
         ],
@@ -139,13 +139,17 @@
       "command-palette:打开命令面板": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-shellcommands:Shell commands: Custom variables": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "fuzzy-chinese-pinyin:FuzzySearch": false
     }
   },
-  "active": "c25b1ba85d92cee9",
+  "active": "6fcd0641255a102e",
   "lastOpenFiles": [
-    "_模版.md",
+    "artwork/一小部分无限 1 1.md",
+    "artwork/一小部分无限 1 1 1.md",
+    "artwork/一小部分无限 1.md",
     "artwork/一小部分无限.md",
+    "_模版.md",
     "artwork/index.md",
     "index.md",
     "_模版",
