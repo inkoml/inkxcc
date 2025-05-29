@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "artwork/一小部分无限.md",
+                "file": "ink艺术家介绍.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "一小部分无限"
+              "title": "ink艺术家介绍"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "artwork/一小部分无限.md",
+                "file": "ink艺术家介绍.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "一小部分无限 的反向链接列表"
+              "title": "ink艺术家介绍 的反向链接列表"
             }
           },
           {
@@ -113,13 +113,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "artwork/一小部分无限.md",
+                "file": "ink艺术家介绍.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "一小部分无限 的大纲"
+              "title": "ink艺术家介绍 的大纲"
             }
           }
         ],
@@ -146,9 +146,9 @@
   },
   "active": "6fcd0641255a102e",
   "lastOpenFiles": [
+    "artwork/一小部分无限.md",
     "_模版.md",
     "ink艺术家介绍.md",
-    "artwork/一小部分无限.md",
     "artwork/一小部分无限 1s 1 1.md",
     "artwork/一小部分无限 1 1 1aaa.md",
     "artwork/一小部分无限 1 1aa.md",
