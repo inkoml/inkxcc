@@ -4,5 +4,6 @@
   "quickadd",
   "templater-obsidian",
   "obsidian-image-auto-upload-plugin",
-  "fuzzy-chinese-pinyin"
+  "fuzzy-chinese-pinyin",
+  "obsidian-linter"
 ]

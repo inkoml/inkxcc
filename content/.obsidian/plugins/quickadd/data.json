@@ -1,6 +1,40 @@
 {
-  "choices": [],
-  "macros": [],
+  "choices": [
+    {
+      "id": "8e0d854e-e088-4804-a3f5-a0396249391d",
+      "name": "save and linter",
+      "type": "Macro",
+      "command": true,
+      "macroId": "1b1a93a0-11db-4022-99ce-1d6d05a70b3b"
+    }
+  ],
+  "macros": [
+    {
+      "name": "save and linter",
+      "id": "1b1a93a0-11db-4022-99ce-1d6d05a70b3b",
+      "commands": [
+        {
+          "name": "保存当前文件",
+          "type": "Obsidian",
+          "id": "9b003b74-7054-41f9-b48d-6003538d8778",
+          "commandId": "editor:save-file"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "031a103d-20fd-4e14-8ad2-3ceb2faf6327",
+          "time": 100
+        },
+        {
+          "name": "Linter: 格式化当前文件",
+          "type": "Obsidian",
+          "id": "6d494d7b-d7c6-4b72-bb3a-1e783d55bba7",
+          "commandId": "obsidian-linter:lint-file"
+        }
+      ],
+      "runOnStartup": false
+    }
+  ],
   "inputPrompt": "single-line",
   "devMode": false,
   "templateFolderPath": "",
