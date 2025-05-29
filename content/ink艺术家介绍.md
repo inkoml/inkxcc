@@ -1,9 +1,13 @@
 ---
-title: 
-slug: 
+title:
+slug:
 draft: true
-categories: 
+categories:
 tags:
+summary:
+image:
+showImageInContent: false
+description:
 ---
 新媒体艺术家毕振宇以「In_K」为代号，专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容（CGC）为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
 

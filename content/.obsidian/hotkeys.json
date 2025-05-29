@@ -15,5 +15,14 @@
       "key": "P"
     }
   ],
-  "switcher:open": []
+  "switcher:open": [],
+  "editor:save-file": [],
+  "quickadd:choice:8e0d854e-e088-4804-a3f5-a0396249391d": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "S"
+    }
+  ]
 }
