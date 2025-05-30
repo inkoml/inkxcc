@@ -15,7 +15,7 @@ outputs:
 enableRobotsTXT: true
 
 
-paginate: 10
+pagerSize = 10
 
 
 #services:
