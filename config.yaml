@@ -14,6 +14,10 @@ outputs:
 
 enableRobotsTXT: true
 
+
+paginate: 10
+
+
 #services:
   #googleAnalytics:
     #id: G-MEASUREMENT_ID
@@ -136,16 +140,16 @@ params:
   # About
   about:
     enable: true
-    title: "About"
+    title: " "
     image: "http://inkxcc-hugo.oss-cn-beijing.aliyuncs.com/ink-pfp.jpg"
     content: |-
-      新媒体艺术家毕振宇以「In_K」为艺术代号，持续探索数字交互影像的创作边界。
-      其艺术思考以媒介理论为核心，在控制论与后人类的学术脉络中，展开关于「量化/模拟」本质的哲学思辨，并以此重构对技术媒介的认知维度。
+      新媒体艺术家毕振宇以「In_K」为代号，专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
 
-      作为媒体艺术家，In_K尤为重视科技艺术的材料语言学特征。通过算法生成、传感器交互、人工智能等新兴技术媒介的创造性运用，其作品建立起技术哲学与社会议题的对话通道，在跨学科合作中拓展艺术的介入可能。
+      In_K熟悉多种编程语言和可视化工具，擅长利用如vvvv（跨媒介编程）、Unreal Engine（游戏引擎）、Blender（3D建模及渲染）、StableDiffusion（主流图像AIGC技术）等平台和工具进行跨媒介创作，同时深入研究图像生成的机制与语义潜力，将计算过程本身作为艺术语言的一部分。曾参与多个国内外展览与合作项目，作品被应用于舞台、屏幕、沉浸式空间等多种语境之中。
 
+      In_K关注人工智能、自动化与生成性系统对感知、图像、乃至美学本体的挑战与重构，创作理念在技术实现与观念生成之间保持高度张力。
 
-      |-
+      |--------------------
     skills:
       enable: true
       title: "创作版图涵盖:"
@@ -312,7 +316,7 @@ params:
   singlePages:
     socialShare: true
     readTime:
-      enable: true
+      enable: false
       content: "min read"
     scrollprogress:
       enable: true
