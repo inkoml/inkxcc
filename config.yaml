@@ -15,7 +15,7 @@ outputs:
 enableRobotsTXT: true
 
 
-pagerSize = 10
+
 
 
 #services:
@@ -25,7 +25,7 @@ pagerSize = 10
     #shortname: your-disqus-shortname
 
 pagination:
-  pagerSize: 3
+  pagerSize: 30
 
 markup:
   goldmark:
