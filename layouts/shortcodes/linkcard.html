@@ -1,0 +1,24 @@
+<a href="{{ .Get "url" }}" target="_blank" rel="noopener" style="
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease-in-out;
+">
+  <img src="{{ .Get "image" }}" alt="{{ .Get "title" }}" style="
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  ">
+  <div style="flex: 1;">
+    <h3 style="margin: 0 0 0.5rem 0;">{{ .Get "title" }}</h3>
+    <p style="margin: 0; color: #666; font-size: 0.9rem;">{{ .Get "desc" }}</p>
+    <span style="color: #999; font-size: 0.8rem;">{{ .Get "url" }}</span>
+  </div>
+</a>
