@@ -50,7 +50,7 @@ Menus:
       name: About
       title: 介绍
       url: /about
-      weight: 2
+      weight: 3
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
@@ -73,7 +73,7 @@ params:
   title: "In_K 毕振宇"
   description: 新媒体艺术家
   # staticPath: ""  # The path to serve the static files from
-  favicon: "https://inkxcc-hugo.oss-cn-beijing.aliyuncs.com/logo.png"
+  favicon: "http://img.inkx.cc/logo.png"
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
   # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
@@ -148,7 +148,7 @@ params:
   about:
     enable: true
     title: " "
-    image: "http://inkxcc-hugo.oss-cn-beijing.aliyuncs.com/ink-pfp.jpg"
+    image: "http://img.inkx.cc/ink-pfp.jpg"
     content: |-
       新媒体艺术家毕振宇以「In_K」为代号，专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
 
@@ -211,7 +211,7 @@ params:
           - "科技艺术"
 
       - title: 视觉现场
-        content: A clean and simple Hugo template for personal portfolio and blog.
+        content: 演出相关的视觉及现场
         image: "http://img.inkx.cc/visualshow.JPG"
         featured:
           name: More..

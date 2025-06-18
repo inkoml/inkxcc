@@ -1,7 +1,7 @@
 ---
 title:
 slug: visualshow
-draft: true
+draft: false
 categories:
   - visualshow
 tags:
@@ -11,3 +11,4 @@ showImageInContent: false
 image:
 date: 2020-01-01
 ---
+ddd
