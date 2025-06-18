@@ -6,11 +6,14 @@ hugo_stats.json
 # macOS 系统垃圾文件
 .DS_Store
 
+# Windows 系统缓存
+Thumbs.db
+
 # Obsidian 相关
 .obsidian/           # Obsidian 配置目录（包括插件和主题）
 *.excalidraw        # Obsidian Excalidraw 插件的图形文件
 *.canvas            # Obsidian Canvas 文件
-Thumbs.db           # Windows 缓存文件
+
 content/_模版/       # Obsidian 模板文件夹
 
 # 临时/编辑器缓存
