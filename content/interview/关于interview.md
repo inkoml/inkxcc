@@ -14,6 +14,7 @@ date: 2020-01-01
 ![](https://img.inkx.cc/IMG_0918.JPG)
 
 # 报道 ：
+[LINK艺术 |专访毕振宇：π是通往一个圆，探求无止境的永恒！](https://mp.weixin.qq.com/s/lfPc_uYL8p5eaqF47tpfwg)
 
 [人物 | 从VJ到新媒体艺术家—— In_K毕振宇](https://mp.weixin.qq.com/s/xYmF9yQfDMFVIsxXJb9lUg)
 
