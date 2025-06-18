@@ -44,7 +44,7 @@ Menus:
     - identifier: artworks
       name: Artworks
       title: 创作
-      url: /artworks
+      url: /artwork
       weight: 1
     - identifier: projects
       name: Projects
