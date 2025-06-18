@@ -176,7 +176,7 @@ params:
   # projects
   projects:
     enable: true
-    title: "Projects"
+    title: "掌握密码的人们共享着同一个宇宙"
     items:
 
       - title: Artworks
