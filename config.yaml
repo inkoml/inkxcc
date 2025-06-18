@@ -153,6 +153,8 @@ params:
       新媒体艺术家毕振宇以「In_K」为代号，专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
 
       [点击查看详细介绍](https://www.inkx.cc/about/)
+      <a href="https://www.inkx.cc/about/" style="color:red;">点击查看详细介绍</a>
+
 
       |--------------------
     skills:
@@ -190,7 +192,7 @@ params:
 
       - title: DROWYEK
         content: DROWYEK是一个AudioVisual项目由冯昊和In_K组成。
-        image: "http://img.inkx.cc/drowyek.jpg"
+        image: "https://img.inkx.cc/IMG_7867.JPEG"
         featured:
           name: More..
           link: https://www.inkx.cc/drowyek
