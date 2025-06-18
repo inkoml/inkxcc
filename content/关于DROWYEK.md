@@ -69,3 +69,13 @@ date: 2020-01-01
 >}}
 
 
+
+
+
+{{< linkcard 
+  url="https://www.inkx.cc/about/" 
+  title="关于我" 
+  desc="In_K 的个人介绍页，记录创作与实践。" 
+  image="https://img.inkx.cc/ink.%202019..JPG" 
+  badges="个人页, 创作, 艺术"
+>}}

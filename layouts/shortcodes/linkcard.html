@@ -1,24 +1,101 @@
 <a href="{{ .Get "url" }}" target="_blank" rel="noopener" style="
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.2s ease-in-out;
+  background-color: var(--linkcard-bg, #fff);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 ">
   <img src="{{ .Get "image" }}" alt="{{ .Get "title" }}" style="
-    width: 100px;
-    height: 100px;
+    width: 96px;
+    height: 96px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
+    flex-shrink: 0;
   ">
-  <div style="flex: 1;">
-    <h3 style="margin: 0 0 0.5rem 0;">{{ .Get "title" }}</h3>
-    <p style="margin: 0; color: #666; font-size: 0.9rem;">{{ .Get "desc" }}</p>
-    <span style="color: #999; font-size: 0.8rem;">{{ .Get "url" }}</span>
+
+  <div style="flex: 1; min-width: 180px;">
+    <h3 style="margin: 0 0 0.4rem 0; font-size: 1.1rem;">{{ .Get "title" }}</h3>
+    <p style="margin: 0 0 0.6rem 0; color: #666; font-size: 0.9rem;">{{ .Get "desc" }}</p>
+    <span style="font-size: 0.8rem; color: #999;">{{ .Get "url" }}</span>
+
+    {{ with .Get "badges" }}
+    <div style="margin-top: 0.5rem;">
+      {{ $badges := split . "," }}
+      {{ range $badge := $badges }}
+        <span style="
+          display: inline-block;
+          padding: 0.2em 0.6em;
+          margin-right: 0.5em;
+          margin-top: 0.3em;
+          background-color: #f0f0f0;
+          border-radius: 6px;
+          font-size: 0.75rem;
+          color: #555;
+        ">
+          {{ $badge | trim }}
+        </span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div style="align-self: flex-end;">
+    <span style="
+      display: inline-block;
+      padding: 0.4em 0.8em;
+      background-color: #007aff;
+      color: white;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    ">
+      查看详情
+    </span>
   </div>
 </a>
+
+<style>
+  a[href^="http"]:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --linkcard-bg: #1e1e1e;
+    }
+    a[href^="http"] {
+      border-color: #444;
+    }
+    a[href^="http"] p,
+    a[href^="http"] span,
+    a[href^="http"] h3 {
+      color: #ddd !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    a[href^="http"] {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    a[href^="http"] img {
+      width: 100%;
+      height: auto;
+    }
+
+    a[href^="http"] > div:last-child {
+      align-self: stretch;
+      text-align: right;
+      margin-top: 1rem;
+    }
+  }
+</style>
