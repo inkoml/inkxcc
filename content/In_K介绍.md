@@ -23,7 +23,7 @@ In_K熟悉多种编程语言和可视化工具，擅长利用如vvvv（跨媒介
 In_K关注人工智能、自动化与生成性系统对感知、图像、乃至美学本体的挑战与重构，创作理念在技术实现与观念生成之间保持高度张力。
 
 
-![](https://img.inkx.cc/%E6%AF%95%E6%8C%AF%E5%AE%87%20In_K.JPG)
+![](https://img.inkx.cc/20250619035059795.png)
 
 ## 部分展览
 
@@ -69,7 +69,9 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 
 ## 跨界合作及演出
-![](https://img.inkx.cc/chengdu-genwangwuya-dance.jpg)
+
+![](https://img.inkx.cc/in_k.JPG)
+
 
 2021.4.8 三联人文城市颁奖活动 影像装置 视觉演出
 2020.12.5 「无器官身体」肢体文献剧 影像装置 @深圳当代戏剧双年展
@@ -119,5 +121,6 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 ![](https://img.inkx.cc/liveshow-drowyek.jpg)
 
+![](https://img.inkx.cc/chengdu-genwangwuya-dance.jpg)
 
 ![](https://img.inkx.cc/%E7%BD%91%E9%A1%B5%E6%8D%95%E8%8E%B7_20-7-2021_24529_www.liminality.cn.jpeg)
