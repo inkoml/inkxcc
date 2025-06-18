@@ -1,5 +1,5 @@
 ---
-title:
+title: 关于DROWYEK
 slug: drowyek
 draft: false
 categories:
@@ -56,3 +56,6 @@ date: 2020-01-01
 2017.9.16 .ZIP展览闭幕表演 北京今日美术馆  
 
 
+## 观看视频
+
+{{< bilibili bvid="BV1eW411W7z8"  >}}

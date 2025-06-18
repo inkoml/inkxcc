@@ -184,13 +184,13 @@ params:
         image: "http://img.inkx.cc/artwork.jpg"
         featured:
           name: More..
-          link: https://www.inkx.cc
+          link: https://www.inkx.cc/artwork
         badges:
           - "生成艺术"
           - "媒介理论"
 
       - title: DROWYEK
-        content: DROWYEK是一个AudioVisual项目由冯昊和In_K组成。
+        content: DROWYEK是由冯昊和In_K成立的新媒体艺术组合
         image: "https://img.inkx.cc/IMG_7867.JPEG"
         featured:
           name: More..
@@ -205,7 +205,7 @@ params:
         image: "http://img.inkx.cc/projects.jpg"
         featured:
           name: More..
-          link: https://www.inkx.cc/projects
+          link: https://www.inkx.cc/project
         badges:
           - "影像装置"
           - "商业项目"
@@ -229,7 +229,7 @@ params:
         image: "http://img.inkx.cc/blog.jpg"
         featured:
           name: More..
-          link: https://www.inkx.cc
+          link: https://www.inkx.cc/blog
         badges:
           - "启发"
           - "分享"
@@ -240,7 +240,7 @@ params:
         image: "http://img.inkx.cc/interview.jpg"
         featured:
           name: More..
-          link: https://www.inkx.cc
+          link: https://www.inkx.cc/interview/interview
         badges:
           - "观点"
           - "看法"
