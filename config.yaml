@@ -36,17 +36,17 @@ markup:
 
 Menus:
   main:
-    - identifier: blog
+    - identifier: artworks
       name: Artworks
       title: 创作
       url: /artworks
       weight: 1
-    - identifier: blog
+    - identifier: projects
       name: Projects
       title: 项目
       url: /projects
       weight: 2
-    - identifier: blog
+    - identifier: about
       name: About
       title: 介绍
       url: /about
