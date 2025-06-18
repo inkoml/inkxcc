@@ -9,8 +9,9 @@ hugo_stats.json
 # Windows 系统缓存
 Thumbs.db
 
-# Obsidian 相关
-.obsidian/           # Obsidian 配置目录（包括插件和主题）
+# Obsidian 配置目录（包括插件和主题）
+.obsidian/
+         
 *.excalidraw        # Obsidian Excalidraw 插件的图形文件
 *.canvas            # Obsidian Canvas 文件
 
