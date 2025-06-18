@@ -292,7 +292,7 @@ params:
   #Contact
   contact:
     enable: true
-    # title: "Custom Name"
+    title: "我梦见某处，风已经发生"
     content: work@inkx.cc ｜ WeChat：inkoml
 
     # formspree:
