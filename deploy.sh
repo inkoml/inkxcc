@@ -6,6 +6,7 @@ export https_proxy=http://127.0.0.1:1080;
 export http_proxy=http://127.0.0.1:1080;
 export all_proxy=socks5://127.0.0.1:1080
 
+git rm --cached -r .obsidian
 
 
 echo "📦 添加改动..."
