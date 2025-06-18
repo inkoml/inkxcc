@@ -1,7 +1,7 @@
 ---
 title:
 slug: drowyek
-draft: true
+draft: false
 categories:
   - drowyek
 tags:

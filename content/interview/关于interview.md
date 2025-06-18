@@ -1,7 +1,7 @@
 ---
 title:
 slug: interview
-draft: true
+draft: false
 categories:
   - interview
 tags:

@@ -1,7 +1,7 @@
 ---
 title:
 slug: about
-draft: true
+draft: false
 categories:
   - blog
 tags:
