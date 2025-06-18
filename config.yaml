@@ -46,6 +46,11 @@ Menus:
       title: 项目
       url: /projects
       weight: 2
+    - identifier: blog
+      name: About
+      title: 介绍
+      url: /about
+      weight: 2
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
