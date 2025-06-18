@@ -2,19 +2,24 @@
 cd "$(dirname "$0")"
 
 # vpn
-export https_proxy=http://127.0.0.1:1080;
-export http_proxy=http://127.0.0.1:1080;
+export https_proxy=http://127.0.0.1:1080
+export http_proxy=http://127.0.0.1:1080
 export all_proxy=socks5://127.0.0.1:1080
 
+# 移除 .obsidian 目录的缓存（停止跟踪）
 git rm --cached -r .obsidian
 
+# 提交移除操作（如果有变更）
+if ! git diff --cached --quiet; then
+  git commit -m "chore: remove .obsidian from git tracking"
+fi
 
-echo "📦 添加改动..."
+echo "📦 添加其他改动..."
 git add .
 
-# 检查是否有改动需要提交
+# 检查是否有其他改动需要提交
 if git diff --cached --quiet; then
-  echo "⚠️ 没有检测到改动，跳过提交。"
+  echo "⚠️ 没有检测到其他改动，跳过提交。"
 else
   echo "📝 提交中：内容更新：$(date '+%Y-%m-%d %H:%M:%S')"
   git commit -m "内容更新：$(date '+%Y-%m-%d %H:%M:%S')"
