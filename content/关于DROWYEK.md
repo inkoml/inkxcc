@@ -58,4 +58,5 @@ date: 2020-01-01
 
 ## 观看视频
 
-{{< bilibili bvid="BV1eW411W7z8"  >}}
+{{< bilibili bvid="BV1eW411W7z8" >}}
+
