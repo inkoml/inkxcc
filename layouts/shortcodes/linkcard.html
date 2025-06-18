@@ -40,7 +40,8 @@
           font-size: 0.75rem;
           color: #555;
         ">
-          {{ $badge | trim }}
+          {{ trim $badge " " }}
+
         </span>
       {{ end }}
     </div>
