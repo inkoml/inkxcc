@@ -30,7 +30,7 @@ date: 2020-01-01
 
 [【数虎】新媒体领域的第一场show 如此“不可描述”](https://mp.weixin.qq.com/s/Y5dxE1JGUGCX6SjnRSQF-g)
 
-
+![](https://img.inkx.cc/%E5%90%AF%E7%9A%93%E8%AE%BA%E5%9D%9B2025.JPG)
 # 在多人报道中出现：
 
 [艺术家专题vol.2：相对界限 | 2020深圳湾科技艺术节 ](https://mp.weixin.qq.com/s/Gd2wU3WClSvFl9dVV2Wgdw)
