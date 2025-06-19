@@ -8,7 +8,7 @@ tags:
 summary: ink介绍
 description: 新媒体艺术家In_K 毕振宇介绍
 showImageInContent: false
-image:
+image: https://img.inkx.cc/drowyek7.png
 date: 2020-01-01
 ---
 
@@ -19,6 +19,19 @@ date: 2020-01-01
 2011年In_K有幸成为崔健团队的固定成员，作为VJ服务于崔健的现场演出。数十年来跟随崔健团队参与过几百场演出。
 In_K为演出定制开发了一个软件来适应演出需求。
 In_K也是谭维维团队的御用VJ，有十多年的合作历程。
+{{< linkcard 
+  url="https://www.inkx.cc/visualshow/vj-cj/" 
+  title="VJ for 崔健" 
+  desc="" 
+  image="https://img.inkx.cc/vj-cj3.jpeg" 
+>}}
+
+{{< linkcard 
+  url="https://www.inkx.cc/visualshow/vj-tww/" 
+  title="VJ for 谭维维" 
+  desc="" 
+  image="https://img.inkx.cc/drowyek-00.jpg" 
+>}}
 
 作为较早期参与到现场演出的职业VJ，In_K有幸与很多乐队有过接触和合作。从livehouse演出时期到音乐节盛行时期，In_K都是中国最活跃的VJ之一，包括超级市场、龙神道、鲸鱼马戏团、Nova Heart、Carsick Cars、WHAI、名无虚等等。
 
@@ -42,3 +55,9 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
 
 
 
+{{< linkcard 
+  url="https://www.inkx.cc/visualshow" 
+  title="更多视觉项目" 
+  desc="" 
+  image="https://img.inkx.cc/drowyek-00.jpg" 
+>}}

@@ -25,7 +25,7 @@ date: 2020-01-01
 
 
 {{< linkcard 
-  url="https://www.inkx.cc/visualshow/about" 
+  url="https://www.inkx.cc/visualshow" 
   title="Visual Show" 
   desc="更多的VJ项目" 
   image="https://img.inkx.cc/in_k.JPG" 

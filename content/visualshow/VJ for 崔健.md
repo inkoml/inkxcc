@@ -1,5 +1,5 @@
 ---
-title:
+title: VJ for 崔健
 slug: vj-cj
 draft: false
 categories:
@@ -8,7 +8,7 @@ tags:
 summary: 与崔健乐队的VJ项目
 description: 崔健乐队御用VJ
 showImageInContent: false
-image:
+image: https://img.inkx.cc/vj-cj3.jpeg
 date: 2020-01-01
 ---
 
@@ -50,7 +50,7 @@ date: 2020-01-01
 
 
 {{< linkcard 
-  url="https://www.inkx.cc/visualshow/about" 
+  url="https://www.inkx.cc/visualshow" 
   title="Visual Show" 
   desc="更多的VJ项目" 
   image="https://img.inkx.cc/in_k.JPG" 
