@@ -18,18 +18,22 @@ date: 2020-01-01
 
 2011年In_K有幸成为崔健团队的固定成员，作为VJ服务于崔健的现场演出。数十年来跟随崔健团队参与过几百场演出。
 In_K为演出定制开发了一个软件来适应演出需求。
-In_K也是谭维维团队的御用VJ，有十多年的合作历程。
+
 {{< linkcard 
   url="https://www.inkx.cc/visualshow/vj-cj/" 
-  title="VJ for 崔健" 
-  desc="" 
+  title="" 
+  desc="VJ for 崔健" 
   image="https://img.inkx.cc/vj-cj3.jpeg" 
 >}}
 
+
+In_K也是谭维维团队的御用VJ，有十多年的合作历程。
+
+
 {{< linkcard 
   url="https://www.inkx.cc/visualshow/vj-tww/" 
-  title="VJ for 谭维维" 
-  desc="" 
+  title="" 
+  desc="VJ for 谭维维" 
   image="https://img.inkx.cc/drowyek-00.jpg" 
 >}}
 
