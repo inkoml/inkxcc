@@ -59,9 +59,14 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
 
 ---
 
+## 更多视觉项目
 {{< linkcard 
   url="https://www.inkx.cc/visualshow" 
   title="更多视觉项目" 
   desc="" 
   image="https://img.inkx.cc/drowyek-00.jpg" 
 >}}
+
+
+
+

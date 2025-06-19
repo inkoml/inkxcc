@@ -49,6 +49,10 @@ date: 2020-01-01
 我为演出定制开发了一个软件来适应演出需求。
 
 
+
+
+## 更多视觉项目
+
 {{< linkcard 
   url="https://www.inkx.cc/visualshow" 
   title="Visual Show" 
