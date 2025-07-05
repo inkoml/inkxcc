@@ -1,7 +1,7 @@
 ---
 title:
-slug: projects
-draft: false
+slug: about
+draft: true
 categories:
   - projects
 tags:

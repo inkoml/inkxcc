@@ -6,7 +6,7 @@ categories:
   - visualshow
 tags:
 summary: 与谭维维乐队的VJ项目
-description: 谭维维乐队御用VJ
+description: 谭维维乐队VJ
 showImageInContent: false
 image:
 date: 2020-01-01
@@ -15,7 +15,7 @@ date: 2020-01-01
 # 现场VJ视觉
 
 
-
+In_K也是谭维维团队的VJ，有十多年的合作历程。
 
 
 
