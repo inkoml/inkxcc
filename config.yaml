@@ -31,7 +31,7 @@ pagination:
 markup:
   goldmark:
     renderer:
-      unsafe: true
+      unsafe: true # 允许渲染 HTML
       hardWraps: true
 
 Menus:
