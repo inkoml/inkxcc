@@ -10,6 +10,7 @@ description: 谭维维乐队VJ
 showImageInContent: false
 image:
 date: 2020-01-01
+weight: 3
 ---
 
 # 现场VJ视觉

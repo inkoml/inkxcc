@@ -10,6 +10,7 @@ description: 崔健乐队御用VJ
 showImageInContent: false
 image: https://img.inkx.cc/vj-cj3.jpeg
 date: 2020-01-01
+weight: 2
 ---
 
 # 现场VJ视觉
