@@ -10,6 +10,7 @@ description: 相关的采访和文章
 showImageInContent: false
 image: https://img.inkx.cc/IMG_0918.JPG
 date: 2020-01-01
+weight:
 ---
 ![](https://img.inkx.cc/IMG_0918.JPG)
 

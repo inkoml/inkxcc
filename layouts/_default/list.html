@@ -11,9 +11,16 @@
 <div class="container pt-5" id="list-page">
     <h2 class="text-center pb-2">{{.Title}}</h2>
     <div class="row">
+    {{/* 获取 weight 是数字的页面并按 weight 从大到小排序 */}}
     {{ $weighted := where .Pages "Params.weight" "gt" 0 | sort "Params.weight" "desc" }}
+
+    {{/* 获取未设置 weight 或 weight 是空字符串的页面 */}}
     {{ $unweighted := where .Pages "Params.weight" "in" (slice nil "") }}
+
+    {{/* 合并排序后页面列表 */}}
     {{ $pages := union $weighted $unweighted }}
+
+    {{/* 如果你有分页需求，加上 paginate，否则用 $pages 直接 range 即可 */}}
     {{ $paginator := .Paginate $pages }}
 
     {{ range $paginator.Pages }}

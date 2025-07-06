@@ -10,6 +10,7 @@ description: DROWYEK是冯昊与毕振宇（aka.In_K）于 2017 年成立的新�
 showImageInContent: false
 image: https://img.inkx.cc/drowyek-00.jpg
 date: 2017-01-01
+weight:
 ---
 DROWYEK是KEYWORD的镜像世界。在KEYWORD里，每个事物都能被定位、被设定界线、被彼此区分开来，也就产生了种种迷因的鲜活现象。DROWYEK是一种更本源的状态，一切都无法被认识无法被确定，一切都不需要被分别开，没有开始没有终结，就是我们日常的存在与生活本身。
 
