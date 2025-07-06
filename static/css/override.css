@@ -1,50 +1,75 @@
-/* 适用于 Hugo 个人作品网站的字体优化方案 */
+/* === 字体引入：本地部署的 Noto Sans SC 字体 === */
+
+/* 正文字体（常规 400 字重） */
+@font-face {
+  font-family: 'Noto Sans SC'; /* 字体名称，后面引用时使用 */
+  src: url('/fonts/NotoSansSC-Regular.woff2') format('woff2'); /* 字体文件路径 */
+  font-weight: 400; /* 字重：常规 */
+  font-style: normal; /* 字体样式：常规 */
+  font-display: swap; /* 字体未加载前使用备用字体，加载完成后切换，提高性能 */
+}
+
+/* 标题字体（加粗 700 字重） */
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('/fonts/NotoSansSC-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === 全站默认字体设置 === */
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.75em;
-  letter-spacing: 0.1em;
-  color: var(--text-color);
+  /* 使用优先级顺序字体栈：优先用自定义字体，次选系统字体 */
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 16px; /* 基础字号 */
+  line-height: 1.75em; /* 行高，提升可读性 */
+  letter-spacing: 0.03em; /* 字间距，适度增加中文阅读舒适度 */
+  color: var(--text-color); /* 使用主题中的文本颜色变量 */
 }
 
-/* 段落 */
+/* === 正文段落文字优化 === */
+
 #single .page-content p {
-  letter-spacing: 0.3em !important;
+  letter-spacing: 0.03em !important;
   line-height: 1.75em;
 }
 
-/* 标题优化 */
+/* === 标题字体统一使用自定义无衬线，保持视觉一致性 === */
+
 #single .page-content h1,
 #single .page-content h2,
 #single .page-content h3,
 #single .page-content h4,
 #single .page-content h5,
 #single .page-content h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: 0.1em !important;
-  font-weight: 600;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.01em !important;
+  font-weight: 500; /* 使用中等加粗，视觉更平衡 */
   line-height: 1.4em;
 }
 
-/* 列表 */
+/* === 列表字体设置 === */
+
 #single .page-content ul,
 #single .page-content ol {
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.02em !important;
   line-height: 1.75em;
 }
 
-/* 引用 */
+/* === 引用块优化 === */
+
 #single .page-content blockquote {
-  font-style: normal;
-  letter-spacing: 0.1em !important;
+  font-style: normal; /* 避免默认倾斜样式 */
+  letter-spacing: 0.02em !important;
 }
 
-/* 代码区 */
+/* === 代码块和行内代码字体设置 === */
+
 #single .page-content code,
 #single .page-content pre {
+  /* 使用现代等宽字体，保持可读性 */
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.01em;
 }
