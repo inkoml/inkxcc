@@ -28,7 +28,7 @@ body {
   font-weight: 200;
   font-size: 16px;
   line-height: 1.75em;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.05em;
   color: var(--text-color);
 }
 
@@ -37,7 +37,7 @@ body {
 #single .page-content p {
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
   font-weight: 200;
-  letter-spacing: 0.2em !important;
+  letter-spacing: 0.1em !important;
   line-height: 1.75em;
 }
 
@@ -51,7 +51,7 @@ body {
 #single .page-content h6 {
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
   font-weight: 700;
-  letter-spacing: 0.01em !important;
+  letter-spacing: 0.05em !important;
   line-height: 1.4em;
 }
 
