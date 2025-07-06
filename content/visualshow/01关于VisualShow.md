@@ -83,7 +83,7 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">关于DROWYEK</h3>
     <p style="margin: 0 0 12px;"></p>
-    <a href="/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+    <a href="/drowyek" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
 
