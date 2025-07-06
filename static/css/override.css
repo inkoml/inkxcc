@@ -106,3 +106,11 @@ body {
 
 
 
+/* 取消最大宽度限制 */
+.container, .container-md, .container-lg, .container-xl {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
