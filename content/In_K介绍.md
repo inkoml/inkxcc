@@ -98,8 +98,19 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 2014.11.7 <十月 春之祭>  现代舞剧 多媒体设计  
 2014.7.31 跳空美术馆开幕 交互影像装置 现场表演x超级市场乐队  
 2012.4.10  三叶草迷思空间 闫威画展 北京 三里屯 视觉可视化影像装置
-
+![](https://img.inkx.cc/chengdu-genwangwuya-dance.jpg)
 ## DROWYEK 音视觉演出
+2017年In_K与艺术家音乐人冯昊组建了DROWYEK新媒体组合，2021年DROWYEK正式签约摩登天空媒体艺术厂牌NULL。
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://img.inkx.cc/drowyek-00.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">关于DROWYEK</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
 ![](https://img.inkx.cc/drowyek4.png)
 
 2024.03.31 成都 A4x “第三自然”展览开幕演出
@@ -121,6 +132,49 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 ![](https://img.inkx.cc/liveshow-drowyek.jpg)
 
-![](https://img.inkx.cc/chengdu-genwangwuya-dance.jpg)
 
-![](https://img.inkx.cc/%E7%BD%91%E9%A1%B5%E6%8D%95%E8%8E%B7_20-7-2021_24529_www.liminality.cn.jpeg)
+
+## 其他身份
+
+### VJ现场视觉设计
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://img.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">更多视觉项目</h3>
+    <p style="margin: 0 0 12px;">从2010年至今，In_K作为VJ参与过几百场大大小小的现场演出，从体育场大规模演出到电视台直播等高流程标准的项目，经历过相关的所有场景和情况。有着丰富的现场经验。
+	 In_K是崔健团队的成员。也跟众多音乐人有过合作经验。
+    </p>
+    <a href="/visualshow/about" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
+
+
+### 科技艺术
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://img.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">影像装置</h3>
+    <p style="margin: 0 0 12px;">这里有一些科技艺术方向的影像装置。
+    </p>
+    <a href="/project/about" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
+### 自媒体up主
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://img.inkx.cc/20250706140205855.png" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">激进思想技术</h3>
+    <p style="margin: 0 0 12px;">激进，是一种反主流的能量。思想会因语境的变化而失效或有用。技术，是实现愿景的一种路径。
+    </p>
+    <a href="https://space.bilibili.com/10830102" style="color: #007BFF; text-decoration: underline;">去Bilibili观看视频，记得一键三连哦 →</a>
+  </div>
+</div>

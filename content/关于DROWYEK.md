@@ -66,3 +66,16 @@ DROWYEK是由[冯昊](https://www.fenghao.info/)与毕振宇（aka.In_K）于 20
 {{< bilibili bvid="BV1eW411W7z8" >}}
 
 
+
+## 更多视觉项目
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://img.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">更多In_K的视觉项目</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/visualshow/about" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>

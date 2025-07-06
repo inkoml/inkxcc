@@ -54,12 +54,15 @@ weight: 2
 
 ## 更多视觉项目
 
-{{< linkcard 
-  url="https://www.inkx.cc/visualshow" 
-  title="Visual Show" 
-  desc="更多的VJ项目" 
-  image="https://img.inkx.cc/in_k.JPG" 
->}}
-
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://img.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">更多视觉项目</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/visualshow/about" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
 
 
