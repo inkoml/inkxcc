@@ -1,5 +1,4 @@
 {{ define "head" }}
-  <!-- 页面描述，用于 SEO -->
   <meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
 
   <!-- 页面专用样式 -->
@@ -10,18 +9,14 @@
 {{ end }}
 
 {{ define "title" }}
-  <!-- 页面标题显示为“栏目标题 | 站点标题” -->
   {{ .Title }} | {{ .Site.Title }}
 {{ end }}
 
 {{ define "main" }}
-<!-- 主体内容容器 -->
 <div class="container pt-5" id="list-page">
   
-  <!-- 页面主标题 -->
   <h2 class="text-center pb-2">{{ .Title }}</h2>
 
-  <!-- 内容网格布局 -->
   <div class="row">
     {{ range (.Paginator.Pages.ByParam "weight").Reverse }}
       <div class="col-lg-3 col-md-4 col-sm-6 my-3">
@@ -32,7 +27,6 @@
             {{ if and (not (.Site.Params.listPages.disableFeaturedImage | default false)) (.Params.image) }}
               <div class="card-header">
                 <a href="{{ .RelPermalink }}">
-                  <!-- 文章封面图 -->
                   <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Title }}">
                 </a>
               </div>
@@ -41,7 +35,7 @@
             <!-- 卡片正文区域 -->
             <div class="card-body bg-transparent p-4 shadow-sm">
               <a href="{{ .RelPermalink }}" class="primary-font card-title">
-                <h5 class="card-title bg-transparent" title="{{ .Title }}">{{ .Title }}</h5>
+                <h6 class="card-title bg-transparent" title="{{ .Title }}">{{ .Title }}</h6>
               </a>
 
               <!-- 简要描述或摘要 -->
@@ -53,7 +47,7 @@
             <!-- 阅读按钮 -->
             <div class="mt-auto post-footer bg-transparent py-3">
               <a href="{{ .RelPermalink }}" class="float-end btn btn-outline-info btn-sm">
-                {{ .Site.Params.terms.read | default "Read" }}
+                {{ .Site.Params.terms.read | default "More..." }}
               </a>
             </div>
           </div>
