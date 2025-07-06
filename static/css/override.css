@@ -20,10 +20,9 @@
   unicode-range: U+4E00-9FFF;
 }
 
-/* === 全站默认字体设置 === */
+/* === 全站默认字体设置（桌面端） === */
 
 body {
-  /* 系统默认英文字体 + 中文字体备用（MyCJKFont） */
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
   font-weight: 150;
   font-size: 16px;
@@ -33,7 +32,6 @@ body {
 }
 
 /* === 正文段落文字优化 === */
-
 #single .page-content p {
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
   font-weight: 150;
@@ -42,7 +40,6 @@ body {
 }
 
 /* === 标题字体统一使用中文粗体、英文默认 === */
-
 #single .page-content h1,
 #single .page-content h2,
 #single .page-content h3,
@@ -56,7 +53,6 @@ body {
 }
 
 /* === 列表文字优化 === */
-
 #single .page-content ul,
 #single .page-content ol {
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
@@ -65,7 +61,6 @@ body {
 }
 
 /* === 引用块优化 === */
-
 #single .page-content blockquote {
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
   font-style: normal;
@@ -73,9 +68,39 @@ body {
 }
 
 /* === 代码块字体设置：保留等宽字体样式 === */
-
 #single .page-content code,
 #single .page-content pre {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.01em;
+}
+
+/* === 手机端优化：响应式字体 === */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.7em;
+  }
+
+  #single .page-content p {
+    font-size: 15px;
+    line-height: 1.7em;
+  }
+
+  #single .page-content h1 {
+    font-size: 1.5em;
+  }
+
+  #single .page-content h2 {
+    font-size: 1.35em;
+  }
+
+  #single .page-content h3 {
+    font-size: 1.2em;
+  }
+
+  #single .page-content h4,
+  #single .page-content h5,
+  #single .page-content h6 {
+    font-size: 1.1em;
+  }
 }
