@@ -149,7 +149,6 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
     <p style="margin: 0 0 12px;">从2010年至今，In_K作为VJ参与过几百场大大小小的现场演出，从体育场大规模演出到电视台直播等高流程标准的项目，经历过相关的所有场景和情况。有着丰富的现场经验。
-	 In_K是崔健团队的成员。也跟众多音乐人有过合作经验。
     </p>
     <a href="/visualshow/about" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
@@ -169,7 +168,11 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
     <a href="/project/about" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
+
+
 ### 自媒体up主
+
+
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">

@@ -162,7 +162,7 @@ params:
       items:
         - "交互编程"
         - "影像装置"
-        - "AudioVisual视觉演出"
+        - "视觉演出"
         - "沉浸式交互影像"
         - "科技艺术"
         - "生成式影像"
@@ -171,7 +171,7 @@ params:
         - "欧陆哲学"
         - "身体技术"
         - "Web3"
-        - "艺术评论"
+        - "AudioVisual"
 
   # projects
   projects:

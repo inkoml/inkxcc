@@ -34,6 +34,8 @@ In_K为演出定制开发了一个软件来适应演出需求。
     <a href="/visualshow/vj-cj" style="color: #007BFF; text-decoration: underline;">点击了解我们的演出经历 →</a>
   </div>
 </div>
+
+
 ## 谭维维御用VJ
 In_K也是谭维维团队的御用VJ，有十多年的合作历程。
 
@@ -61,6 +63,7 @@ In_K还参与过一些流行艺人的演唱会制作及执行，包括谭维维�
     <a href="/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
+
 ## 地下音乐场景与rave文化
 In_K早期也一直活跃在地下电子音乐场景中，不仅与电子音乐人、实验音乐、噪音、合成器硬件现场等原创性的电子音乐演出，与这些原创电子音乐人交流所共享和展开的世界是他最重要的能量来源之一。
 2011年创立神经元视觉团队。成员包括clone、young、buzz、agalloch21、zhujianfei、TonyMark
