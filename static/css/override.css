@@ -104,17 +104,5 @@ body {
   }
 }
 
-/* === 卡片列表页图片防止变形 === */
-
-/* 包裹图片的容器：强制比例、高度自适应 */
-.card-img-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9; /* 桌面端保持 16:9 */
-  object-fit: cover; /* 自动裁剪溢出部分以保持比例 */
-  overflow: hidden;
-  border-radius: 0.5rem;
-}
-
 
 
