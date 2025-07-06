@@ -121,14 +121,4 @@ body {
   }
 }
 
-/* 卡片图片本体：强制覆盖原样式 */
-.card-img-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 保持图片比例裁剪多余部分 */
-  border-radius: 0.5rem;
-}
 
