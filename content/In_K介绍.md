@@ -24,8 +24,11 @@ In_K熟悉多种编程语言和创意工具，擅长利用如vvvv（跨媒介编
 In_K关注人工智能、自动化与生成性系统对感知、图像、乃至美学本体的挑战与重构，创作理念在技术实现与观念生成之间保持高度张力。
 
 
-![](https://img.inkx.cc/20250619035059795.png)
 
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+  <img src="https://img.inkx.cc/20250619035059795.png" alt="图片1" style="width:100%; border-radius:8px;" />
+  <img src="http://img.inkx.cc/ink-pfp.jpg" alt="图片2" style="width:100%; border-radius:8px;" />
+</div>
 ## 部分展览
 
 
@@ -141,7 +144,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://img.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
