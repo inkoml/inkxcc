@@ -11,7 +11,12 @@
 <div class="container pt-5" id="list-page">
     <h2 class="text-center pb-2">{{.Title}}</h2>
     <div class="row">
-    {{ range (.Paginator.Pages.weight "desc") }}
+    {{ $weighted := where .Pages "Params.weight" "gt" 0 | sort "Params.weight" "desc" }}
+    {{ $unweighted := where .Pages "Params.weight" "in" (slice nil "") }}
+    {{ $pages := union $weighted $unweighted }}
+    {{ $paginator := .Paginate $pages }}
+
+    {{ range $paginator.Pages }}
 
 
         <div class="col-lg-4 col-md-6 my-3">
