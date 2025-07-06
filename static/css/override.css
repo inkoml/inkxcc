@@ -25,14 +25,15 @@ body {
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 16px; /* 基础字号 */
   line-height: 1.75em; /* 行高，提升可读性 */
-  letter-spacing: 0.03em; /* 字间距，适度增加中文阅读舒适度 */
+  letter-spacing: 0.2em; /* 字间距，适度增加中文阅读舒适度 */
   color: var(--text-color); /* 使用主题中的文本颜色变量 */
 }
 
 /* === 正文段落文字优化 === */
 
 #single .page-content p {
-  letter-spacing: 0.03em !important;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.2em !important;
   line-height: 1.75em;
 }
 
@@ -45,7 +46,7 @@ body {
 #single .page-content h5,
 #single .page-content h6 {
   font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 0.01em !important;
+  letter-spacing: 0.1em !important;
   font-weight: 500; /* 使用中等加粗，视觉更平衡 */
   line-height: 1.4em;
 }
@@ -54,15 +55,18 @@ body {
 
 #single .page-content ul,
 #single .page-content ol {
-  letter-spacing: 0.02em !important;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.1em !important;
   line-height: 1.75em;
 }
 
 /* === 引用块优化 === */
 
 #single .page-content blockquote {
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.1em !important;
   font-style: normal; /* 避免默认倾斜样式 */
-  letter-spacing: 0.02em !important;
+  
 }
 
 /* === 代码块和行内代码字体设置 === */
