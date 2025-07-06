@@ -1,3 +1,50 @@
-#single .page-content {
-  letter-spacing: 0.25em;
+/* 适用于 Hugo 个人作品网站的字体优化方案 */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75em;
+  letter-spacing: 0.1em;
+  color: var(--text-color);
+}
+
+/* 段落 */
+#single .page-content p {
+  letter-spacing: 0.3em !important;
+  line-height: 1.75em;
+}
+
+/* 标题优化 */
+#single .page-content h1,
+#single .page-content h2,
+#single .page-content h3,
+#single .page-content h4,
+#single .page-content h5,
+#single .page-content h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.1em !important;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+/* 列表 */
+#single .page-content ul,
+#single .page-content ol {
+  letter-spacing: 0.1em !important;
+  line-height: 1.75em;
+}
+
+/* 引用 */
+#single .page-content blockquote {
+  font-style: normal;
+  letter-spacing: 0.1em !important;
+}
+
+/* 代码区 */
+#single .page-content code,
+#single .page-content pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  letter-spacing: 0.01em;
 }
