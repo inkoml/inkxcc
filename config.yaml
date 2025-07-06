@@ -240,7 +240,7 @@ params:
         image: "http://img.inkx.cc/interview.jpg"
         featured:
           name: More..
-          link: https://www.inkx.cc/interview/interview
+          link: https://www.inkx.cc/interview/about
         badges:
           - "观点"
           - "看法"
