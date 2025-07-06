@@ -1,43 +1,47 @@
-/* === 字体引入：本地部署的 Noto Sans SC 字体 === */
+/* === 字体引入：仅限中文字符，避免英文强制加载自定义字体 === */
 
-/* 正文字体（常规 400 字重） */
+/* 中文 Light 字重（适用于正文） */
 @font-face {
-  font-family: 'Noto Sans SC'; /* 字体名称，后面引用时使用 */
-  src: url('/fonts/NotoSansSC-Light.woff2') format('woff2'); /* 字体文件路径 */
-  font-weight: 250; /* 字重：Light */
-  font-style: normal; /* 字体样式：常规 */
-  font-display: swap; /* 字体未加载前使用备用字体，加载完成后切换，提高性能 */
+  font-family: 'MyCJKFont';
+  src: url('/fonts/NotoSansSC-Light.woff2') format('woff2');
+  font-weight: 250;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF; /* 仅应用于 CJK 统一汉字区块（中文） */
 }
 
-/* 标题字体（加粗 700 字重） */
+/* 中文 Bold 字重（适用于标题） */
 @font-face {
-  font-family: 'Noto Sans SC';
+  font-family: 'MyCJKFont';
   src: url('/fonts/NotoSansSC-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+4E00-9FFF;
 }
 
 /* === 全站默认字体设置 === */
 
 body {
-  /* 使用优先级顺序字体栈：优先用自定义字体，次选系统字体 */
-  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 16px; /* 基础字号 */
-  line-height: 1.75em; /* 行高，提升可读性 */
-  letter-spacing: 0.3em; /* 字间距，适度增加中文阅读舒适度 */
-  color: var(--text-color); /* 使用主题中的文本颜色变量 */
+  /* 系统默认英文字体 + 中文字体备用（MyCJKFont） */
+  font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
+  font-weight: 250;
+  font-size: 16px;
+  line-height: 1.75em;
+  letter-spacing: 0.03em;
+  color: var(--text-color);
 }
 
 /* === 正文段落文字优化 === */
 
 #single .page-content p {
-  font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 0.3em !important;
+  font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
+  font-weight: 250;
+  letter-spacing: 0.03em !important;
   line-height: 1.75em;
 }
 
-/* === 标题字体统一使用自定义无衬线，保持视觉一致性 === */
+/* === 标题字体统一使用中文粗体、英文默认 === */
 
 #single .page-content h1,
 #single .page-content h2,
@@ -45,35 +49,33 @@ body {
 #single .page-content h4,
 #single .page-content h5,
 #single .page-content h6 {
-  font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 0.1em !important;
-  font-weight: 500; /* 使用中等加粗，视觉更平衡 */
+  font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em !important;
   line-height: 1.4em;
 }
 
-/* === 列表字体设置 === */
+/* === 列表文字优化 === */
 
 #single .page-content ul,
 #single .page-content ol {
-  font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 0.1em !important;
+  font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
+  letter-spacing: 0.02em !important;
   line-height: 1.75em;
 }
 
 /* === 引用块优化 === */
 
 #single .page-content blockquote {
-  font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 0.1em !important;
-  font-style: normal; /* 避免默认倾斜样式 */
-  
+  font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.02em !important;
 }
 
-/* === 代码块和行内代码字体设置 === */
+/* === 代码块字体设置：保留等宽字体样式 === */
 
 #single .page-content code,
 #single .page-content pre {
-  /* 使用现代等宽字体，保持可读性 */
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.01em;
 }
