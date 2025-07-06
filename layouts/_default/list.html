@@ -14,7 +14,7 @@
     {{ range (.Paginator.Pages.ByParam "weight").Reverse }}
 
 
-        <div class="col-lg-4 col-md-6 my-3">
+        <div class="col-lg-3 col-md-4 col-sm-6 my-3">
             <div class="card-columns">
                 <div class="card h-100">
                     {{ if and (not (.Site.Params.listPages.disableFeaturedImage | default false)) (.Params.image) }}

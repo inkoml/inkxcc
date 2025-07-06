@@ -7,7 +7,7 @@
   font-weight: 150;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+4E00-9FFF; /* 仅应用于 CJK 统一汉字区块（中文） */
+  unicode-range: U+4E00-9FFF;
 }
 
 /* 中文 Bold 字重（适用于标题） */
@@ -21,7 +21,6 @@
 }
 
 /* === 全站默认字体设置（桌面端） === */
-
 body {
   font-family: 'Helvetica Neue', 'Segoe UI', 'Arial', 'MyCJKFont', sans-serif;
   font-weight: 150;
@@ -67,7 +66,7 @@ body {
   letter-spacing: 0.02em !important;
 }
 
-/* === 代码块字体设置：保留等宽字体样式 === */
+/* === 代码块字体设置 === */
 #single .page-content code,
 #single .page-content pre {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -102,5 +101,19 @@ body {
   #single .page-content h5,
   #single .page-content h6 {
     font-size: 1.1em;
+  }
+}
+
+/* === 卡片列表页图片防止变形（List页卡片图片） === */
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 保持16:9比例 */
+  object-fit: cover; /* 超出裁剪，防止变形 */
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card-img-top {
+    aspect-ratio: 4 / 3; /* 移动端比例稍改 */
   }
 }

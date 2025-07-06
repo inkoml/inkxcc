@@ -2,7 +2,7 @@
 summary: NΦWHERE是一系列不存在的空间的地图，我找到了它和它所在的空间的黄金分割线。
 showImageInContent: false
 date: 2020-01-01
-title: MΦMENT
+title: NΦWHERE
 slug: nowhere
 draft: false
 categories: artwork
@@ -37,4 +37,18 @@ NΦWHERE 是一个 AI 生成的空间影像装置，AI 学习了数万张存在�
 ![](https://img.inkx.cc/20250620170839230.png)
 
 ![](https://img.inkx.cc/20250620170924948.png)
+
+
+
+## 一小部分无限
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <a href="/project1" style="flex: 1;">
+    <img src="https://img.inkx.cc/20250620165853234.png" alt="项目图" style="width:100%; border-radius:8px;" />
+  </a>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">一小部分无限</h3>
+    <p style="margin: 0 0 12px;">NΦWHERE是一小部分无限的一部分</p>
+    <a href="/artwork/infinitesimal" style="color: #007BFF; text-decoration: underline;">点击查看详情 →</a>
+  </div>
+</div>
 
