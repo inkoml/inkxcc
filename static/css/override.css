@@ -116,10 +116,5 @@ body {
   border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 768px) {
-  .card-img-wrapper {
-    aspect-ratio: 4 / 3; /* 手机端可切换为 4:3 比例 */
-  }
-}
 
 
