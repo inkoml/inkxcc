@@ -1,52 +1,73 @@
 {{ define "head" }}
-<meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
-<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all">
+  <!-- 页面描述，用于 SEO -->
+  <meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
+
+  <!-- 页面专用样式 -->
+  <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all">
+
+  <!-- ✅ 引入全局覆盖样式：包含字体、响应式字号、图片样式等个性化设定 -->
+  <link rel="stylesheet" href="/css/override.css" media="all">
 {{ end }}
 
 {{ define "title" }}
-{{.Title }} | {{ .Site.Title }}
+  <!-- 页面标题显示为“栏目标题 | 站点标题” -->
+  {{ .Title }} | {{ .Site.Title }}
 {{ end }}
 
 {{ define "main" }}
+<!-- 主体内容容器 -->
 <div class="container pt-5" id="list-page">
-    <h2 class="text-center pb-2">{{.Title}}</h2>
-    <div class="row">
+  
+  <!-- 页面主标题 -->
+  <h2 class="text-center pb-2">{{ .Title }}</h2>
+
+  <!-- 内容网格布局 -->
+  <div class="row">
     {{ range (.Paginator.Pages.ByParam "weight").Reverse }}
+      <div class="col-lg-3 col-md-4 col-sm-6 my-3">
+        <div class="card-columns">
+          <div class="card h-100">
+            
+            <!-- ✅ 判断是否显示文章封面图 -->
+            {{ if and (not (.Site.Params.listPages.disableFeaturedImage | default false)) (.Params.image) }}
+              <div class="card-header">
+                <a href="{{ .RelPermalink }}">
+                  <!-- 文章封面图 -->
+                  <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Title }}">
+                </a>
+              </div>
+            {{ end }}
 
+            <!-- 卡片正文区域 -->
+            <div class="card-body bg-transparent p-4 shadow-sm">
+              <a href="{{ .RelPermalink }}" class="primary-font card-title">
+                <h5 class="card-title bg-transparent" title="{{ .Title }}">{{ .Title }}</h5>
+              </a>
 
-        <div class="col-lg-3 col-md-4 col-sm-6 my-3">
-            <div class="card-columns">
-                <div class="card h-100">
-                    {{ if and (not (.Site.Params.listPages.disableFeaturedImage | default false)) (.Params.image) }}
-                    <div class="card-header">
-                        <a href="{{ .RelPermalink }}">
-                            <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Title }}">
-                        </a>
-                    </div>
-                    {{ end }}
-                    <div class="card-body bg-transparent p-4 shadow-sm">
-                        <a href="{{ .RelPermalink }}" class="primary-font card-title">
-                            <h5 class="card-title bg-transparent" title="{{ .Title }}">{{ .Title  }}</h5>
-                        </a>
-                        <div class="card-text secondary-font">
-                            
-                            <p>{{ .Params.description | default .Summary | truncate 300 }}</p>
-
-                        </div>
-                    </div>
-                    <div class="mt-auto post-footer bg-transparent py-3">
-                      
-                        <a href="{{ .RelPermalink }}" class="float-end btn btn-outline-info btn-sm">{{ .Site.Params.terms.read | default "Read" }}</a>
-                    </div>
-                </div>
+              <!-- 简要描述或摘要 -->
+              <div class="card-text secondary-font">
+                <p>{{ .Params.description | default .Summary | truncate 300 }}</p>
+              </div>
             </div>
-        </div>
-        {{ end }}
-        <div class="row justify-content-center">
-            <div class="col-auto m-3">
-                {{template "_internal/pagination.html" . }}
+
+            <!-- 阅读按钮 -->
+            <div class="mt-auto post-footer bg-transparent py-3">
+              <a href="{{ .RelPermalink }}" class="float-end btn btn-outline-info btn-sm">
+                {{ .Site.Params.terms.read | default "Read" }}
+              </a>
             </div>
+          </div>
         </div>
+      </div>
+    {{ end }}
+
+    <!-- 分页组件 -->
+    <div class="row justify-content-center">
+      <div class="col-auto m-3">
+        {{ template "_internal/pagination.html" . }}
+      </div>
     </div>
+
+  </div>
 </div>
 {{ end }}
