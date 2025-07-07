@@ -7,13 +7,13 @@ tags:
 summary: ink介绍
 description: 新媒体艺术家In_K 毕振宇介绍
 showImageInContent: false
-image: https://img.inkx.cc/ink.%202019..JPG
+image: https://r2.inkx.cc/ink.%202019..jpg
 date: 2020-01-01
 weight:
 ---
 
 
-![](https://img.inkx.cc/ink.%202019..JPG)
+![](https://r2.inkx.cc/ink.%202019..jpg)
 
 
 
@@ -26,8 +26,8 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-  <img src="https://img.inkx.cc/20250619035059795.png" alt="图片1" style="width:100%; border-radius:8px;" />
-  <img src="http://img.inkx.cc/ink-pfp.jpg" alt="图片2" style="width:100%; border-radius:8px;" />
+  <img src="https://r2.inkx.cc/20250619035059795.png" alt="图片1" style="width:100%; border-radius:8px;" />
+  <img src="http://r2.inkx.cc/ink-pfp.jpg" alt="图片2" style="width:100%; border-radius:8px;" />
 </div>
 ## 部分展览
 
@@ -74,7 +74,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 ## 跨界合作及演出
 
-![](https://img.inkx.cc/in_k.JPG)
+![](https://r2.inkx.cc/in_k.jpg)
 
 
 2021.4.8 三联人文城市颁奖活动 影像装置 视觉演出
@@ -102,12 +102,12 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 2014.11.7 <十月 春之祭>  现代舞剧 多媒体设计  
 2014.7.31 跳空美术馆开幕 交互影像装置 现场表演x超级市场乐队  
 2012.4.10  三叶草迷思空间 闫威画展 北京 三里屯 视觉可视化影像装置
-![](https://img.inkx.cc/chengdu-genwangwuya-dance.jpg)
+![](https://r2.inkx.cc/chengdu-genwangwuya-dance.jpg)
 ## DROWYEK 音视觉演出
 2017年In_K与艺术家音乐人冯昊组建了DROWYEK新媒体组合，2021年DROWYEK正式签约摩登天空媒体艺术厂牌NULL。
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/drowyek-00.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/drowyek-00.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">关于DROWYEK</h3>
@@ -115,7 +115,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
     <a href="/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
-![](https://img.inkx.cc/drowyek4.png)
+![](https://r2.inkx.cc/drowyek4.png)
 
 2024.03.31 成都 A4x “第三自然”展览开幕演出
 2023.11.11 上海 UFO Terminal 演出 
@@ -134,7 +134,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 2017.9.22 引力塔公共空间装置 AudioVisual开幕表演 北京设计周  
 2017.9.16 .ZIP展览闭幕表演 北京今日美术馆  
 
-![](https://img.inkx.cc/liveshow-drowyek.jpg)
+![](https://r2.inkx.cc/liveshow-drowyek.jpg)
 
 
 
@@ -144,7 +144,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
@@ -159,7 +159,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706134639572.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">影像装置</h3>
@@ -176,7 +176,7 @@ In_K关注人工智能、自动化与生成性系统对感知、图像、乃至�
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706140205855.png" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706140205855.png" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">激进思想技术</h3>

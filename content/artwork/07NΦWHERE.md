@@ -8,12 +8,12 @@ draft: false
 categories: artwork
 tags:
   - 一小部分无限
-image: https://img.inkx.cc/20250620170527439.png
+image: https://r2.inkx.cc/20250620170527439.png
 description: NΦWHERE 是一个 AI 生成的空间影像装置，AI 学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。
 weight: 9006
 ---
 # NΦWHERE
-![](https://img.inkx.cc/20250620170527439.png)
+![](https://r2.inkx.cc/20250620170527439.png)
 
 ## 创作概念
 
@@ -24,26 +24,26 @@ weight: 9006
 
 NΦWHERE 是一个 AI 生成的空间影像装置，AI 学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。
 
-![](https://img.inkx.cc/20250620170650940.png)
+![](https://r2.inkx.cc/20250620170650940.png)
 
-![](https://img.inkx.cc/20250620170714853.png)
+![](https://r2.inkx.cc/20250620170714853.png)
 
-![](https://img.inkx.cc/20250620170740720.png)
+![](https://r2.inkx.cc/20250620170740720.png)
 
 ## 呈现
 
-![](https://img.inkx.cc/20250620170815740.png)
+![](https://r2.inkx.cc/20250620170815740.png)
 
-![](https://img.inkx.cc/20250620170839230.png)
+![](https://r2.inkx.cc/20250620170839230.png)
 
-![](https://img.inkx.cc/20250620170924948.png)
+![](https://r2.inkx.cc/20250620170924948.png)
 
 
 
 ## 一小部分无限
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <a href="/project1" style="flex: 1;">
-    <img src="https://img.inkx.cc/20250620165853234.png" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250620165853234.png" alt="项目图" style="width:100%; border-radius:8px;" />
   </a>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">一小部分无限</h3>

@@ -8,11 +8,11 @@ tags:
 summary: ink相关的采访和文章
 description: 相关的采访和文章
 showImageInContent: false
-image: https://img.inkx.cc/IMG_0918.JPG
+image: https://r2.inkx.cc/IMG_0918.jpg
 date: 2020-01-01
 weight:
 ---
-![](https://img.inkx.cc/IMG_0918.JPG)
+![](https://r2.inkx.cc/IMG_0918.jpg)
 
 # 报道 ：
 [LINK艺术 |专访毕振宇：π是通往一个圆，探求无止境的永恒！](https://mp.weixin.qq.com/s/lfPc_uYL8p5eaqF47tpfwg)
@@ -68,7 +68,7 @@ weight:
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706140205855.png" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706140205855.png" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">激进思想技术</h3>

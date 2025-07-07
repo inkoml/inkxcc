@@ -8,12 +8,12 @@ draft: false
 categories: artwork
 tags:
   - 一小部分无限
-image: https://img.inkx.cc/20250620170124976.png
+image: https://r2.inkx.cc/20250620170124976.png
 description:
 weight: 9007
 ---
 # MΦMENT
-![](https://img.inkx.cc/20250620170124976.png)
+![](https://r2.inkx.cc/20250620170124976.png)
 
 ## 创作概念
 
@@ -31,9 +31,9 @@ weight: 9007
 
 ## 呈现
 
-![](https://img.inkx.cc/20250620170404562.png)
+![](https://r2.inkx.cc/20250620170404562.png)
 
-![](https://img.inkx.cc/20250620170434685.png)
+![](https://r2.inkx.cc/20250620170434685.png)
 
 
 
@@ -42,7 +42,7 @@ weight: 9007
 ## 一小部分无限
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <a href="/project1" style="flex: 1;">
-    <img src="https://img.inkx.cc/20250620165853234.png" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250620165853234.png" alt="项目图" style="width:100%; border-radius:8px;" />
   </a>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">一小部分无限</h3>

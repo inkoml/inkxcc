@@ -8,7 +8,7 @@ tags:
 summary: 与崔健乐队的VJ项目
 description: 崔健乐队御用VJ
 showImageInContent: false
-image: https://img.inkx.cc/vj-cj3.jpeg
+image: https://r2.inkx.cc/vj-cj3.jpg
 date: 2020-01-01
 weight: 2
 ---
@@ -37,13 +37,13 @@ weight: 2
 
 
 
-![](https://img.inkx.cc/vj-cj1.jpeg)![](https://img.inkx.cc/vj-cj2.jpeg)
-![](https://img.inkx.cc/vj-cj3.jpeg)
+![](https://r2.inkx.cc/vj-cj1.jpg)![](https://r2.inkx.cc/vj-cj2.jpg)
+![](https://r2.inkx.cc/vj-cj3.jpg)
 
-![](https://img.inkx.cc/vj-cj4.jpeg)
-![](https://img.inkx.cc/vj-cj5.jpeg)
+![](https://r2.inkx.cc/vj-cj4.jpg)
+![](https://r2.inkx.cc/vj-cj5.jpg)
 
-![](https://img.inkx.cc/vj-cj6.jpeg)
+![](https://r2.inkx.cc/vj-cj6.jpg)
 
 
 
@@ -56,7 +56,7 @@ weight: 2
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>

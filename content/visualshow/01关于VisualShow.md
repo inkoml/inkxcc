@@ -8,7 +8,7 @@ tags:
 summary: ink介绍
 description: 新媒体艺术家In_K 毕振宇介绍
 showImageInContent: false
-image: https://img.inkx.cc/20250706134639572.jpg
+image: https://r2.inkx.cc/20250706134639572.jpg
 date: 2020-01-01
 weight: 1
 ---
@@ -26,7 +26,7 @@ In_K为演出定制开发了一个软件来适应演出需求。
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/vj-cj3.jpeg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/vj-cj3.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">VJ for 崔健</h3>
@@ -44,7 +44,7 @@ In_K也是谭维维团队的御用VJ，有十多年的合作历程。
   url="https://www.inkx.cc/visualshow/vj-tww/" 
   title="" 
   desc="VJ for 谭维维" 
-  image="https://img.inkx.cc/drowyek-00.jpg" 
+  image="https://r2.inkx.cc/drowyek-00.jpg" 
 >}}
 
 ## 更多视觉现场
@@ -55,7 +55,7 @@ In_K还参与过一些流行艺人的演唱会制作及执行，包括谭维维�
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
@@ -78,7 +78,7 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
 2017年In_K与艺术家音乐人冯昊组建了DROWYEK新媒体组合，2021年DROWYEK正式签约摩登天空媒体艺术厂牌NULL。
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/drowyek-00.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/drowyek-00.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">关于DROWYEK</h3>

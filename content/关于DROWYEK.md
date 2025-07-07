@@ -8,7 +8,7 @@ tags:
 summary: dorwyek介绍
 description: DROWYEK是冯昊与毕振宇（aka.In_K）于 2017 年成立的新媒体艺术组合，DROWYEK 囊括了视听表演和互动数字影像装置等艺术表达形式。
 showImageInContent: false
-image: https://img.inkx.cc/drowyek-00.jpg
+image: https://r2.inkx.cc/drowyek-00.jpg
 date: 2017-01-01
 weight:
 ---
@@ -16,7 +16,7 @@ DROWYEK是KEYWORD的镜像世界。在KEYWORD里，每个事物都能被定位�
 
 <font color="#696969">DROWYEK is back future KEYWORD. Like Maurice Blanchot's abyss where there is neither truth nor meaning nor even error. experience experienced under the threat of impersonality, undifferentiated speech speaking in a vacuum, passing through he who hears it, unfamiliar, excluding the familiar, and which cannot be silenced because it is what is unceasing and interminable. DROWYEK comes from memes, forward to lives riddles.</font>
 
-![](https://img.inkx.cc/IMG_7867.JPEG)
+![](https://r2.inkx.cc/IMG_7867.jpg)
 
 
 
@@ -27,18 +27,18 @@ DROWYEK是由[冯昊](https://www.fenghao.info/)与毕振宇（aka.In_K）于 20
 2017 年在北京今日美术馆《.ZIP 释放未来》新媒体艺术展上，他们组建后的第一场演出就引发了广泛的关注。之后在亚洲数字艺术展、深圳城市艺术节、深圳湾科技艺术节、成都 ZIP 新媒体艺术展、赤水音乐节、北京设计周和奥迪之夜等活动上都曾出现过他们的表演现场或作品。2021年DROWYEK正式签约摩登天空媒体艺术厂牌NULL。
 
 
-![](https://img.inkx.cc/drowyek-00.jpg)
+![](https://r2.inkx.cc/drowyek-00.jpg)
 
-![](https://img.inkx.cc/fenghao.png)
-![](https://img.inkx.cc/dorwyek-ink.png)
-![](https://img.inkx.cc/drowyek3.png)
-![](https://img.inkx.cc/drowyek4.png)
-![](https://img.inkx.cc/drowyek5.png)
-![](https://img.inkx.cc/drowyek6.png)
-![](https://img.inkx.cc/drowyek7.png)
-![](https://img.inkx.cc/drowyek8.png)
-![](https://img.inkx.cc/drowyek9.png)
-![](https://img.inkx.cc/drowyek10.png)
+![](https://r2.inkx.cc/fenghao.png)
+![](https://r2.inkx.cc/dorwyek-ink.png)
+![](https://r2.inkx.cc/drowyek3.png)
+![](https://r2.inkx.cc/drowyek4.png)
+![](https://r2.inkx.cc/drowyek5.png)
+![](https://r2.inkx.cc/drowyek6.png)
+![](https://r2.inkx.cc/drowyek7.png)
+![](https://r2.inkx.cc/drowyek8.png)
+![](https://r2.inkx.cc/drowyek9.png)
+![](https://r2.inkx.cc/drowyek10.png)
 
 
 
@@ -72,7 +72,7 @@ DROWYEK是由[冯昊](https://www.fenghao.info/)与毕振宇（aka.In_K）于 20
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
-    <img src="https://img.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+    <img src="https://r2.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
