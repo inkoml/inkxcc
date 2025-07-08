@@ -14,7 +14,10 @@
 <div class="container pt-5" id="projects">
   <h2 class="text-center pb-2">{{ .Title }}</h2>
   <div class="row">
-    {{ range .Paginator.Pages }}
+
+    {{ $sorted := .Pages.ByWeight.Reverse }}
+    {{ $paginator := .Paginate $sorted }}
+    {{ range $paginator.Pages }}
     <div class="col-lg-3 col-md-6 my-3">
       <a href="{{ .RelPermalink }}" class="text-decoration-none text-reset">
         <div class="card my-3 h-100" title="{{ .Title }}">
@@ -36,6 +39,7 @@
       </a>
     </div>
     {{ end }}
+
   </div>
 
   <div class="row justify-content-center">
