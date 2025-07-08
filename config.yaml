@@ -189,16 +189,6 @@ params:
           - "生成艺术"
           - "媒介理论"
 
-      - title: DROWYEK
-        content: DROWYEK是由冯昊和In_K成立的新媒体艺术组合
-        image: "https://r2.inkx.cc/IMG_7867.jpg"
-        featured:
-          name: More..
-          link: https://www.inkx.cc/drowyek
-        badges:
-          - "AudioVisual视觉演出"
-          - "新媒体艺术"
-          - "影像装置"
 
       - title: Projects
         content: 影像装置
@@ -223,9 +213,8 @@ params:
           - "交互式影像"
      
 
-
       - title: 观点Blog
-        content: 博客、文章、创作灵感、意图
+        content: 博客、文章、创作灵感、意图、参加过的一些讲座、采访、分享等等。
         image: "https://r2.inkx.cc/blog.jpg"
         featured:
           name: More..
@@ -235,16 +224,6 @@ params:
           - "分享"
           - "灵感"
 
-      - title: 采访讲座分享
-        content: 参加过的一些讲座、采访、分享等等。
-        image: "https://r2.inkx.cc/interview.jpg"
-        featured:
-          name: More..
-          link: https://www.inkx.cc/interview/about
-        badges:
-          - "观点"
-          - "看法"
-          - "态度"
 
 
 # Experience
