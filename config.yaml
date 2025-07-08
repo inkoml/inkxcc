@@ -74,7 +74,7 @@ params:
   title: "In_K 毕振宇"
   description: 新媒体艺术家
   # staticPath: ""  # The path to serve the static files from
-  favicon: "https:/r2.inkx.cc/logo.png"
+  favicon: "https://r2.inkx.cc/logo.png"
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
   # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
