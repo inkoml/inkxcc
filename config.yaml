@@ -74,7 +74,7 @@ params:
   title: "In_K 毕振宇"
   description: 新媒体艺术家
   # staticPath: ""  # The path to serve the static files from
-  favicon: "http:/r2.inkx.cc/logo.png"
+  favicon: "https:/r2.inkx.cc/logo.png"
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
   # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
@@ -149,7 +149,7 @@ params:
   about:
     enable: true
     title: " "
-    image: "http://r2.inkx.cc/ink-pfp.jpg"
+    image: "https://r2.inkx.cc/ink-pfp.jpg"
     content: |-
       新媒体艺术家毕振宇以「In_K」为代号，专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
 
@@ -181,7 +181,7 @@ params:
 
       - title: Artworks
         content: 艺术相关的创作，作品。
-        image: "http://r2.inkx.cc/artwork.jpg"
+        image: "https://r2.inkx.cc/artwork.jpg"
         featured:
           name: More..
           link: https://www.inkx.cc/artwork
@@ -202,7 +202,7 @@ params:
 
       - title: Projects
         content: 影像装置
-        image: "http://r2.inkx.cc/projects.jpg"
+        image: "https://r2.inkx.cc/projects.jpg"
         featured:
           name: More..
           link: https://www.inkx.cc/project
@@ -213,7 +213,7 @@ params:
 
       - title: 视觉现场
         content: 演出相关的视觉及现场
-        image: "http://r2.inkx.cc/visualshow.jpg"
+        image: "https://r2.inkx.cc/visualshow.jpg"
         featured:
           name: More..
           link: https://www.inkx.cc/visualshow/about
@@ -226,7 +226,7 @@ params:
 
       - title: 观点Blog
         content: 博客、文章、创作灵感、意图
-        image: "http://r2.inkx.cc/blog.jpg"
+        image: "https://r2.inkx.cc/blog.jpg"
         featured:
           name: More..
           link: https://www.inkx.cc/blog
@@ -237,7 +237,7 @@ params:
 
       - title: 采访讲座分享
         content: 参加过的一些讲座、采访、分享等等。
-        image: "http://r2.inkx.cc/interview.jpg"
+        image: "https://r2.inkx.cc/interview.jpg"
         featured:
           name: More..
           link: https://www.inkx.cc/interview/about
