@@ -5,6 +5,8 @@ draft: false
 categories:
   - drowyek
 tags:
+  - DROWYEK
+  - VisualShow
 summary: dorwyek介绍
 description: DROWYEK是冯昊与毕振宇（aka.In_K）于 2017 年成立的新媒体艺术组合，DROWYEK 囊括了视听表演和互动数字影像装置等艺术表达形式。
 showImageInContent: false

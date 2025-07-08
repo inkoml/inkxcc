@@ -1,16 +1,17 @@
 ---
 title: 现场视觉综述
-slug: about
+slug: visualshow
 draft: false
 categories:
   - visualshow
 tags:
+  - VisualShow
 summary: ink介绍
 description: 新媒体艺术家In_K 毕振宇介绍
 showImageInContent: false
 image: https://r2.inkx.cc/20250706134639572.jpg
 date: 2020-01-01
-weight: 1
+weight: 9999
 ---
 
 # 现场VJ视觉
@@ -31,7 +32,7 @@ In_K为演出定制开发了一个软件来适应演出需求。
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">VJ for 崔健</h3>
     <p style="margin: 0 0 12px;"></p>
-    <a href="/visualshow/vj-cj" style="color: #007BFF; text-decoration: underline;">点击了解我们的演出经历 →</a>
+    <a href="/project/vj-cj" style="color: #007BFF; text-decoration: underline;">点击了解我们的演出经历 →</a>
   </div>
 </div>
 
@@ -39,15 +40,18 @@ In_K为演出定制开发了一个软件来适应演出需求。
 ## 谭维维御用VJ
 In_K也是谭维维团队的御用VJ，有十多年的合作历程。
 
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://r2.inkx.cc/bb0a61.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">VJ for 谭维维</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/projects/vj-tww/" style="color: #007BFF; text-decoration: underline;">点击了解我更多 →</a>
+  </div>
+</div>
 
-{{< linkcard 
-  url="https://www.inkx.cc/visualshow/vj-tww/" 
-  title="" 
-  desc="VJ for 谭维维" 
-  image="https://r2.inkx.cc/drowyek-00.jpg" 
->}}
-
-## 更多视觉现场
+# 更多视觉现场
 作为较早期参与到现场演出的职业VJ，In_K有幸与很多乐队有过接触和合作。从livehouse演出时期到音乐节盛行时期，In_K都是中国最活跃的VJ之一，演出经历遍及全国大大小小的live house、剧场。
 合作过的音乐人包括超级市场、龙神道、鲸鱼马戏团、Nova Heart、Carsick Cars、WHAI、名无虚等等。
 
@@ -60,21 +64,24 @@ In_K还参与过一些流行艺人的演唱会制作及执行，包括谭维维�
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
     <p style="margin: 0 0 12px;"></p>
-    <a href="/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+    <a href="/tags/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
 
-## 地下音乐场景与rave文化
+# 地下音乐场景与rave文化
+
 In_K早期也一直活跃在地下电子音乐场景中，不仅与电子音乐人、实验音乐、噪音、合成器硬件现场等原创性的电子音乐演出，与这些原创电子音乐人交流所共享和展开的世界是他最重要的能量来源之一。
+
+![](https://r2.inkx.cc/6b2552.png)
 2011年创立神经元视觉团队。成员包括clone、young、buzz、agalloch21、zhujianfei、TonyMark
 
 In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞、长城、航母、海滩、森林、山野等。参与过很多全球百大DJ在中国的演出盛况。
 
 
 
-## AudioVisual艺术项目
+# AudioVisual艺术项目
 
-### DROWYEK
+## DROWYEK
 2017年In_K与艺术家音乐人冯昊组建了DROWYEK新媒体组合，2021年DROWYEK正式签约摩登天空媒体艺术厂牌NULL。
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
@@ -87,10 +94,19 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
   </div>
 </div>
 
-### 黑体辐射
+## 黑体辐射
 2023年In_K与老朋友黑体辐射合作演出视觉。
 
-
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://r2.inkx.cc/25cec6.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">与黑体辐射的演出</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/prjcect/badiation" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
 
 
 ---

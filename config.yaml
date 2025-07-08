@@ -206,7 +206,7 @@ params:
         image: "https://r2.inkx.cc/visualshow.jpg"
         featured:
           name: More..
-          link: https://www.inkx.cc/visualshow/about
+          link: https://www.inkx.cc/project/visualshow/
         badges:
           - "沉浸式影像"
           - "VJ舞台视觉"

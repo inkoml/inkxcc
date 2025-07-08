@@ -5,12 +5,13 @@ draft: false
 categories:
   - visualshow
 tags:
+  - VisualShow
 summary: 与崔健乐队的VJ项目
 description: 崔健乐队御用VJ
 showImageInContent: false
 image: https://r2.inkx.cc/vj-cj3.jpg
 date: 2020-01-01
-weight: 2
+weight: 999
 ---
 
 # 现场VJ视觉
@@ -45,6 +46,9 @@ weight: 2
 
 ![](https://r2.inkx.cc/vj-cj6.jpg)
 
+![](https://r2.inkx.cc/fc8a7a.jpg)
+
+![](https://r2.inkx.cc/1b5ec4.jpg)
 
 
 我为演出定制开发了一个软件来适应演出需求。
@@ -60,8 +64,8 @@ weight: 2
   </div>
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">更多视觉项目</h3>
-    <p style="margin: 0 0 12px;"></p>
-    <a href="/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+    <p style="margin: 0 0 12px;">从2010年至今，In_K作为VJ参与过几百场大大小小的现场演出，从体育场大规模演出到电视台直播等高流程标准的项目，经历过相关的所有场景和情况。有着丰富的现场经验。</p>
+    <a href="/tags/visualshow" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
 
