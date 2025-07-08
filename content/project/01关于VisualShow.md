@@ -72,7 +72,17 @@ In_K还参与过一些流行艺人的演唱会制作及执行，包括谭维维�
 
 In_K早期也一直活跃在地下电子音乐场景中，不仅与电子音乐人、实验音乐、噪音、合成器硬件现场等原创性的电子音乐演出，与这些原创电子音乐人交流所共享和展开的世界是他最重要的能量来源之一。
 
-![](https://r2.inkx.cc/6b2552.png)
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://r2.inkx.cc/6b2552.png" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">关于Neuron Visual Lab</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/project/neuronvisuallab" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
 2011年创立神经元视觉团队。成员包括clone、young、buzz、agalloch21、zhujianfei、TonyMark
 
 In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞、长城、航母、海滩、森林、山野等。参与过很多全球百大DJ在中国的演出盛况。
