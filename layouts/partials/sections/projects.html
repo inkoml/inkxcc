@@ -1,0 +1,58 @@
+{{ if .Site.Params.projects.enable | default false }}
+<section id="projects" class="py-5">
+  <div class="container">
+    <h3 class="text-center">{{ .Site.Params.projects.title | default "Projects" }}</h3>
+    <div class="row justify-content-center px-3 px-md-5">
+      
+      {{ range .Site.Params.projects.items }}
+      <div class="col-lg-3 col-md-6 my-3">
+        <a href="{{ .featured.link | default "#" }}" class="text-decoration-none text-reset" target="_blank">
+          <div class="card my-3 h-100" title="{{ .title }}">
+            <div class="card-head">
+              <img class="card-img-top" src="{{ .image }}" alt="{{ .title }}">
+            </div>
+            <div class="card-body bg-transparent p-3">
+              <div class="pb-2 bg-transparent">
+                {{ range .badges }}
+                <span class="badge badge-secondary">{{ . }}</span>
+                {{ end }}
+              </div>
+              <h5 class="card-title bg-transparent mt-1">{{ .title }}</h5>
+              <div class="card-text bg-transparent secondary-font">
+                {{ .content }}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {{ end }}
+
+      {{ range ( where .Site.RegularPages "Type" "projects" ) }}
+      {{ if .Params.showInHome | default true }}
+      <div class="col-lg-3 col-md-6 my-3">
+        <a href="{{ .RelPermalink }}" class="text-decoration-none text-reset">
+          <div class="card my-3 h-100" title="{{ .Title }}">
+            <div class="card-head">
+              <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Title }}">
+            </div>
+            <div class="card-body bg-transparent p-3">
+              <div class="pb-2 bg-transparent">
+                {{ range .Params.badges }}
+                <span class="badge badge-secondary">{{ . }}</span>
+                {{ end }}
+              </div>
+              <h5 class="card-title bg-transparent mt-1">{{ .Title }}</h5>
+              <div class="card-text bg-transparent secondary-font">
+                {{ .Summary | truncate 100 | safeHTML }}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {{ end }}
+      {{ end }}
+
+    </div>
+  </div>
+</section>
+{{ end }}
