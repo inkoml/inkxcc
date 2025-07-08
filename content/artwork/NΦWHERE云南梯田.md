@@ -50,3 +50,16 @@ NΦWHERE 是一个AI生成的空间影像装置，AI学习了数万张存在于�
 ![](https://r2.inkx.cc/20250708020459766.jpg)
 
 ![](https://r2.inkx.cc/20250708020627203.png)
+
+
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://r2.inkx.cc/20250708022440668.JPG" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">NΦWHERE | 土掌房</h3>
+    <p style="margin: 0 0 12px;">一个兄弟版本</p>
+    <a href="/artwork/nowhere-tuzhangfang" style="color: #007BFF; text-decoration: underline;">点击查看详情 →</a>
+  </div>
+</div>
