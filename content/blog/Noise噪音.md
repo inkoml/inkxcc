@@ -1,0 +1,30 @@
+---
+title: 激进思想技术
+slug: R-I-T
+draft: true
+categories:
+  - blog
+tags:
+summary: 激进思想技术
+description: 激进思想技术
+showImageInContent: false
+image: https://r2.inkx.cc/20250706140205855.png
+date: 2020-01-01
+weight:
+---
+
+
+
+
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://r2.inkx.cc/20250706140205855.png" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">激进思想技术</h3>
+    <p style="margin: 0 0 12px;">激进，是一种反主流的能量。思想会因语境的变化而失效或有用。技术，是实现愿景的一种路径。
+    </p>
+    <a href="https://space.bilibili.com/10830102" style="color: #007BFF; text-decoration: underline;">去Bilibili观看视频，记得一键三连哦 →</a>
+  </div>
+</div>

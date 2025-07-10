@@ -38,7 +38,7 @@ In_K为演出定制开发了一个软件来适应演出需求。
 
 
 ## 谭维维御用VJ
-In_K也是谭维维团队的御用VJ，有十多年的合作历程。
+In_K也是谭维维团队的VJ，有十多年的合作历程。
 
 <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
   <div style="flex: 1;">
@@ -115,6 +115,20 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
     <h3 style="margin-top: 0;">与黑体辐射的演出</h3>
     <p style="margin: 0 0 12px;"></p>
     <a href="/prjcect/badiation" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+  </div>
+</div>
+
+# 视觉艺术家
+In_K还是一个视觉艺术家。使用科技质感的视觉，用算法编程生成视觉。
+
+<div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+  <div style="flex: 1;">
+    <img src="https://r2.inkx.cc/20250706145352743.jpg" alt="项目图" style="width:100%; border-radius:8px;" />
+  </div>
+  <div style="flex: 1;">
+    <h3 style="margin-top: 0;">ArtWorks</h3>
+    <p style="margin: 0 0 12px;"></p>
+    <a href="/artwork" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
 
