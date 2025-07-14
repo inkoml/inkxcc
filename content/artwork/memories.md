@@ -22,10 +22,34 @@ weight:
 
 ![](https://r2.inkx.cc/20250708020928756.png)
 
-![](https://r2.inkx.cc/20250708021146885.jpg)
 
-![](https://r2.inkx.cc/20250708021201229.jpg)
 
-![](https://r2.inkx.cc/20250708021215411.jpg)
+音乐：MHP
+视觉：In_K
 
-![](https://r2.inkx.cc/20250708021249256.png)
+<video controls width="100%" poster="https://r2.inkx.cc/20250708021146885.jpg">
+  <source src="https://r2.inkx.cc/Memories-v1.mp4" type="video/mp4">
+  您的浏览器不支持 video 标签。
+</video>
+⬆️点击查看视频
+
+
+<video controls width="100%" poster="https://r2.inkx.cc/20250708021201229.jpg">
+  <source src="https://r2.inkx.cc/Memories-v2.mp4" type="video/mp4">
+  您的浏览器不支持 video 标签。
+</video>
+⬆️点击查看视频
+
+<video controls width="100%" poster="https://r2.inkx.cc/20250708021215411.jpg">
+  <source src="https://r2.inkx.cc/Memories-v3.mp4" type="video/mp4">
+  您的浏览器不支持 video 标签。
+</video>
+⬆️点击查看视频
+
+<video controls width="100%" poster="https://r2.inkx.cc/20250708021249256.png">
+  <source src="https://r2.inkx.cc/Memories-v4.mp4" type="video/mp4">
+  您的浏览器不支持 video 标签。
+</video>
+⬆️点击查看视频
+
+
