@@ -10,7 +10,7 @@ tags:
   - Emergence
 image: https://r2.inkx.cc/fbab4e.png
 description: "{[(Emergence)]}是一套实时生成的视觉系统，在这个影像程序框架下有过多种不同表达方式，包括音乐视频，现场演出，交互影像装置等。"
-weight: 6999
+weight: 6997
 ---
 ![](https://r2.inkx.cc/fbab4e.png)
 

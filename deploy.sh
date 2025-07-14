@@ -1,43 +1,45 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-# vpn
+# 设置 VPN 代理（可选，若不需要可注释掉）
 export https_proxy=http://127.0.0.1:1080
 export http_proxy=http://127.0.0.1:1080
 export all_proxy=socks5://127.0.0.1:1080
 
-# 移除 .obsidian 目录的缓存（停止跟踪）
-git rm --cached -r .obsidian
-
-# 提交移除操作（如果有变更）
-if ! git diff --cached --quiet; then
-  git commit -m "chore: remove .obsidian from git tracking"
+# 确保 Git 用户信息已设置
+if ! git config user.name >/dev/null; then
+  echo "设置 Git 用户名"
+  git config user.name "inkoml"
 fi
 
+if ! git config user.email >/dev/null; then
+  echo "设置 Git 邮箱"
+  git config user.email "github@inkx.cc"
+fi
+
+# 添加 .gitignore 中忽略 .obsidian
+if ! grep -q "^.obsidian$" .gitignore 2>/dev/null; then
+  echo ".obsidian" >> .gitignore
+fi
+
+# 从 Git 跟踪中移除 .obsidian（如果之前已跟踪）
+git rm -r --cached .obsidian 2>/dev/null
+
+# 添加所有更改
 echo "📦 添加其他改动..."
 git add .
 
-# 检查是否有其他改动需要提交
-if git diff --cached --quiet; then
-  echo "⚠️ 没有检测到其他改动，跳过提交。"
-else
-  echo "📝 提交中：内容更新：$(date '+%Y-%m-%d %H:%M:%S')"
-  git commit -m "内容更新：$(date '+%Y-%m-%d %H:%M:%S')"
-fi
+# 提交改动
+timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+echo "📝 提交中：内容更新：$timestamp"
+git commit -m "内容更新：$timestamp"
 
-# 获取当前分支名
-current_branch=$(git symbolic-ref --short HEAD)
-
-# 检查当前分支是否有远程上游分支
-upstream=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
-
+# 推送到 GitHub
 echo "🚀 推送到 GitHub..."
-
-if [ -z "$upstream" ]; then
-  echo "ℹ️ 当前分支没有绑定远程分支，使用 --set-upstream 参数推送。"
-  git push --set-upstream origin "$current_branch"
-else
-  git push
-fi
+git push
 
 echo "✅ 完成！Cloudflare Pages 将自动部署。"
+
+# 防止终端窗口关闭（Windows Git Bash 专用）
+echo
+read -p "按回车键退出..."
