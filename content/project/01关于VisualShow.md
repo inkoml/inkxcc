@@ -47,7 +47,7 @@ In_K也是谭维维团队的VJ，有十多年的合作历程。
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">VJ for 谭维维</h3>
     <p style="margin: 0 0 12px;"></p>
-    <a href="/projects/vj-tww/" style="color: #007BFF; text-decoration: underline;">点击了解我更多 →</a>
+    <a href="/project/vj-tww/" style="color: #007BFF; text-decoration: underline;">点击了解我更多 →</a>
   </div>
 </div>
 
@@ -114,7 +114,7 @@ In_K也参与过包括各种电子派对、rave 场景，地下club、防空洞�
   <div style="flex: 1;">
     <h3 style="margin-top: 0;">与黑体辐射的演出</h3>
     <p style="margin: 0 0 12px;"></p>
-    <a href="/prjcect/badiation" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
+    <a href="/project/badiation" style="color: #007BFF; text-decoration: underline;">了解更多 →</a>
   </div>
 </div>
 
