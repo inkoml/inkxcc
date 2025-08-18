@@ -35,8 +35,13 @@ log "${YELLOW}🧹 删除 .DS_Store 文件...${NC}"
 find . -name ".DS_Store" -print -delete
 git rm --cached -r .DS_Store 2>/dev/null
 
+<<<<<<< Updated upstream
 # 确保 .gitignore 中忽略 .obsidian 和 deploy.log
 for f in ".obsidian" "deploy.log"; do
+=======
+# 确保 .gitignore 中忽略 .obsidian 和 .DS_Store
+for f in ".obsidian" ".DS_Store"; do
+>>>>>>> Stashed changes
   if ! grep -q "^$f$" .gitignore 2>/dev/null; then
     echo "$f" >> .gitignore
     log "${YELLOW}📄 已将 $f 加入 .gitignore${NC}"
@@ -56,12 +61,21 @@ if ! git config user.email >/dev/null; then
 fi
 
 ############################################
+<<<<<<< Updated upstream
 # 自动 stash 所有修改（包括已暂存文件），排除 deploy.log
 ############################################
 STASH_NAME="deploy-temp-$(date +%s)"
 if ! git diff-index --quiet HEAD -- || ! git diff --cached --quiet; then
   log "${YELLOW}📦 本地有修改，自动 stash 所有修改（排除 deploy.log）...${NC}"
   git stash push -u -m "$STASH_NAME" -- ':!deploy.log'
+=======
+# 自动 stash 本地未暂存修改
+############################################
+STASH_NAME="deploy-temp-$(date +%s)"
+if ! git diff-index --quiet HEAD --; then
+  log "${YELLOW}📦 本地有未暂存修改，自动 stash...${NC}"
+  git stash push -u -m "$STASH_NAME"
+>>>>>>> Stashed changes
   STASHED=true
 else
   STASHED=false
