@@ -5,7 +5,9 @@ date: 2020-01-01
 title: NΦWHERE ｜ 云南梯田
 slug: nowhere-titian
 draft: false
-categories: artwork
+categories:
+  - artwork
+  - project
 tags:
   - 一小部分无限
 image: https://r2.inkx.cc/20250708020327784.jpg

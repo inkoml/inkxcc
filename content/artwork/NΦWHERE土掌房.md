@@ -5,7 +5,9 @@ date: 2020-01-01
 title: NΦWHERE | 土掌房
 slug: nowhere-tuzhangfang
 draft: false
-categories: artwork
+categories:
+  - artwork
+  - project
 tags:
   - 一小部分无限
   - 交互影像

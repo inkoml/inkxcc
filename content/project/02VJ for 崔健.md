@@ -4,6 +4,7 @@ slug: vj-cj
 draft: false
 categories:
   - visualshow
+  - project
 tags:
   - VisualShow
 summary: 与崔健乐队的VJ项目

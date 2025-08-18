@@ -5,7 +5,9 @@ date: 2020-01-01
 title: NΦWHERE
 slug: nowhere
 draft: false
-categories: artwork
+categories:
+  - artwork
+  - project
 tags:
   - 一小部分无限
 image: https://r2.inkx.cc/20250620170527439.png

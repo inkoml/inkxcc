@@ -5,7 +5,9 @@ date: 2020-01-01
 title: MΦMENT
 slug: nowhere
 draft: true
-categories: artwork
+categories:
+  - artwork
+  - project
 tags:
   - 一小部分无限
 image:

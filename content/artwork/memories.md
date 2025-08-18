@@ -5,7 +5,9 @@ date: 2020-01-01
 title: M3M0RI35
 slug: memories
 draft: false
-categories: artwork
+categories:
+  - artwork
+  - project
 tags:
   - 一小部分无限
 image: https://r2.inkx.cc/20250708020928756.png

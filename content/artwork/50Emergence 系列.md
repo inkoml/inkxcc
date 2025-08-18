@@ -5,7 +5,9 @@ date: 2020-01-01
 title: "{[(Emergence)]}"
 slug: emergence
 draft: true
-categories: artwork
+categories:
+  - artwork
+  - project
 tags:
   - Emergence
 image: https://r2.inkx.cc/fbab4e.png

@@ -1,5 +1,5 @@
 ---
-title: "{[(ominiscience)]}20170512"
+title: 2017 Unite Shanghai
 slug: 2017UniteShanghai
 draft: false
 categories:

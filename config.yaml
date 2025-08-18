@@ -47,9 +47,9 @@ Menus:
       url: /artwork
       weight: 1
     - identifier: projects
-      name: Projects
+      name: All Projects
       title: 项目
-      url: /project
+      url: /categories/project
       weight: 1
 
     #Dropdown menu

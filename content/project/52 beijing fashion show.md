@@ -11,7 +11,7 @@ tags:
 summary: Fashion Show 的开场表演，交互影像和参数化生成影像
 description: Fashion Show 的开场表演，交互影像和参数化生成影像
 showImageInContent: false
-image: https://r2.inkx.cc/9af0d5.gif
+image: https://r2.inkx.cc/81321b.jpg
 date: 2020-01-01
 weight:
 ---

@@ -4,6 +4,8 @@ slug: drowyek
 draft: false
 categories:
   - drowyek
+  - project
+  - visualshow
 tags:
   - DROWYEK
   - VisualShow

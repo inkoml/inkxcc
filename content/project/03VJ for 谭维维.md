@@ -4,6 +4,7 @@ slug: vj-tww
 draft: false
 categories:
   - visualshow
+  - project
 tags:
   - VisualShow
 summary: 与谭维维乐队的VJ演出
