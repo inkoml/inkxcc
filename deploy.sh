@@ -56,11 +56,11 @@ if ! git config user.email >/dev/null; then
 fi
 
 ############################################
-# 自动 stash 本地未暂存修改，排除 deploy.log
+# 自动 stash 本地修改（包括已暂存文件），排除 deploy.log
 ############################################
 STASH_NAME="deploy-temp-$(date +%s)"
-if ! git diff-index --quiet HEAD --; then
-  log "${YELLOW}📦 本地有未暂存修改，自动 stash（排除 deploy.log）...${NC}"
+if ! git diff-index --quiet HEAD -- || ! git diff --cached --quiet; then
+  log "${YELLOW}📦 本地有未暂存或已暂存修改，自动 stash（排除 deploy.log）...${NC}"
   git stash push -u -m "$STASH_NAME" -- ':!deploy.log'
   STASHED=true
 else
