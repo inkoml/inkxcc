@@ -26,3 +26,4 @@ content/_模版/       # Obsidian 模板文件夹
 #Hugo 在本地构建时生成的锁文件，用来防止同时有多个构建进程冲突
 .hugo_build.lock
 .obsidian
+deploy.log
