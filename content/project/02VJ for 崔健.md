@@ -51,9 +51,12 @@ weight: 999
 
 ![](https://r2.inkx.cc/1b5ec4.jpg)
 
+![](https://r2.inkx.cc/c1431c.jpg)
 
-我为演出定制开发了一个软件来适应演出需求。
 
+
+这个工作其中一个乐趣来自于我用vvvv为演出定制开发了一个专用的视觉播控系统来适应演出需求。
+![](https://r2.inkx.cc/a7ab55.jpg)
 
 
 
