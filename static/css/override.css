@@ -1406,7 +1406,6 @@ body.dark #about-lab-page .about-v3 {
   }
 
   #about-pdf-page .pdf-resume-head,
-  #about-pdf-page .pdf-block,
   #about-pdf-page .pdf-timeline li {
     break-inside: avoid-page;
     page-break-inside: avoid;
@@ -1428,9 +1427,14 @@ body.dark #about-lab-page .about-v3 {
   #about-pdf-page .pdf-performances {
     break-before: page;
     page-break-before: always;
+    margin-top: 0;
   }
 
-  #about-pdf-page .pdf-exhibitions .pdf-timeline,
+  #about-pdf-page .pdf-exhibitions .pdf-timeline {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+
   #about-pdf-page .pdf-performances .pdf-timeline {
     column-count: 2;
     column-gap: 1rem;

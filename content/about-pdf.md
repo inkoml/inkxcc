@@ -93,9 +93,6 @@ date: 2026-03-06
 
 <section class="pdf-block pdf-performances">
 <h2>合作 / 演出记录（2012-2021）</h2>
-<div class="pdf-live-cover">
-<img src="https://r2.inkx.cc/in_k.jpg" alt="跨界合作与现场演出" />
-</div>
 <ul class="pdf-timeline">
 <li><span>2021.04</span><p>三联人文城市颁奖活动（影像装置 / 视觉演出）</p></li>
 <li><span>2020.12</span><p>「无器官身体」肢体文献剧（深圳当代戏剧双年展）</p></li>
