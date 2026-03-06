@@ -1,22 +1,54 @@
 ---
-title: In_K 展览与演出履历
+title: In_K 新媒体艺术家
 slug: about-pdf
 draft: false
 layout: aboutpdf
-description: In_K 完整展览履历与完整合作/演出记录（16:9 黑底导出版）
+aliases:
+  - /about-pdf-full/
+description: In_K 新媒体艺术家简介（含 About、DROWYEK、展览履历与合作/演出记录）
 showImageInContent: false
-date: 2020-01-01
+date: 2026-03-06
 ---
 
-<div class="pdf-resume">
+<div class="pdf-resume pdf-resume-full">
 <header class="pdf-resume-head">
-<p class="pdf-kicker">IN_K ARCHIVE</p>
-<h1>In_K 展览与演出履历</h1>
-<p>仅收录完整展览履历与完整合作/演出记录，供 16:9 黑底 PDF 导出。</p>
+<p class="pdf-kicker">IN_K PROFILE</p>
+<h1>In_K 新媒体艺术家</h1>
+<p>新媒体艺术家毕振宇（In_K）简介、DROWYEK 信息、展览履历与合作/演出记录。个人网站：<a href="https://www.inkx.cc">www.inkx.cc</a></p>
+
+<div class="pdf-profile-row">
+<img class="pdf-avatar" src="https://r2.inkx.cc/ink.%202019..jpg" alt="In_K 肖像" />
+<div class="pdf-about">
+<h2>About</h2>
+<p>新媒体艺术家毕振宇以「In_K」为代号，长期进行算法编程驱动的生成式影像实践。其创作将计算过程视为核心媒介，在艺术与技术、形式与机制之间建立可持续演化的视觉系统。</p>
+<p>同时深入研究图像生成的机制与语义潜力，将计算过程本身作为艺术语言的一部分。In_K 关注计算机生成性系统对感知、图像、乃至美学本体的挑战与重构，创作理念在技术实现与观念生成之间保持高度张力。</p>
+<ul class="pdf-meta">
+<li>代号：In_K / ink / vjink</li>
+<li>方向：生成式影像、交互编程、实时视觉、影像装置</li>
+<li>场域：展览 / 舞台 / 屏幕 / 沉浸式空间</li>
+</ul>
+</div>
+</div>
 </header>
 
-<section class="pdf-block">
-<h2>完整展览履历（2011-2024）</h2>
+<section class="pdf-block pdf-drowyek-block">
+<h2>DROWYEK</h2>
+<div class="pdf-drowyek">
+<img src="https://r2.inkx.cc/drowyek-00.jpg" alt="DROWYEK 组合" />
+<div>
+<p>2017 年，In_K 与艺术家/音乐人冯昊组建 DROWYEK；2021 年签约摩登天空媒体艺术厂牌 NULL。组合聚焦实时生成影像与现场身体感知的联动。</p>
+<ul class="pdf-mini-timeline">
+<li>2024.03｜成都 A4x “第三自然”展览开幕演出</li>
+<li>2023.11｜上海 UFO Terminal 演出</li>
+<li>2023.09｜北京 Pixel Echo 无常迅速演出</li>
+<li>2020.12｜深圳湾科技艺术节开幕演出</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="pdf-block pdf-exhibitions">
+<h2>展览履历（2011-2024）</h2>
 <ul class="pdf-timeline">
 <li><span>2024.03</span><p>第三自然公共艺术季（成都麓湖艺术区，影像装置）</p></li>
 <li><span>2024.01</span><p>身体的“凝视”AI 影像</p></li>
@@ -59,8 +91,11 @@ date: 2020-01-01
 </ul>
 </section>
 
-<section class="pdf-block">
-<h2>完整合作 / 演出记录（2012-2021）</h2>
+<section class="pdf-block pdf-performances">
+<h2>合作 / 演出记录（2012-2021）</h2>
+<div class="pdf-live-cover">
+<img src="https://r2.inkx.cc/in_k.jpg" alt="跨界合作与现场演出" />
+</div>
 <ul class="pdf-timeline">
 <li><span>2021.04</span><p>三联人文城市颁奖活动（影像装置 / 视觉演出）</p></li>
 <li><span>2020.12</span><p>「无器官身体」肢体文献剧（深圳当代戏剧双年展）</p></li>

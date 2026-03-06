@@ -9,9 +9,9 @@ aliases:
 summary: 新媒体艺术家 In_K 毕振宇简介、展览履历与项目入口
 description: 新媒体艺术家 In_K 毕振宇简介，涵盖方法、项目、展览与现场履历。
 image: https://r2.inkx.cc/ink.%202019..jpg
-image_alt: "关于 In_K"
+image_alt: 关于 In_K
 showImageInContent: false
-date: 2020-01-01
+date: 2026-03-06
 ---
 
 <div class="about-v3">
