@@ -3,8 +3,6 @@
   <div class="container">
     <h3 class="text-center">{{ .Site.Params.projects.title | default "Projects" }}</h3>
     <div class="row justify-content-center px-3 px-md-5">
-      {{ $projectPages := where .Site.RegularPages "Type" "project" }}
-      
       {{ range .Site.Params.projects.items }}
       <div class="col-lg-3 col-md-6 my-3">
         <a href="{{ .featured.link | default "#" }}" class="text-decoration-none text-reset" target="_blank">
@@ -31,36 +29,6 @@
         </a>
       </div>
       {{ end }}
-
-      {{ range $projectPages }}
-      {{ if .Params.showInHome | default true }}
-      <div class="col-lg-3 col-md-6 my-3">
-        <a href="{{ .RelPermalink }}" class="text-decoration-none text-reset">
-          <div class="card my-3 h-100" title="{{ .Title }}">
-            <div class="card-head">
-              <picture>
-                {{ with .Params.image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
-                {{ with .Params.image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
-                <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Params.image_alt | default .Title }}" loading="lazy">
-              </picture>
-            </div>
-            <div class="card-body bg-transparent p-3">
-              <div class="pb-2 bg-transparent">
-                {{ range .Params.badges }}
-                <span class="badge badge-secondary">{{ . }}</span>
-                {{ end }}
-              </div>
-              <h5 class="card-title bg-transparent mt-1">{{ .Title }}</h5>
-              <div class="card-text bg-transparent secondary-font">
-                {{ .Summary | truncate 100 | safeHTML }}
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      {{ end }}
-      {{ end }}
-
     </div>
   </div>
 </section>
