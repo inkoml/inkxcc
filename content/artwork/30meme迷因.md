@@ -2,7 +2,7 @@
 summary:
 showImageInContent: false
 title: MΦMENT
-slug: nowhere-meme
+slug: nowhere
 draft: true
 categories:
   - artwork

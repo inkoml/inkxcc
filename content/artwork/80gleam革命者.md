@@ -2,7 +2,7 @@
 summary:
 showImageInContent: false
 title: MΦMENT
-slug: nowhere-gleam
+slug: nowhere
 draft: true
 categories:
   - artwork

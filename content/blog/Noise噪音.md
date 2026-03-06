@@ -1,6 +1,6 @@
 ---
 title: 激进思想技术
-slug: rit-noise
+slug: R-I-T
 draft: true
 categories:
   - blog

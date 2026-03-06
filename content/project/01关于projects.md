@@ -1,6 +1,6 @@
 ---
 title:
-slug: about-projects
+slug: about
 draft: true
 categories:
   - project
