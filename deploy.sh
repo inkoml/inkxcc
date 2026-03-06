@@ -1,99 +1,95 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 cd "$(dirname "$0")"
 
-# 颜色定义
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # 无颜色
+NC='\033[0m'
 
-############################################
-# 检查执行权限
-############################################
-perm=$(git ls-files --stage | grep deploy.sh | awk '{print $1}')
-if [ "$perm" != "100755" ]; then
-  echo -e "${YELLOW}⚙️ 修复 deploy.sh 执行权限...${NC}"
-  chmod +x deploy.sh
-  git add deploy.sh
-  echo -e "${GREEN}✅ deploy.sh 权限修复完成${NC}"
-fi
+usage() {
+  cat <<'USAGE'
+Usage: ./deploy.sh [--dry-run] [--no-push]
 
-############################################
-# 清理无用文件
-############################################
-echo -e "${YELLOW}🧹 删除 .DS_Store 文件...${NC}"
-find . -name ".DS_Store" -print -delete
-git rm --cached -r .DS_Store 2>/dev/null
+  --dry-run  Only run safety checks and Hugo build, then exit.
+  --no-push  Commit staged changes but skip git push.
+USAGE
+}
 
-# 确保 .gitignore 中忽略 .obsidian、.DS_Store
-for f in ".obsidian" ".DS_Store"; do
-  if ! grep -q "^$f$" .gitignore 2>/dev/null; then
-    echo "$f" >> .gitignore
-    echo -e "${YELLOW}📄 已将 $f 加入 .gitignore${NC}"
-  fi
+DRY_RUN=false
+NO_PUSH=false
+
+while (($# > 0)); do
+  case "$1" in
+    --dry-run)
+      DRY_RUN=true
+      ;;
+    --no-push)
+      NO_PUSH=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo -e "${RED}❌ Unknown argument: $1${NC}"
+      usage
+      exit 1
+      ;;
+  esac
+  shift
 done
 
-git rm -r --cached .obsidian 2>/dev/null
-
-############################################
-# Git 用户信息
-############################################
-if ! git config user.name >/dev/null; then
-  git config user.name "inkoml"
-fi
-if ! git config user.email >/dev/null; then
-  git config user.email "github@inkx.cc"
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo -e "${RED}❌ Not inside a git repository${NC}"
+  exit 1
 fi
 
-############################################
-# 自动 stash 所有修改
-############################################
-STASH_NAME="deploy-temp-$(date +%s)"
-if ! git diff-index --quiet HEAD -- || ! git diff --cached --quiet; then
-  echo -e "${YELLOW}📦 本地有修改，自动 stash 所有修改...${NC}"
-  git stash push -u -m "$STASH_NAME"
-  STASHED=true
-else
-  STASHED=false
+UNSTAGED=$(git diff --name-only)
+UNTRACKED=$(git ls-files --others --exclude-standard)
+
+if [[ "$DRY_RUN" != true ]]; then
+  # Conservative safety gate: no unstaged or untracked changes allowed.
+  if [[ -n "${UNSTAGED}" || -n "${UNTRACKED}" ]]; then
+    echo -e "${RED}❌ Working tree is not clean.${NC}"
+    echo -e "${YELLOW}Only staged changes are allowed for deploy.${NC}"
+    [[ -n "${UNSTAGED}" ]] && echo -e "${YELLOW}Unstaged files:${NC}\n${UNSTAGED}"
+    [[ -n "${UNTRACKED}" ]] && echo -e "${YELLOW}Untracked files:${NC}\n${UNTRACKED}"
+    exit 1
+  fi
+
+  if git diff --cached --quiet; then
+    echo -e "${YELLOW}⚠️ No staged changes to commit. Stage files first.${NC}"
+    exit 1
+  fi
+elif [[ -n "${UNSTAGED}" || -n "${UNTRACKED}" ]]; then
+  echo -e "${YELLOW}ℹ️ Dry run ignores git cleanliness checks.${NC}"
 fi
 
-############################################
-# 同步远程
-############################################
-echo -e "${YELLOW}🔄 同步远程仓库...${NC}"
-if git pull --rebase origin main; then
-  echo -e "${GREEN}✅ 同步成功${NC}"
-else
-  echo -e "${RED}❌ 同步失败，如果有冲突请手动解决${NC}"
+echo -e "${YELLOW}🔎 Running Hugo build check...${NC}"
+hugo --gc --minify
+
+echo -e "${GREEN}✅ Build passed${NC}"
+
+if [[ "$DRY_RUN" == true ]]; then
+  echo -e "${GREEN}✅ Dry run complete${NC}"
+  exit 0
 fi
 
-# 恢复本地 stash
-if [ "$STASHED" = true ]; then
-  echo -e "${YELLOW}📂 恢复本地修改...${NC}"
-  git stash pop || echo -e "${RED}⚠️ 恢复时有冲突，请手动解决${NC}"
-fi
-
-############################################
-# 添加改动
-############################################
-echo -e "${YELLOW}📦 添加改动...${NC}"
-git add .
-
-# 提交改动
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-if git commit -m "内容更新：$timestamp"; then
-  echo -e "${GREEN}📝 提交成功：内容更新：$timestamp${NC}"
-else
-  echo -e "${YELLOW}⚠️ 没有新改动可提交${NC}"
+msg="内容更新：${timestamp}"
+
+echo -e "${YELLOW}📝 Creating commit from staged changes...${NC}"
+git commit -m "$msg"
+echo -e "${GREEN}✅ Commit created: $msg${NC}"
+
+if [[ "$NO_PUSH" == true ]]; then
+  echo -e "${YELLOW}⏭️ Skip push (--no-push)${NC}"
+  exit 0
 fi
 
-# 推送到 GitHub
-echo -e "${YELLOW}🚀 推送到 GitHub...${NC}"
-if git push origin main; then
-  echo -e "${GREEN}✅ 推送成功，Cloudflare Pages 将自动部署${NC}"
-else
-  echo -e "${RED}❌ 推送失败，请检查错误信息${NC}"
-fi
-
-echo
-read -p "按回车键退出..."
+branch=$(git branch --show-current)
+echo -e "${YELLOW}🚀 Pushing to origin/${branch}...${NC}"
+git push origin "$branch"
+echo -e "${GREEN}✅ Push completed${NC}"
