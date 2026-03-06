@@ -1,6 +1,6 @@
 baseURL: "https://www.inkx.cc/"
 languageCode: "en-us"
-title: "新媒体艺术家 In_K毕振宇 "
+title: "新媒体艺术家 In_K 毕振宇"
 theme: "hugo-profile"
 
 outputs:
@@ -68,7 +68,7 @@ Menus:
 
 params:
   title: "In_K 毕振宇"
-  description: 新媒体艺术家
+  description: In_K 毕振宇 / ink / vjink｜新媒体艺术家与生成式影像创作者
   cloudflareAnalytics:
     enable: false
     token: "f2648229b27d4f1397ab28890cd492aa"
@@ -126,7 +126,7 @@ params:
     align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
     # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
     # showBrandLogo: false # Show brand logo in nav bar | default is true
-    brandName: "In_K 毕振宇" # Brand name for the brand | default is the title variable
+    brandName: "In_K" # Brand name for the brand | default is the title variable
     disableSearch: true
     # searchPlaceholder: "Search"
     stickyNavBar:
@@ -148,7 +148,7 @@ params:
     title: " "
     image: "https://r2.inkx.cc/ink-pfp.jpg"
     content: |-
-      新媒体艺术家毕振宇以「In_K」为代号，专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
+      新媒体艺术家毕振宇（In_K / ink / vjink）专注于算法编程驱动的生成式影像创作。他的作品以计算机生成内容为核心，融合艺术与算法、形式与过程，在不断演化的代码逻辑中构建动态的视觉结构。他的实践涵盖从动态影像、互动装置到实时视觉系统，始终保持对系统性与诗意的探索。
 
       [点击查看介绍及简历](https://www.inkx.cc/about/)
       
@@ -317,6 +317,20 @@ params:
     article: "Jun 2, 2025"
     articleList: "Jun 2, 2025"
     articleRecent: "Jun 2, 2025"
+
+  seo:
+    person:
+      canonicalName: "In_K 毕振宇"
+      alternateNames:
+        - "In_K"
+        - "毕振宇"
+        - "ink"
+        - "vjink"
+      jobTitle: "New Media Artist"
+      image: "https://r2.inkx.cc/ink-pfp.jpg"
+      sameAs:
+        - "https://www.inkx.cc/about/"
+        - "https://space.bilibili.com/10830102"
 
   #customScripts: -| # You can add custom scripts which will be added before </body> tag
   #  <script type="text/javascript"><!-- any script here --></script>

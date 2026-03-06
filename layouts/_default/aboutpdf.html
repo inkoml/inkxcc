@@ -1,0 +1,27 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Params.description | default .Summary }}">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/single.css">
+<style>
+#profileHeader,
+footer,
+#search-content,
+#topScroll,
+.progress {
+  display: none !important;
+}
+</style>
+{{ end }}
+
+{{ define "title" }}
+{{ .Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<section id="about-pdf-page">
+  <div class="container">
+    <article class="about-pdf-content">
+      {{ .Content | emojify }}
+    </article>
+  </div>
+</section>
+{{ end }}

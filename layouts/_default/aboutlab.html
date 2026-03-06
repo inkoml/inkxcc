@@ -1,0 +1,27 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Params.description | default .Summary }}">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/single.css">
+{{ end }}
+
+{{ define "title" }}
+{{ .Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ $showLabHeader := true }}
+{{ if isset .Params "show_lab_header" }}
+  {{ $showLabHeader = (index .Params "show_lab_header") }}
+{{ end }}
+<section id="about-lab-page"{{ if not $showLabHeader }} class="about-lab-final"{{ end }}>
+  <div class="container">
+    <header class="about-lab-header">
+      {{ if $showLabHeader }}<p class="about-lab-kicker">ABOUT LAB</p>{{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ if and $showLabHeader .Params.description }}<p class="about-lab-desc">{{ .Params.description }}</p>{{ end }}
+    </header>
+    <article class="about-lab-content">
+      {{ .Content | emojify }}
+    </article>
+  </div>
+</section>
+{{ end }}

@@ -10,18 +10,23 @@ NC='\033[0m'
 
 usage() {
   cat <<'USAGE'
-Usage: ./deploy.sh [--dry-run] [--no-push]
+Usage: ./deploy.sh [--all] [--dry-run] [--no-push]
 
+  --all      Stage all changes automatically (git add -A).
   --dry-run  Only run safety checks and Hugo build, then exit.
   --no-push  Commit staged changes but skip git push.
 USAGE
 }
 
+STAGE_ALL=false
 DRY_RUN=false
 NO_PUSH=false
 
 while (($# > 0)); do
   case "$1" in
+    --all)
+      STAGE_ALL=true
+      ;;
     --dry-run)
       DRY_RUN=true
       ;;
@@ -44,6 +49,30 @@ done
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   echo -e "${RED}❌ Not inside a git repository${NC}"
   exit 1
+fi
+
+BRANCH=$(git branch --show-current)
+if [[ "$BRANCH" != "main" ]]; then
+  echo -e "${RED}❌ Current branch is '$BRANCH'. Switch to main before deploy.${NC}"
+  exit 1
+fi
+
+if [ -f .gitmodules ]; then
+  DIRTY_SUBMODULES="$(
+    git submodule foreach --recursive \
+      'if ! git diff --quiet || ! git diff --cached --quiet; then echo "$name"; fi' \
+      2>/dev/null | sed '/^Entering /d'
+  )"
+  if [[ -n "$DIRTY_SUBMODULES" ]]; then
+    echo -e "${RED}❌ Dirty submodule(s) detected:${NC}"
+    echo "$DIRTY_SUBMODULES"
+    exit 1
+  fi
+fi
+
+if [[ "$STAGE_ALL" == true ]]; then
+  echo -e "${YELLOW}📦 Staging all changes (git add -A)...${NC}"
+  git add -A
 fi
 
 UNSTAGED=$(git diff --name-only)
@@ -89,7 +118,9 @@ if [[ "$NO_PUSH" == true ]]; then
   exit 0
 fi
 
-branch=$(git branch --show-current)
-echo -e "${YELLOW}🚀 Pushing to origin/${branch}...${NC}"
-git push origin "$branch"
+echo -e "${YELLOW}🔄 Rebase with latest origin/${BRANCH}...${NC}"
+git pull --rebase origin "$BRANCH"
+
+echo -e "${YELLOW}🚀 Pushing to origin/${BRANCH}...${NC}"
+git push origin "$BRANCH"
 echo -e "${GREEN}✅ Push completed${NC}"

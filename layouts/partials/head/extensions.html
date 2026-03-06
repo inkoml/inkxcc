@@ -1,0 +1,46 @@
+{{- $person := .Site.Params.seo.person -}}
+{{- $canonicalName := $person.canonicalName | default (.Site.Params.title | default .Site.Title) -}}
+{{- $alternateNames := $person.alternateNames | default (slice "In_K" "毕振宇" "ink" "vjink") -}}
+{{- $aboutURL := (printf "%sabout/" .Site.BaseURL) -}}
+{{- $personID := (printf "%s#person" .Site.BaseURL) -}}
+{{- $pageKeywords := .Params.keywords | default $alternateNames -}}
+
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="keywords" content="{{ delimit $pageKeywords ", " }}">
+
+{{- if .IsHome -}}
+  {{- $websiteSchema := dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "url" .Site.BaseURL
+    "name" $canonicalName
+    "alternateName" $alternateNames
+  -}}
+  <script type="application/ld+json">{{ $websiteSchema | jsonify | safeJS }}</script>
+{{- end -}}
+
+{{- $personSchema := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "@id" $personID
+  "name" $canonicalName
+  "alternateName" $alternateNames
+  "url" $aboutURL
+  "description" (.Site.Params.description | default "New Media Artist")
+  "jobTitle" ($person.jobTitle | default "New Media Artist")
+  "image" ($person.image | default .Site.Params.about.image)
+  "sameAs" ($person.sameAs | default (slice))
+-}}
+<script type="application/ld+json">{{ $personSchema | jsonify | safeJS }}</script>
+
+{{- if eq .RelPermalink "/about/" -}}
+  {{- $profileSchema := dict
+    "@context" "https://schema.org"
+    "@type" "ProfilePage"
+    "url" .Permalink
+    "name" .Title
+    "mainEntity" (dict "@id" $personID)
+  -}}
+  <script type="application/ld+json">{{ $profileSchema | jsonify | safeJS }}</script>
+{{- end -}}

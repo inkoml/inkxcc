@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>In_K 作品档案（16:9）</title>
+  <style>
+    @page { size: 320mm 180mm; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000000;
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #f5f7fa;
+    }
+    .page {
+      width: 320mm;
+      height: 180mm;
+      margin: 0 auto;
+      background: #050506;
+      page-break-after: always;
+      overflow: hidden;
+      position: relative;
+    }
+    .page:last-child { page-break-after: auto; }
+    .pad { padding: 12mm 13mm; }
+    .cover {
+      background:
+        radial-gradient(circle at 15% 18%, rgba(66, 133, 244, 0.18), transparent 45%),
+        radial-gradient(circle at 86% 72%, rgba(239, 68, 68, 0.16), transparent 46%),
+        radial-gradient(circle at 58% 36%, rgba(255, 255, 255, 0.06), transparent 36%),
+        #020202;
+      color: #ffffff;
+    }
+    .cover .kicker { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.9; color: #d1d5db; }
+    .cover h1 { margin: 8mm 0 4mm; font-size: 56px; letter-spacing: -0.02em; line-height: 1.06; }
+    .cover p { margin: 0 0 4mm; font-size: 17px; max-width: 70%; line-height: 1.6; color: #e5e7eb; }
+    .cover .meta { position: absolute; left: 13mm; bottom: 11mm; font-size: 12px; color: #9ca3af; }
+    .section-kicker { margin: 0 0 3mm; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #9ca3af; }
+    .section-title { margin: 0 0 6mm; font-size: 34px; letter-spacing: -0.01em; color: #ffffff; }
+    .split-two {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 8mm;
+      height: 100%;
+      align-items: start;
+    }
+    .panel {
+      background: #0e0e11;
+      border: 1px solid #24262c;
+      border-radius: 10px;
+      padding: 5mm 5mm 4mm;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+    .panel p { margin: 0 0 2.2mm; font-size: 15px; line-height: 1.82; color: #f3f4f6; text-align: justify; }
+    .panel p:last-child { margin-bottom: 0; }
+    .panel h3 {
+      margin: 0 0 2.2mm;
+      font-size: 13px;
+      color: #c7ccd6;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .chip-wrap { display: flex; flex-wrap: wrap; gap: 2.5mm; margin-bottom: 4mm; }
+    .chip {
+      border: 1px solid #3a3f49;
+      color: #e5e7eb;
+      border-radius: 999px;
+      padding: 1.6mm 3mm;
+      font-size: 12px;
+      background: #111318;
+    }
+    .intro-img, .method-img {
+      width: 100%;
+      height: 144mm;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #2d313a;
+      background: #0f1115;
+    }
+    .index h2 { margin: 0 0 6mm; font-size: 34px; letter-spacing: -0.01em; color: #ffffff; }
+    .index ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 12mm; }
+    .index li { break-inside: avoid; display: grid; grid-template-columns: 14mm 1fr; gap: 3mm; font-size: 14px; padding: 1.8mm 0; border-bottom: 1px dashed #343845; color: #f3f4f6; }
+    .idx { color: #a1a1aa; font-variant-numeric: tabular-nums; }
+    .work-title-page {
+      background:
+        radial-gradient(circle at 76% 22%, rgba(59, 130, 246, 0.14), transparent 40%),
+        radial-gradient(circle at 25% 75%, rgba(239, 68, 68, 0.14), transparent 45%),
+        #07070a;
+    }
+    .work-title-page h2 {
+      margin: 12mm 0 3mm;
+      font-size: 54px;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .work-title-page p {
+      margin: 0;
+      max-width: 60%;
+      color: #d1d5db;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .work-page {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .work-meta {
+      background: #0e0e11;
+      border: 1px solid #24262c;
+      border-radius: 10px;
+      padding: 4mm 4.4mm 3.4mm;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      margin-bottom: 4mm;
+      min-height: 38mm;
+    }
+    .work-meta .code {
+      margin: 0 0 1.3mm;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+    .work-meta h3 {
+      margin: 0 0 2.1mm;
+      font-size: 28px;
+      line-height: 1.14;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+    .work-meta p {
+      margin: 0 0 1.6mm;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #f3f4f6;
+      text-align: justify;
+    }
+    .work-meta p:last-child { margin-bottom: 0; }
+    .work-link {
+      font-size: 12px;
+      color: #9ca3af;
+      word-break: break-all;
+    }
+    .work-link a { color: #93c5fd; text-decoration: none; }
+    .img-grid-4 {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 4mm;
+    }
+    .img-card {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #2d313a;
+      background: #101217;
+    }
+    .placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      border: 1px dashed #3b3f48;
+      background: repeating-linear-gradient(-45deg, #0d0f14, #0d0f14 10px, #11141b 10px, #11141b 20px);
+      color: #9ca3af;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-cover {
+      background:
+        radial-gradient(circle at 22% 25%, rgba(59, 130, 246, 0.14), transparent 45%),
+        radial-gradient(circle at 78% 70%, rgba(239, 68, 68, 0.15), transparent 46%),
+        #030303;
+    }
+    .back-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 10mm;
+      height: 100%;
+    }
+    .contact h2 {
+      margin: 0 0 4mm;
+      font-size: 42px;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    .contact p {
+      margin: 0 0 3.2mm;
+      font-size: 16px;
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+    .contact a {
+      color: #bfdbfe;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact .label {
+      color: #9ca3af;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2mm;
+    }
+    .qr-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      align-content: start;
+    }
+    .qr-card {
+      background: #0f1014;
+      border: 1px solid #2e3340;
+      border-radius: 10px;
+      padding: 3.2mm;
+      text-align: center;
+    }
+    .qr-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #3a3f49;
+      background: #ffffff;
+    }
+    .qr-card p {
+      margin: 2mm 0 0;
+      font-size: 12px;
+      color: #d1d5db;
+    }
+  </style>
+</head>
+<body>
+  <section class="page pad">
+    <p class="section-kicker">Artist Profile</p>
+    <h2 class="section-title">艺术家简介</h2>
+    <div class="split-two">
+      <div class="panel">
+        <h3>In_K / ink / vjink</h3>
+        <p>新媒体艺术家毕振宇（In_K）长期在艺术、技术与现场之间工作，以算法编程驱动的生成式影像为核心路径。其创作强调“系统生成”而非一次性输出，关注图像如何在规则、噪声与时间中持续演化。</p>
+        <p>实践范围覆盖动态影像、互动装置、实时视觉系统与 AudioVisual 表演，并持续探索人工智能与自动化系统对感知结构和审美机制的重构。作品在展览空间、公共场域与舞台现场中形成多种实例化版本。</p>
+      </div>
+      <div>
+        <img class="intro-img" src="https://r2.inkx.cc/ink.%202019..jpg" alt="In_K" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page pad">
+    <p class="section-kicker">Method & Media</p>
+    <h2 class="section-title">创作方法与媒介</h2>
+    <div class="split-two">
+      <div class="panel">
+        <h3>方法论</h3>
+        <div class="chip-wrap">
+          <span class="chip">系统生成</span>
+          <span class="chip">实时渲染</span>
+          <span class="chip">交互编程</span>
+          <span class="chip">AIGC 视觉实验</span>
+          <span class="chip">空间叙事</span>
+          <span class="chip">音视耦合</span>
+        </div>
+        <h3>媒介与实践场景</h3>
+        <p>媒介侧覆盖生成式影像、互动装置、舞台视觉、沉浸式展示与跨屏联动系统。方法上通过同一算法框架处理不同主题变量，在概念层维持统一逻辑、在形式层产生差异化输出。</p>
+        <h3>工具栈（常用）</h3>
+        <div class="chip-wrap">
+          <span class="chip">vvvv</span>
+          <span class="chip">Unreal Engine</span>
+          <span class="chip">Blender</span>
+          <span class="chip">Stable Diffusion</span>
+        </div>
+      </div>
+      <div>
+        <img class="method-img" src="https://r2.inkx.cc/20250619035059795.png" alt="Method and Media" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page index pad">
+    <p class="section-kicker">Table of Contents</p>
+    <h2>作品目录（按编号）</h2>
+    <ul>
+      <li><span class="idx">01</span><span>2.0一小部分无限｜一小部分无限</span></li>
+      <li><span class="idx">02</span><span>2.1 意识的沉默和汉字的空白｜意识的沉默和汉字的空白</span></li>
+      <li><span class="idx">03</span><span>2.1.1意识的沉默和汉字的空白-西湖明日明月-重构风景｜意识的沉默 ｜ 重构风景</span></li>
+      <li><span class="idx">04</span><span>2.2 身体図景｜身体図景</span></li>
+      <li><span class="idx">05</span><span>2.3 MΦMENT｜MΦMENT</span></li>
+      <li><span class="idx">06</span><span>2.4 NΦWHERE｜NΦWHERE</span></li>
+      <li><span class="idx">07</span><span>2.4.1NΦWHERE云南梯田｜NΦWHERE ｜ 云南梯田</span></li>
+      <li><span class="idx">08</span><span>2.4.2 NΦWHERE土掌房｜NΦWHERE | 土掌房</span></li>
+      <li><span class="idx">09</span><span>2.5通往永恒的无数个猜想｜通往永恒的无数条路径</span></li>
+      <li><span class="idx">10</span><span>10.1 Emergence -成都zip作品｜{[(Emergence)]}-成都</span></li>
+      <li><span class="idx">11</span><span>20.1 memories｜M3M0RI35</span></li>
+      <li><span class="idx">12</span><span>20.3白日梦｜白日梦</span></li>
+    </ul>
+  </section>
+
+  <section class="page work-title-page pad">
+    <p class="section-kicker">Works</p>
+    <h2>作品</h2>
+    <p>以下作品按 md 文件编号顺序编排。每个作品采用双页结构，每页均为 2x2 图片网格；单个作品共 8 张图。</p>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 01 · 2.0一小部分无限</p>
+        <h3>一小部分无限</h3>
+        <p>作品介绍：一小部分无限 我这系列作品的核心是关于“无限和混沌”的后符号学探索，也通过“实例化”对新媒体技术语言进行探索。后符号学是一种后结构主义，而非解构。符号的超越性 这是第一层要表达的。作品的核心要表达的是通过“符号”来探索“符号”之外的符号。符号性需要一个具体的实例化的符号，但所有的实例化的符号并不能穷尽符号性。作品使用“实例化”这一计算机程序的概念逐层展开。“实例化”是计算机编程语言下的一个概念，在编程时编写一个「方法」，然后每次调用的时候需要赋予这个方法具体的变量数值就叫实例化。一个方法可以被无数次的调用，更换不同的变量，呈现出来完全不同的结果。</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/infinitesimal/">https://www.inkx.cc/artwork/infinitesimal/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853221.png" alt="一小部分无限" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706001025935.jpg" alt="一小部分无限" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853229.png" alt="一小部分无限" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170124976.png" alt="一小部分无限" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 01 · 2.0一小部分无限</p>
+        <h3>一小部分无限</h3>
+        <p>补充介绍：一小部分无限 我这系列作品的核心是关于“无限和混沌”的后符号学探索，也通过“实例化”对新媒体技术语言进行探索。后符号学是一种后结构主义，而非解构。符号的超越性 这是第一层要表达的。作品的核心要表达的是通过“符号”来探索“符号”之外的符号。符号性需要一个具体的实例化的符号，但所有的实例化的符号并不能穷尽符号性。 作品使用“实例化”这一计算机程序的概念逐层展开。“实例化”是计算机编程语言下的一个概念，在编程时编写一个「方法」，然后每次调用的时候需要赋予这个方法具体的变量数值就叫实例化。一个方法可以被无数次的调用，更换不同的变量，呈现出来完全不同的结果。将“符号”实例化成主题 这是第二层表达。 这一系列还有关于“时间”作品《MΦMENT》、NΦWHERE 呈现出的是“空间”的符号，“概念”作品《意识的沉默和汉字的空白》、“语言”《身体図景》等概念的实例化。我想通过对同一个主题的不同维度的实例化去构建那个抽象的主题。这是作品的血肉。技术语言媒介属性的探索。这是第三层表达。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620170527439.png" alt="一小部分无限" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853226.png" alt="一小部分无限" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853227.png" alt="一小部分无限" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853228.png" alt="一小部分无限" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 02 · 2.1 意识的沉默和汉字的空白</p>
+        <h3>意识的沉默和汉字的空白</h3>
+        <p>作品介绍：《意识沉默和汉字的空白》是讲述「概念」的主题，构建在「形而上」或「本体论」的框架中，那些在人类构建的静态的概念里，总有一些因为自身局限而超出框架里的概念。我们不能理解无法感知但可以推理出它们的存在。创作概念 在人类意识的空白和汉字的沉默中会有什么？两个概念： 一，维特根斯坦的《逻辑哲学论》里，“对于不可说的保持沉默”。维特根斯坦认为我们的语言可以表达的内容是有限的，他整本书将语言和逻辑可以表达的事情都整理了出来，然后还有一部分是语言无法表达出来的。对于这部分无法表达出来的就“保持沉默”。二，人类的思考模式受到其使用语言的影响，因而对同一事物时可能会有不同</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/beyond-silence-blank/">https://www.inkx.cc/artwork/beyond-silence-blank/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250706001025935.jpg" alt="意识的沉默和汉字的空白" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853223.png" alt="意识的沉默和汉字的空白" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853224.png" alt="意识的沉默和汉字的空白" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853225.png" alt="意识的沉默和汉字的空白" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 02 · 2.1 意识的沉默和汉字的空白</p>
+        <h3>意识的沉默和汉字的空白</h3>
+        <p>补充介绍：《意识沉默和汉字的空白》是讲述「概念」的主题，构建在「形而上」或「本体论」的框架中，那些在人类构建的静态的概念里，总有一些因为自身局限而超出框架里的概念。我们不能理解无法感知但可以推理出它们的存在。创作概念 在人类意识的空白和汉字的沉默中会有什么？两个概念： 一，维特根斯坦的《逻辑哲学论》里，“对于不可说的保持沉默”。 维特根斯坦认为我们的语言可以表达的内容是有限的，他整本书将语言和逻辑可以表达的事情都整理了出来，然后还有一部分是语言无法表达出来的。对于这部分无法表达出来的就“保持沉默”。二，人类的思考模式受到其使用语言的影响，因而对同一事物时可能会有不同的看法。也称为萨丕尔 - 沃夫假说。 这个假说特德姜用它写了一篇小说《你一生的故事》后来改编成电影《降临》。电影呈现了一个很迷人的假想，假若我们掌握了外星人的语言，就会改变我们的思维同时掌握我们所不具有的能力（比如可以了解过去及未来）。在人类的意识间隙中会隐藏着怎样的困惑？我可以尝试通过 AI 来寻找一下潜在空间里的字义之间的空白。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250706160926131.jpg" alt="意识的沉默和汉字的空白" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853226.png" alt="意识的沉默和汉字的空白" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853227.png" alt="意识的沉默和汉字的空白" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853228.png" alt="意识的沉默和汉字的空白" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 03 · 2.1.1意识的沉默和汉字的空白-西湖明日明月-重构风景</p>
+        <h3>意识的沉默 ｜ 重构风景</h3>
+        <p>作品介绍：意识的沉默 明日明月·重构风景 ｜西湖公共艺术计划 @杭州西湖 20230101 2022至2023跨年的24小时，“明日明月·重构风景”的公共艺术项目在西湖启动。十艘船在西湖飘荡，通过数字联动、声图交织的方式，重构西湖的当代风景。《意识的沉默》是⼀个影像装置，数只⼩⾈承载着它，悠然飘荡于西湖的绝美风景之中。⼩船上的LED屏幕上流动着不断变化的⽂字。这些⽂字像是⽆根的墓碑，纪念那些还未被命名的事物，也召唤那些曾经存在和未曾到来的西湖风景。在屏幕的图像⾥，那些难以辨识的⽂字并⾮是对意义的消解，⽽是象征着那些“尚未被赋予含义”的意识，那些尚未被命名的概念，恰</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/silence-blank-xihu/">https://www.inkx.cc/artwork/silence-blank-xihu/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250706160633966.jpg" alt="意识的沉默 ｜ 重构风景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706160814312.jpg" alt="意识的沉默 ｜ 重构风景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706160334621.jpg" alt="意识的沉默 ｜ 重构风景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706160846391.jpg" alt="意识的沉默 ｜ 重构风景" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 03 · 2.1.1意识的沉默和汉字的空白-西湖明日明月-重构风景</p>
+        <h3>意识的沉默 ｜ 重构风景</h3>
+        <p>补充介绍：意识的沉默 明日明月·重构风景 ｜西湖公共艺术计划 @杭州西湖 20230101 2022至2023跨年的24小时，“明日明月·重构风景”的公共艺术项目在西湖启动。十艘船在西湖飘荡，通过数字联动、声图交织的方式，重构西湖的当代风景。《意识的沉默》是⼀个影像装置，数只⼩⾈承载着它，悠然飘荡于西湖的绝美风景之中。 ⼩船上的LED屏幕上流动着不断变化的⽂字。这些⽂字像是⽆根的墓碑，纪念那些还未被命名的事物，也召唤那些曾经存在和未曾到来的西湖风景。在屏幕的图像⾥，那些难以辨识的⽂字并⾮是对意义的消解，⽽是象征着那些“尚未被赋予含义”的意识，那些尚未被命名的概念，恰如维特根斯坦所提及的“不可说与保持沉默”的部分。西湖⼗景乃西湖最负盛名之景点。 西湖⼗景不只是⾃然存在的景观，存在的景观，更是⼀种⼈⽂符号，它们在历史上是被⽂⼈墨客创造出来写到诗词和画作之中得以不断强化并流传。同时，于真实的西湖中，⼈们根据诗词书画再把它们不断重建与加强，彼此呼应。在漫长的历史进程以及真实的西湖地理空间⾥，尚有⽆数未经命名的美景。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250706160926131.jpg" alt="意识的沉默 ｜ 重构风景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706160926132.jpg" alt="意识的沉默 ｜ 重构风景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706161003122.jpg" alt="意识的沉默 ｜ 重构风景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250706161036266.jpg" alt="意识的沉默 ｜ 重构风景" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 04 · 2.2 身体図景</p>
+        <h3>身体図景</h3>
+        <p>作品介绍：身体図景 创作概念 **身体的符码** 身体语言甚至比文字语言还要原始，他们以绘画的形式出现在十万年前的壁画中。仅仅近几十年人们对身体的使用和影响就发生过很大的变化。无论是关于政治身体的讨论 , 对性别本质的论争 , 还是社会生物学以遗传解释性格的理论 , 身体都是理解和探究最广义上的政治变化的核心处所。「身体」的概念已经不仅仅只是血肉之躯。而是一个符号。它不仅是自身的再现，更是一系列隐喻。如同现象学关注的「身体」是我们认知世界的方式。比起一个实体 , 身体更适合被设想为一个区域 , 它既给了我们强烈的位置感 , 也给了我们强烈的错位感。</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/bodyscape/">https://www.inkx.cc/artwork/bodyscape/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853229.png" alt="身体図景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853230.png" alt="身体図景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853231.png" alt="身体図景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853232.png" alt="身体図景" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 04 · 2.2 身体図景</p>
+        <h3>身体図景</h3>
+        <p>补充介绍：身体図景 创作概念 **身体的符码** 身体语言甚至比文字语言还要原始，他们以绘画的形式出现在十万年前的壁画中。仅仅近几十年人们对身体的使用和影响就发生过很大的变化。无论是关于政治身体的讨论 , 对性别本质的论争 , 还是社会生物学以遗传解释性格的理论 , 身体都是理解和探究最广义上的政治变化的核心处所。 「身体」的概念已经不仅仅只是血肉之躯。它不仅是自身的再现，更是一系列隐喻。如同现象学关注的「身体」是我们认知世界的方式。比起一个实体 , 身体更适合被设想为一个区域 , 它既给了我们强烈的位置感 , 也给了我们强烈的错位感。**技术的身体** 技术也有像身体一样的流动性。我们在不同的时代用「技术」这个词指代不同的东西。 当讨论技术的时候我们往往不谈技术本身，而谈我们对技术的理解和赋予技术的不同涵义。「技术」的具体所指总是在变的，比如鲍德里亚在 70 年代讨论的技术是「超级市场」，现在看来都习以为常、不值得讨论了，现在有人工智能技术与人的关系。在不远的将来「基因编辑技术」与人的关系。这些权力和势力的斗争必然也会在「技术」的身体上进行。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853233.png" alt="身体図景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853235.png" alt="身体図景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853221.png" alt="身体図景" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853232.png" alt="身体図景" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 05 · 2.3 MΦMENT</p>
+        <h3>MΦMENT</h3>
+        <p>作品介绍：MΦMENT 创作概念 一个落日同另一个落日太像了，在永恒之海坠落的是落日般的黑瞳。夏虫不语冰，人类却妄图讨论永恒。人的一生对于永恒是“瞬间”，整个人类进化的百万年、整个地球生命演化的几十亿年，对于永恒来说都是瞬间。以前我们用肉眼来把握永恒，现在我们用科技来把握永恒，人类一直在进步，感官也一直在拓展，但是「永恒」没有变过。这个作品我使用机器学习算法喂给 ai 上万张“眼睛”，有人类、动物、爬行生物、昆虫，还有一些自然环境森林大海，最终生成一个混合环境与眼睛的抽象图像。线下展览的部分是将 AI 生成的图像用投影投射到一个 一亿 4千万年前的化石板 上。</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/moment/">https://www.inkx.cc/artwork/moment/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620170124976.png" alt="MΦMENT" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170404562.png" alt="MΦMENT" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170434685.png" alt="MΦMENT" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853234.png" alt="MΦMENT" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 05 · 2.3 MΦMENT</p>
+        <h3>MΦMENT</h3>
+        <p>补充介绍：MΦMENT 创作概念 一个落日同另一个落日太像了，在永恒之海坠落的是落日般的黑瞳。夏虫不语冰，人类却妄图讨论永恒。人的一生对于永恒是“瞬间”，整个人类进化的百万年、整个地球生命演化的几十亿年，对于永恒来说都是瞬间。以前我们用肉眼来把握永恒，现在我们用科技来把握永恒，人类一直在进步，感官也一直在拓展，但是「永恒」没有变过。 这个作品我使用机器学习算法喂给 ai 上万张“眼睛”，有人类、动物、爬行生物、昆虫，还有一些自然环境森林大海，最终生成一个混合环境与眼睛的抽象图像。线下展览的部分是将 AI 生成的图像用投影投射到一个 一亿 4千万年前的化石板 上。投影的光线划过石板，仿佛看到了时间本体。Φ 是希腊第 21 个字母，用于黄金分割率的符号。 我们的感受和我们对于永恒与时间的感知，就是永恒与瞬间的黄金分割点。要抓住这紧张而奇异的光有多难，那是个幻象，人类对黑暗的一致恐惧把它强加在空间之上，它突然间停止 在我们觉察到它的虚假之时，就像一个梦破灭 在做梦者得知他正在做梦之时。—博尔赫斯 呈现 一小部分无限 一小部分无限 MΦMENT是一小部分无限的一部分 点击查看详情 →</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620170124976.png" alt="MΦMENT" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170404562.png" alt="MΦMENT" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170434685.png" alt="MΦMENT" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853234.png" alt="MΦMENT" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 06 · 2.4 NΦWHERE</p>
+        <h3>NΦWHERE</h3>
+        <p>作品介绍：NΦWHERE 创作概念 我们现在去往不同的目的地都需要导航来指引方向，但经常导航会将我们带到一个地方明明显示前方还有路但现实中却无法到达那个地方，我利用 AI 人工智能终于找到了那个地方，幸运的是我还找到了那些不存在地方的黄金分割点的位置。使用 生成对抗网络，给 AI 输入上万张不同尺度的图片，有街区的地图、城市的地图、国家的地图、大洲的地图…… 经过长时间训练，形成一个具有新的影像输出能力的神经元网络。NΦWHERE 是一个 AI 生成的空间影像装置，AI 学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/nowhere/">https://www.inkx.cc/artwork/nowhere/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620170527439.png" alt="NΦWHERE" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170650940.png" alt="NΦWHERE" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170714853.png" alt="NΦWHERE" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170740720.png" alt="NΦWHERE" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 06 · 2.4 NΦWHERE</p>
+        <h3>NΦWHERE</h3>
+        <p>补充介绍：NΦWHERE 创作概念 我们现在去往不同的目的地都需要导航来指引方向，但经常导航会将我们带到一个地方明明显示前方还有路但现实中却无法到达那个地方，我利用 AI 人工智能终于找到了那个地方，幸运的是我还找到了那些不存在地方的黄金分割点的位置。 使用 生成对抗网络，给 AI 输入上万张不同尺度的图片，有街区的地图、城市的地图、国家的地图、大洲的地图…… 经过长时间训练，形成一个具有新的影像输出能力的神经元网络。 NΦWHERE 是一个 AI 生成的空间影像装置，AI 学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。呈现 一小部分无限 一小部分无限 NΦWHERE是一小部分无限的一部分 点击查看详情 →</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250620170815740.png" alt="NΦWHERE" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170839230.png" alt="NΦWHERE" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620170924948.png" alt="NΦWHERE" />
+        <img class="img-card" src="https://r2.inkx.cc/20250620165853234.png" alt="NΦWHERE" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 07 · 2.4.1NΦWHERE云南梯田</p>
+        <h3>NΦWHERE ｜ 云南梯田</h3>
+        <p>作品介绍：NΦWHERE 一个不存在的空间 Φ：是用于黄金分割率的符号。NΦWHERE 是一个AI生成的空间影像装置，AI学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。作品使用了生成对抗网络，给AI输入上万张图片，经过长时间的训练，形成一个具有影像输出能力的神经网络。这个作品的创作源自一次在云南的采风，我选了梯田这个视觉上非常有云南特色的人文景观，通过无人机航拍的视角采集了很多景色整体的景观，梯田是云南的人民几百几千年来与自然交互的结果，这些景色反应出的云南特色地域下自然涌现出来的</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/nowhere-titian/">https://www.inkx.cc/artwork/nowhere-titian/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250708020327784.jpg" alt="NΦWHERE ｜ 云南梯田" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708020425918.jpg" alt="NΦWHERE ｜ 云南梯田" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708013532969.JPG" alt="NΦWHERE ｜ 云南梯田" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708020533041.jpg" alt="NΦWHERE ｜ 云南梯田" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 07 · 2.4.1NΦWHERE云南梯田</p>
+        <h3>NΦWHERE ｜ 云南梯田</h3>
+        <p>补充介绍：NΦWHERE 一个不存在的空间 Φ：是用于黄金分割率的符号。NΦWHERE 是一个AI生成的空间影像装置，AI学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。 作品使用了生成对抗网络，给AI输入上万张图片，经过长时间的训练，形成一个具有影像输出能力的神经网络。 这个作品的创作源自一次在云南的采风，我选了梯田这个视觉上非常有云南特色的人文景观，通过无人机航拍的视角采集了很多景色整体的景观，梯田是云南的人民几百几千年来与自然交互的结果，这些景色反应出的云南特色地域下自然涌现出来的模式，虽然梯田一年四季都有不同的景色，但从云南这片大地产生、发展的文化性是会通过一种抽象的「模式」传承下来，未来新的变化也是会建立在这种独特性之上。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250708020604742.jpg" alt="NΦWHERE ｜ 云南梯田" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708012547696.jpg" alt="NΦWHERE ｜ 云南梯田" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708013415274.jpg" alt="NΦWHERE ｜ 云南梯田" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708020459766.jpg" alt="NΦWHERE ｜ 云南梯田" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 08 · 2.4.2 NΦWHERE土掌房</p>
+        <h3>NΦWHERE | 土掌房</h3>
+        <p>作品介绍：NΦWHERE 一个不存在的空间 Φ：是用于黄金分割率的符号。NΦWHERE 是一个AI生成的空间影像装置，AI学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。作品使用了生成对抗网络，给AI输入上万张图片，经过长时间的训练，形成一个具有影像输出能力的神经网络。这个作品的创作源自一次在云南的采风，我选了土掌房这个视觉上非常有云南特色的人文景观，通过无人机航拍的视角采集了很多景色整体的景观，土掌房民居是云南的人民几百几千年来与自然交互的结果，这些景色反应出的云南特色地域下自然涌</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/nowhere-tuzhangfang/">https://www.inkx.cc/artwork/nowhere-tuzhangfang/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250707224103733.jpg" alt="NΦWHERE | 土掌房" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708022440668.JPG" alt="NΦWHERE | 土掌房" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708013532969.JPG" alt="NΦWHERE | 土掌房" />
+        <img class="img-card" src="https://r2.inkx.cc/20250707224103732.jpg" alt="NΦWHERE | 土掌房" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 08 · 2.4.2 NΦWHERE土掌房</p>
+        <h3>NΦWHERE | 土掌房</h3>
+        <p>补充介绍：NΦWHERE 一个不存在的空间 Φ：是用于黄金分割率的符号。NΦWHERE 是一个AI生成的空间影像装置，AI学习了数万张存在于网络空间中的地图后，生成了一系列不存在的空间并用地图呈现出来，装置所在的空间是这个“无”处的黄金分割线的一部分。 作品使用了生成对抗网络，给AI输入上万张图片，经过长时间的训练，形成一个具有影像输出能力的神经网络。 这个作品的创作源自一次在云南的采风，我选了土掌房这个视觉上非常有云南特色的人文景观，通过无人机航拍的视角采集了很多景色整体的景观，土掌房民居是云南的人民几百几千年来与自然交互的结果，这些景色反应出的云南特色地域下自然涌现出来的模式，虽然民居经历几代人会有拆迁重建，但从云南这片大地产生、发展的文化性是会通过一种抽象的「模式」传承下来，未来新的变化也是会建立在这种独特性之上。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250707224103731.jpg" alt="NΦWHERE | 土掌房" />
+        <img class="img-card" src="https://r2.inkx.cc/20250707224103729.jpg" alt="NΦWHERE | 土掌房" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708012706618.png" alt="NΦWHERE | 土掌房" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708013335296.jpg" alt="NΦWHERE | 土掌房" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 09 · 2.5通往永恒的无数个猜想</p>
+        <h3>通往永恒的无数条路径</h3>
+        <p>作品介绍：In endless flow of eternity, there are innumerable relative conjecture. 概念 圆是一个一个永恒又简单的意向。是我们生活中经常可见的图形。它之所以伟大是太阳、月亮、地球都是圆的。它也很容易获得: 不需要任何技术，固定住一个中心，用一根绳， 旋转另一头就能得到一个圆。圆随处可见却又隐藏着最永恒的秘密，例如圆周率π是最有名的超越数，π的准确数值是不变的，但不管用什么样的计算方法，我们只能无限接近而不能真正的抵达它的确切数值。我们有无数种不同的方式去接近π的准确数值，比如割圆法、无穷级数、连</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/endlessflow/">https://www.inkx.cc/artwork/endlessflow/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250705212914923.png" alt="通往永恒的无数条路径" />
+        <img class="img-card" src="https://r2.inkx.cc/20250705205422648.png" alt="通往永恒的无数条路径" />
+        <img class="img-card" src="https://r2.inkx.cc/20250705215107476.png" alt="通往永恒的无数条路径" />
+        <img class="img-card" src="https://r2.inkx.cc/20250705212820118.png" alt="通往永恒的无数条路径" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 09 · 2.5通往永恒的无数个猜想</p>
+        <h3>通往永恒的无数条路径</h3>
+        <p>补充介绍：In endless flow of eternity, there are innumerable relative conjecture. 概念 圆是一个一个永恒又简单的意向。是我们生活中经常可见的图形。它之所以伟大是太阳、月亮、地球都是圆的。它也很容易获得: 不需要任何技术，固定住一个中心，用一根绳， 旋转另一头就能得到一个圆。 圆随处可见却又隐藏着最永恒的秘密，例如圆周率π是最有名的超越数，π的准确数值是不变的，但不管用什么样的计算方法，我们只能无限接近而不能真正的抵达它的确切数值。我们有无数种不同的方式去接近π的准确数值，比如割圆法、无穷级数、连分数等等。 有一个被称为天才的人拉玛努金凭借直觉写出的求 π的公式最为神奇，这个公式像诗一样看似无规律但又准确且有着惊人的收敛速度。这是可以被验证的诗, 是数学的直觉, 是可以被验证的最纯粹的智慧的直觉. 「直觉」并不一定只是人类的特权 ，谷歌的一个人工智能程序也可以不需要任何先验信息就能求解数学常数，这个程序被命名为拉玛努金机。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250706130532320.png" alt="通往永恒的无数条路径" />
+        <img class="img-card" src="https://r2.inkx.cc/20250705212935241.png" alt="通往永恒的无数条路径" />
+        <img class="img-card" src="https://r2.inkx.cc/20250705213000630.png" alt="通往永恒的无数条路径" />
+        <img class="img-card" src="https://r2.inkx.cc/20250705212845167.png" alt="通往永恒的无数条路径" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 10 · 10.1 Emergence -成都zip作品</p>
+        <h3>{[(Emergence)]}-成都</h3>
+        <p>作品介绍：{[( Emergence )]} / {[(涌现)]} 2017年 {[(Emergence)]}是一套实时生成的视觉系统，在这个影像程序框架下有过多种不同表达方式，包括音乐视频，现场演出，交互影像装置等。这套视觉系统通过设置粒子系统中的不同层级的参数，影响和重构预设的具象化信息。我尝试用计算机粒子系统观察和呈现一个虚拟的“智慧”形态，将其维持在一个混沌又有序的临界状态。卡尔萨根的“暗淡蓝点”道出地球只是一粒悬浮在太阳中的微尘，正如{[(涌现)]} 中的粒子。我能隐约感受到在日常表象下涌动着一些“不可说”的“智能”形态，它们由一个一个简单的元素构成，在</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/emergence-chengdu/">https://www.inkx.cc/artwork/emergence-chengdu/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/fbab4e.png" alt="{[(Emergence)]}-成都" />
+        <img class="img-card" src="https://r2.inkx.cc/ae22b9.png" alt="{[(Emergence)]}-成都" />
+        <img class="img-card" src="https://r2.inkx.cc/9da1a5.png" alt="{[(Emergence)]}-成都" />
+        <img class="img-card" src="https://r2.inkx.cc/1ac8d9.png" alt="{[(Emergence)]}-成都" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 10 · 10.1 Emergence -成都zip作品</p>
+        <h3>{[(Emergence)]}-成都</h3>
+        <p>补充介绍：{[( Emergence )]} / {[(涌现)]} 2017年 {[(Emergence)]}是一套实时生成的视觉系统，在这个影像程序框架下有过多种不同表达方式，包括音乐视频，现场演出，交互影像装置等。这套视觉系统通过设置粒子系统中的不同层级的参数，影响和重构预设的具象化信息。 我尝试用计算机粒子系统观察和呈现一个虚拟的“智慧”形态，将其维持在一个混沌又有序的临界状态。卡尔萨根的“暗淡蓝点”道出地球只是一粒悬浮在太阳中的微尘，正如{[(涌现)]} 中的粒子。我能隐约感受到在日常表象下涌动着一些“不可说”的“智能”形态，它们由一个一个简单的元素构成，在演化中数量多到一定程度就会涌现出新的层级的图像。 “常无，欲以观其妙。常有，欲以观其徼”，保持在一个“抽象”的状态以观察事物的妙处，在一个“具象”的状态观察事物的边界/极限，两者同出而异名，同谓之玄，玄就是转化，“玄之又玄，众妙之门”。</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/973d12.png" alt="{[(Emergence)]}-成都" />
+        <img class="img-card" src="https://r2.inkx.cc/0455ed.png" alt="{[(Emergence)]}-成都" />
+        <img class="img-card" src="https://r2.inkx.cc/b82de1.png" alt="{[(Emergence)]}-成都" />
+        <img class="img-card" src="https://r2.inkx.cc/a4abb5.png" alt="{[(Emergence)]}-成都" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 11 · 20.1 memories</p>
+        <h3>M3M0RI35</h3>
+        <p>作品介绍：记忆并不是一种加法，它是意义不明确的各种可能性的混合。记忆并不是一种加法，它是意义不明确的各种可能性的混合。记忆并不是一种加法，它是意义不明确的各种可能性的混合。在这个作品里我喂给AI上万张具象的图，这些图在神经网络里训练的几周中逐渐混为一体，并产生了新的抽象图像。就像情绪、印象、言语、声音在我们的意识的驱动下不断的建构着自我，创造出新的回忆，与我们曾经的记忆互相靠拢、分歧、交错。这个“记忆”的神经网络包含了所有的可能性。音乐：MHP 视觉：In_K ️ ️ ️ ️</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/memories/">https://www.inkx.cc/artwork/memories/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250708020928756.png" alt="M3M0RI35" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708021352440.jpg" alt="M3M0RI35" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708021444204.GIF" alt="M3M0RI35" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708021352440.jpg" alt="M3M0RI35" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 11 · 20.1 memories</p>
+        <h3>M3M0RI35</h3>
+        <p>补充介绍：记忆并不是一种加法，它是意义不明确的各种可能性的混合。在这个作品里我喂给AI上万张具象的图，这些图在神经网络里训练的几周中逐渐混为一体，并产生了新的抽象图像。就像情绪、印象、言语、声音在我们的意识的驱动下不断的建构着自我，创造出新的回忆，与我们曾经的记忆互相靠拢、分歧、交错。这个“记忆”的神经网络包含了所有的可能性。 音乐：MHP 视觉：In_K ️ ️ ️ ️</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/20250708020928756.png" alt="M3M0RI35" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708021352440.jpg" alt="M3M0RI35" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708021444204.GIF" alt="M3M0RI35" />
+        <img class="img-card" src="https://r2.inkx.cc/20250708021352440.jpg" alt="M3M0RI35" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 12 · 20.3白日梦</p>
+        <h3>白日梦</h3>
+        <p>作品介绍：白日梦是记忆的噪音，数字的涌动亦如是。白日梦是记忆的噪音，数字的涌动亦如是。白日梦是记忆的噪音，数字的涌动亦如是。在色彩与频率的交织中，逻辑溶解为幻象，冷冽的计算化作温柔的流光。这是数字的梦境。Visual：In_K Music：Guzz 《白日梦集市》 ️</p>
+        <p class="work-link">在线页面：<a href="https://www.inkx.cc/artwork/daydream/">https://www.inkx.cc/artwork/daydream/</a></p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/48dea1.jpg" alt="白日梦" />
+        <img class="img-card" src="https://r2.inkx.cc/b0f11f.jpg" alt="白日梦" />
+        <img class="img-card" src="https://r2.inkx.cc/48dea1.jpg" alt="白日梦" />
+        <img class="img-card" src="https://r2.inkx.cc/b0f11f.jpg" alt="白日梦" />
+      </div>
+    </div>
+  </section>
+  <section class="page pad">
+    <div class="work-page">
+      <div class="work-meta">
+        <p class="code">Artwork 12 · 20.3白日梦</p>
+        <h3>白日梦</h3>
+        <p>补充介绍：白日梦是记忆的噪音，数字的涌动亦如是。在色彩与频率的交织中，逻辑溶解为幻象，冷冽的计算化作温柔的流光。这是数字的梦境。Visual：In_K Music：Guzz 《白日梦集市》 ️</p>
+      </div>
+      <div class="img-grid-4">
+        <img class="img-card" src="https://r2.inkx.cc/48dea1.jpg" alt="白日梦" />
+        <img class="img-card" src="https://r2.inkx.cc/b0f11f.jpg" alt="白日梦" />
+        <img class="img-card" src="https://r2.inkx.cc/48dea1.jpg" alt="白日梦" />
+        <img class="img-card" src="https://r2.inkx.cc/b0f11f.jpg" alt="白日梦" />
+      </div>
+    </div>
+  </section>
+  <section class="page back-cover pad">
+    <div class="back-grid">
+      <div class="contact">
+        <p class="label">封底</p>
+        <h2>联系方式</h2>
+        <p>工作邮箱：work@inkx.cc</p>
+        <p>WeChat：inkoml</p>
+        <p>网站：<a href="https://www.inkx.cc/">https://www.inkx.cc/</a></p>
+        <p>Bilibili：<a href="https://space.bilibili.com/10830102">https://space.bilibili.com/10830102</a></p>
+      </div>
+      <div class="qr-wrap">
+        <div class="qr-card">
+          <img src="/pdf/qr-site.png" alt="网站二维码" />
+          <p>网站二维码</p>
+        </div>
+        <div class="qr-card">
+          <img src="/pdf/qr-bili.png" alt="Bilibili二维码" />
+          <p>Bilibili 二维码</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
