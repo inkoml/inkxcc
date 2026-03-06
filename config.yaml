@@ -73,6 +73,9 @@ Menus:
 params:
   title: "In_K 毕振宇"
   description: 新媒体艺术家
+  cloudflareAnalytics:
+    enable: false
+    token: "f2648229b27d4f1397ab28890cd492aa"
   # staticPath: ""  # The path to serve the static files from
   favicon: "https://r2.inkx.cc/logo.png"
 
