@@ -120,22 +120,55 @@ body {
   letter-spacing: 0.75em !important;
 }
 
-/* 列表卡片缩略图：统一容器并保持原图比例，避免拉伸 */
+/* 列表页：改为瀑布流，保留题图原始比例展示 */
+#list-page .list-masonry {
+  column-count: 4;
+  column-gap: 1.25rem;
+}
+
+#list-page .list-masonry-item {
+  break-inside: avoid;
+  margin: 0 0 1.25rem;
+}
+
+#list-page .list-masonry-item .card {
+  height: auto;
+}
+
 #list-page .card > .card-header {
-  aspect-ratio: 16 / 10;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--secondary-color);
+  display: block;
+  background-color: transparent;
 }
 
 #list-page .card > .card-header .card-img-top {
   width: 100%;
-  height: 100% !important;
-  object-fit: contain;
+  height: auto !important;
+  object-fit: unset;
   object-position: center;
   display: block;
+}
+
+#list-page .card .card-body {
+  padding: 1.1rem 1.1rem 1.25rem !important;
+}
+
+@media screen and (max-width: 1200px) {
+  #list-page .list-masonry {
+    column-count: 3;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #list-page .list-masonry {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #list-page .list-masonry {
+    column-count: 1;
+  }
 }
 
 /* 画廊页缩略图：覆盖模板里的固定高度属性，避免变形 */
