@@ -1,6 +1,6 @@
 ---
-title:
-slug: about
+title: 采访与报道
+slug: interview
 draft: false
 categories:
   - interview

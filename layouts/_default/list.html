@@ -21,7 +21,11 @@
           {{ if and (not (.Site.Params.listPages.disableFeaturedImage | default false)) (.Params.image) }}
             <div class="card-header p-0 border-0">
               <a href="{{ .RelPermalink }}">
-                <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Title }}">
+                <picture>
+                  {{ with .Params.image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
+                  {{ with .Params.image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
+                  <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Title }}">
+                </picture>
               </a>
             </div>
           {{ end }}

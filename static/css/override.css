@@ -114,3 +114,8 @@ body {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+/* 从主题子模块迁移：保留单页字距调整，避免更新子模块后样式丢失 */
+#single {
+  letter-spacing: 0.75em !important;
+}

@@ -105,22 +105,22 @@ params:
   # 颜色偏好
   # 在使用颜色的十六进制代码时，必须同时使用引号和 # sign
   color:
-  textColor: "#343a40"
-  secondaryTextColor: "#6c757d"
-  textLinkColor: "#007bff"
-  backgroundColor: "#eaedf0"
-  secondaryBackgroundColor: "#64ffda1a"
-  primaryColor: "#007bff"
-  secondaryColor: "#f8f9fa"
+    textColor: "#343a40"
+    secondaryTextColor: "#6c757d"
+    textLinkColor: "#007bff"
+    backgroundColor: "#eaedf0"
+    secondaryBackgroundColor: "#64ffda1a"
+    primaryColor: "#007bff"
+    secondaryColor: "#f8f9fa"
 
-  darkmode:
-  textColor: "#e4e6eb"
-  secondaryTextColor: "#b0b3b8"
-  textLinkColor: "#ffffff"
-  backgroundColor: "#000000"
-  secondaryBackgroundColor: "#212529"
-  primaryColor: "#ffffff"
-  secondaryColor: "#212529"
+    darkmode:
+      textColor: "#e4e6eb"
+      secondaryTextColor: "#b0b3b8"
+      textLinkColor: "#ffffff"
+      backgroundColor: "#000000"
+      secondaryBackgroundColor: "#212529"
+      primaryColor: "#ffffff"
+      secondaryColor: "#212529"
 
   # 自定义菜单menu
   navbar:

@@ -9,7 +9,11 @@
         <a href="{{ .featured.link | default "#" }}" class="text-decoration-none text-reset" target="_blank">
           <div class="card my-3 h-100" title="{{ .title }}">
             <div class="card-head">
-              <img class="card-img-top" src="{{ .image }}" alt="{{ .title }}">
+              <picture>
+                {{ with .image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
+                {{ with .image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
+                <img class="card-img-top" src="{{ .image }}" alt="{{ .title }}">
+              </picture>
             </div>
             <div class="card-body bg-transparent p-3">
               <div class="pb-2 bg-transparent">
@@ -27,13 +31,17 @@
       </div>
       {{ end }}
 
-      {{ range ( where .Site.RegularPages "Type" "projects" ) }}
+      {{ range ( where .Site.RegularPages "Type" "project" ) }}
       {{ if .Params.showInHome | default true }}
       <div class="col-lg-3 col-md-6 my-3">
         <a href="{{ .RelPermalink }}" class="text-decoration-none text-reset">
           <div class="card my-3 h-100" title="{{ .Title }}">
             <div class="card-head">
-              <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Title }}">
+              <picture>
+                {{ with .Params.image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
+                {{ with .Params.image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
+                <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Title }}">
+              </picture>
             </div>
             <div class="card-body bg-transparent p-3">
               <div class="pb-2 bg-transparent">
