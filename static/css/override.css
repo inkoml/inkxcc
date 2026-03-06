@@ -120,15 +120,38 @@ body {
   letter-spacing: 0.75em !important;
 }
 
-/* project 列表页：统一缩略图比例，避免不同比例图片被拉伸 */
+/* 列表卡片缩略图：统一容器并保持原图比例，避免拉伸 */
 #list-page .card > .card-header {
   aspect-ratio: 16 / 10;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
 }
 
 #list-page .card > .card-header .card-img-top {
   width: 100%;
   height: 100% !important;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  display: block;
+}
+
+/* 画廊页缩略图：覆盖模板里的固定高度属性，避免变形 */
+#list-page .card-group .card {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+}
+
+#list-page .card-group .card img {
+  width: 100%;
+  height: 100% !important;
+  object-fit: contain;
+  object-position: center;
+  display: block;
 }
