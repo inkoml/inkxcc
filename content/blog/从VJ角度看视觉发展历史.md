@@ -10,7 +10,6 @@ description: 从VJ角度看视觉发展历史，北京电影学院讲座
 showImageInContent: false
 image: https://r2.inkx.cc/f93976.png
 date: 2020-01-01
-weight:
 ---
 # 从VJ角度看视觉发展历史
 @北京电影学院

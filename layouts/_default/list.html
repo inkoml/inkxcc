@@ -13,8 +13,20 @@
 
   <h2 class="text-center pb-2">{{ .Title }}</h2>
 
+  {{ $base := .Pages.ByTitle.ByDate.Reverse }}
+  {{ $weighted := where $base "Params.weight" "gt" 0 }}
+  {{ $regular := where $base "Params.weight" "eq" nil }}
+  {{ $ordered := slice }}
+  {{ range $weighted.ByWeight }}
+    {{ $ordered = $ordered | append . }}
+  {{ end }}
+  {{ range $regular }}
+    {{ $ordered = $ordered | append . }}
+  {{ end }}
+  {{ $paginator := .Paginate $ordered }}
+
   <div class="row">
-    {{ range (.Paginator.Pages.ByParam "weight").Reverse }}
+    {{ range $paginator.Pages }}
       <div class="col-lg-3 col-md-4 col-sm-6 my-3">
         <div class="card h-100 shadow-sm">
 
@@ -50,7 +62,7 @@
   <!-- 分页组件 -->
   <div class="row justify-content-center">
     <div class="col-auto m-3">
-      {{ template "_internal/pagination.html" . }}
+      {{ template "_internal/pagination.html" $paginator }}
     </div>
   </div>
 
