@@ -14,15 +14,11 @@ outputs:
 
 enableRobotsTXT: true
 
-
-
-
-
-#services:
-  #googleAnalytics:
-    #id: G-MEASUREMENT_ID
-  #disqus:
-    #shortname: your-disqus-shortname
+# services:
+#   googleAnalytics:
+#     id: G-MEASUREMENT_ID
+#   disqus:
+#     shortname: your-disqus-shortname
 
 pagination:
   pagerSize: 100
@@ -134,8 +130,8 @@ params:
     disableSearch: true
     # searchPlaceholder: "Search"
     stickyNavBar:
-      enable : true
-      showOnScrollUp : true
+      enable: true
+      showOnScrollUp: true
     enableSeparator: true
     menus:
       disableAbout: true
@@ -145,8 +141,6 @@ params:
       disableCrossover: true
       disableAchievements: true
       disableContact: true
-
- 
 
   # About
   about:
@@ -250,7 +244,7 @@ params:
           url: "https://www.inkx.cc"
         info:
           enable: false
-          content:  
+          content:
         content: |
           I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city.
 
