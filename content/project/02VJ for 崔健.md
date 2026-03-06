@@ -11,6 +11,7 @@ summary: 与崔健乐队的VJ项目
 description: 崔健乐队御用VJ
 showImageInContent: false
 image: https://r2.inkx.cc/vj-cj3.jpg
+image_alt: "VJ for 崔健"
 date: 2020-01-01
 weight: 999
 ---

@@ -10,6 +10,7 @@ summary: ink介绍
 description: 新媒体艺术家In_K 毕振宇介绍
 showImageInContent: false
 image: https://r2.inkx.cc/20250706134639572.jpg
+image_alt: "现场视觉综述"
 date: 2020-01-01
 weight: 9999
 ---

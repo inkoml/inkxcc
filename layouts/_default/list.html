@@ -36,7 +36,7 @@
                 <picture>
                   {{ with .Params.image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
                   {{ with .Params.image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
-                  <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Title }}">
+                  <img src="{{ .Params.image }}" class="card-img-top" alt="{{ .Params.image_alt | default .Title }}" loading="lazy">
                 </picture>
               </a>
             </div>

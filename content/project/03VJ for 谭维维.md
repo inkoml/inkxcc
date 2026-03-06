@@ -11,6 +11,7 @@ summary: 与谭维维乐队的VJ演出
 description: 谭维维乐队VJ
 showImageInContent: false
 image: https://r2.inkx.cc/bb0a61.jpg
+image_alt: "VJ for 谭维维"
 date: 2020-01-01
 weight: 998
 ---

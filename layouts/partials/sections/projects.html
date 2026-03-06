@@ -13,7 +13,7 @@
               <picture>
                 {{ with .image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
                 {{ with .image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
-                <img class="card-img-top" src="{{ .image }}" alt="{{ .title }}">
+                <img class="card-img-top" src="{{ .image }}" alt="{{ .image_alt | default .title }}" loading="lazy">
               </picture>
             </div>
             <div class="card-body bg-transparent p-3">
@@ -41,7 +41,7 @@
               <picture>
                 {{ with .Params.image_avif }}<source srcset="{{ . }}" type="image/avif">{{ end }}
                 {{ with .Params.image_webp }}<source srcset="{{ . }}" type="image/webp">{{ end }}
-                <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Title }}">
+                <img class="card-img-top" src="{{ .Params.image }}" alt="{{ .Params.image_alt | default .Title }}" loading="lazy">
               </picture>
             </div>
             <div class="card-body bg-transparent p-3">

@@ -9,6 +9,7 @@ summary: ink相关的采访和文章
 description: 相关的采访和文章
 showImageInContent: false
 image: https://r2.inkx.cc/IMG_0918.jpg
+image_alt: "采访与报道"
 date: 2020-01-01
 ---
 ![](https://r2.inkx.cc/IMG_0918.jpg)
