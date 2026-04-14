@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>小号夜校-龙虾、Vibe Coding 与逻辑重构</title>
+<style>
+@font-face{font-family:InkNoto;src:url('/fonts/NotoSansSC-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:InkNoto;src:url('/fonts/NotoSansSC-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+:root{--bg:#030607;--panel:#071011;--ink:#edf7f4;--muted:#95aaa7;--dim:#58706d;--cyan:#28f6e5;--cyan-soft:rgba(40,246,229,.22);--red:#ff3f57;--red-soft:rgba(255,63,87,.2);--amber:#ffd166;--green:#8dffb1;--violet:#c9a7ff;--line:rgba(208,255,247,.18);--shadow:0 22px 80px rgba(0,0,0,.55);--radius:8px;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{height:100%;scroll-behavior:smooth;background:var(--bg);color:var(--ink)}body{margin:0;min-height:100%;font-family:InkNoto,'Noto Sans SC','PingFang SC',sans-serif;font-weight:300;background:radial-gradient(circle at 75% 10%,rgba(40,246,229,.14),transparent 28rem),radial-gradient(circle at 8% 92%,rgba(255,63,87,.10),transparent 26rem),linear-gradient(135deg,#020303,#071112 48%,#020506);overflow:hidden;letter-spacing:0}.deck{height:100svh;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none}.deck::-webkit-scrollbar{display:none}.deck:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(circle at 50% 40%,#000 0,#000 58%,transparent 100%)}.deck:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}.slide{position:relative;z-index:1;min-height:100svh;height:100svh;padding:clamp(22px,4.6vw,72px);scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;border-bottom:1px solid rgba(40,246,229,.12)}.slide:before{content:"";position:absolute;inset:clamp(12px,2vw,28px);border:1px solid rgba(40,246,229,.16);border-radius:var(--radius);pointer-events:none;box-shadow:inset 0 0 46px rgba(40,246,229,.05)}.topline{position:absolute;top:clamp(18px,2.4vw,34px);left:clamp(24px,4.5vw,72px);right:clamp(24px,4.5vw,72px);display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--muted);letter-spacing:.08em;z-index:3;text-align:center}.topline span:first-child{max-width:min(780px,70vw);color:var(--cyan)}.topline span:last-child{position:absolute;right:0;max-width:28vw;text-align:right;color:var(--muted)}.slide-scroll{height:100%;overflow:auto;scrollbar-color:var(--cyan) rgba(255,255,255,.06);scrollbar-width:thin;padding:clamp(36px,5vw,72px) clamp(10px,2vw,34px) clamp(34px,4vw,58px)}.slide-content{position:relative;width:min(1180px,92vw);max-width:92vw;min-height:calc(100svh - clamp(120px,15vw,200px));margin:0 auto;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(12px,1.8vw,22px);filter:drop-shadow(0 1px 0 rgba(255,255,255,.03))}.slide-content>*{max-width:100%;animation:rise .7s var(--ease) both}.slide-content>*:nth-child(2){animation-delay:.06s}.slide-content>*:nth-child(3){animation-delay:.12s}.slide-content>*:nth-child(4){animation-delay:.18s}.slide-content>*:nth-child(n+5){animation-delay:.24s}h1,h2,h3,h4,h5,h6{margin:0 auto;color:var(--ink);font-weight:700;line-height:1.12;text-wrap:balance;text-align:center;align-self:center}h1{font-size:clamp(42px,7vw,104px);max-width:1000px}h2{font-size:clamp(34px,4.8vw,76px);max-width:1060px}h3{font-size:clamp(28px,3.7vw,56px);color:#f5fffc;max-width:1060px}h4{font-size:clamp(26px,3.05vw,46px);color:#e7fffb;max-width:1020px}h5{font-size:clamp(22px,2.35vw,34px);color:var(--cyan);max-width:980px}h6{font-size:clamp(19px,2vw,28px);color:var(--muted);max-width:920px}h1:after,h2:after,h3:after,h4:after{content:"";display:block;width:min(260px,32vw);height:3px;margin:22px auto 0;background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 18px var(--cyan-soft)}p{margin:0;font-size:clamp(17px,1.65vw,26px);line-height:1.85;color:var(--ink);max-width:1080px}strong{font-weight:700;color:var(--amber);text-shadow:0 0 18px rgba(255,209,102,.28);background:linear-gradient(transparent 62%,rgba(255,209,102,.16) 0);padding:0 .08em;border-radius:4px}em{font-style:normal;color:var(--green);text-shadow:0 0 14px rgba(141,255,177,.22)}ul,ol{margin:0;display:grid;gap:clamp(8px,1.4vw,16px);padding-left:1.2em;max-width:1080px}li{font-size:clamp(17px,1.55vw,24px);line-height:1.75;color:var(--ink);padding-left:.12em}li::marker{color:var(--cyan)}code{font-family:'SFMono-Regular','Menlo',monospace;font-size:.82em;color:#061010;background:var(--cyan);padding:.05em .32em;border-radius:5px;box-shadow:0 0 16px rgba(40,246,229,.18)}.wiki-link{color:var(--violet);border-bottom:1px dashed var(--violet);text-shadow:0 0 14px rgba(201,167,255,.24)}a{color:var(--cyan);text-decoration-thickness:1px;text-underline-offset:.18em}.center-callout{align-self:center;width:min(920px,100%);text-align:center;color:#fff;font-size:clamp(24px,3.15vw,48px);line-height:1.55;font-weight:700;padding:clamp(18px,3vw,34px);border:1px solid rgba(40,246,229,.34);border-radius:var(--radius);background:linear-gradient(135deg,rgba(40,246,229,.08),rgba(255,63,87,.08));box-shadow:var(--shadow),inset 0 0 44px rgba(40,246,229,.06)}.center-callout strong{color:var(--red);background:linear-gradient(transparent 58%,rgba(255,63,87,.22) 0);text-shadow:0 0 20px rgba(255,63,87,.36)}figure{margin:0;display:grid;place-items:center;gap:12px;width:100%;overflow:hidden}img{width:auto;max-width:min(100%,980px);max-height:64svh;border-radius:var(--radius);border:1px solid rgba(40,246,229,.28);box-shadow:var(--shadow),0 0 40px rgba(40,246,229,.10);object-fit:contain}figcaption:empty{display:none}figcaption{font-size:13px;color:var(--muted)}.table-wrap{max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:var(--radius);background:rgba(3,10,10,.72);box-shadow:var(--shadow)}table{width:100%;min-width:920px;border-collapse:collapse;font-size:clamp(14px,1.15vw,19px);line-height:1.45}th,td{padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.11);border-right:1px solid rgba(255,255,255,.08);vertical-align:top}th{position:sticky;top:0;z-index:1;background:#071b1c;color:var(--cyan);font-weight:700}td{color:#e7f4f1}tr:last-child td{border-bottom:0}.has-table .slide-content{justify-content:flex-start}.is-title .slide-content{justify-content:center}.is-title h1{font-size:clamp(54px,8.5vw,128px)}.is-title p{font-size:clamp(21px,2.35vw,36px)}.is-pause .slide-content{align-items:center}.pause-mark{width:min(44vw,420px);aspect-ratio:1;border:1px solid rgba(40,246,229,.28);border-radius:50%;display:grid;place-items:center;color:var(--cyan);font-size:clamp(24px,3vw,44px);box-shadow:0 0 80px rgba(40,246,229,.12),inset 0 0 80px rgba(40,246,229,.05)}.node-field{position:absolute;inset:0;pointer-events:none;opacity:.65;z-index:1}.node-field:before,.node-field:after{content:"";position:absolute;border:1px solid rgba(40,246,229,.25);border-radius:50%;filter:drop-shadow(0 0 18px rgba(40,246,229,.28))}.node-field:before{width:13px;height:13px;right:13%;top:18%}.node-field:after{width:9px;height:9px;left:11%;bottom:20%;background:var(--red)}.node-field i{position:absolute;display:block;width:1px;height:34vh;background:linear-gradient(var(--cyan),transparent);opacity:.28;transform-origin:top}.node-field i:nth-child(1){left:22%;top:5%;transform:rotate(42deg)}.node-field i:nth-child(2){right:18%;top:22%;height:44vh;transform:rotate(-36deg)}.node-field i:nth-child(3){left:52%;bottom:0;height:28vh;transform:rotate(89deg)}.node-field i:nth-child(4){left:8%;top:38%;height:23vh;transform:rotate(-64deg);background:linear-gradient(var(--red),transparent)}.node-field i:nth-child(5){right:5%;bottom:11%;height:24vh;transform:rotate(72deg)}.hud{position:fixed;inset:auto 0 0 0;z-index:10;pointer-events:none}.progress{height:3px;background:rgba(255,255,255,.08)}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--red));box-shadow:0 0 18px rgba(40,246,229,.58);transition:width .28s var(--ease)}.counter{position:fixed;right:clamp(18px,3vw,44px);bottom:clamp(18px,3vw,38px);z-index:11;display:flex;gap:8px;align-items:baseline;color:var(--cyan);font-weight:700;text-shadow:0 0 20px rgba(40,246,229,.45);pointer-events:none}.counter b{font-size:clamp(24px,3vw,44px)}.counter span{font-size:14px;color:var(--muted)}.version{position:fixed;left:clamp(18px,3vw,44px);bottom:clamp(18px,3vw,38px);z-index:11;color:var(--muted);font-size:12px;pointer-events:none}.toc-toggle{position:fixed;right:clamp(18px,3vw,44px);top:clamp(18px,3vw,38px);z-index:20;border:1px solid rgba(40,246,229,.36);background:rgba(3,8,9,.84);color:var(--cyan);border-radius:var(--radius);padding:9px 12px;font:700 13px InkNoto,sans-serif;cursor:pointer;box-shadow:0 0 22px rgba(40,246,229,.12)}.toc{position:fixed;right:clamp(18px,3vw,44px);top:76px;width:min(380px,calc(100vw - 36px));max-height:70svh;z-index:19;display:none;overflow:auto;padding:10px;border:1px solid rgba(40,246,229,.28);border-radius:var(--radius);background:rgba(3,8,9,.94);box-shadow:var(--shadow)}.toc.is-open{display:grid;gap:4px}.toc button{display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:center;width:100%;border:0;background:transparent;color:#dff8f4;text-align:left;border-radius:6px;padding:9px 10px;font:300 14px/1.35 InkNoto,sans-serif;cursor:pointer}.toc button:hover,.toc button.is-active{background:rgba(40,246,229,.12);color:#fff}.toc button span{color:var(--cyan);font-weight:700}.flash{color:var(--red);text-shadow:0 0 22px rgba(255,63,87,.48)}@keyframes rise{from{opacity:0;transform:translateY(16px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}@media (max-width:760px){.slide{padding:22px 14px}.topline{top:14px;left:18px;right:18px;font-size:10px}.topline span:first-child{max-width:100%}.topline span:last-child{display:none}.slide-scroll{padding:54px 6px 70px}.slide-content{justify-content:flex-start;min-height:calc(100svh - 124px);gap:14px;width:100%;max-width:100%;overflow:hidden}figure{place-items:start;overflow:hidden}img{width:100%;max-width:100%;height:auto;max-height:52svh}h1{font-size:clamp(34px,11vw,62px)}h2{font-size:clamp(28px,9vw,48px)}h3{font-size:clamp(25px,8vw,42px)}h4{font-size:clamp(23px,7vw,36px)}p,li{font-size:18px;line-height:1.75}.center-callout{font-size:26px}.version{display:none}.counter{bottom:12px;right:16px}.toc-toggle{top:12px;right:14px}.toc{top:56px;right:14px}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.slide-content>*{animation:none}.progress span{transition:none}}
+</style>
+</head>
+<body>
+<button class="toc-toggle" type="button" aria-label="打开目录">目录 T</button>
+<nav class="toc" aria-label="章节目录">
+<button type="button" data-goto="0"><span>01</span>欢迎</button>
+<button type="button" data-goto="1"><span>02</span>简要介绍 3 天的内容</button>
+<button type="button" data-goto="2"><span>03</span>问卷情况</button>
+<button type="button" data-goto="3"><span>04</span>模块一：范式转变</button>
+<button type="button" data-goto="4"><span>05</span>Prompt engineering 提示词工程</button>
+<button type="button" data-goto="27"><span>28</span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</button>
+<button type="button" data-goto="47"><span>48</span>模块 3｜用 OpenClaw 拆开一个代理系统</button>
+<button type="button" data-goto="51"><span>52</span>OpenClaw 的安装</button>
+<button type="button" data-goto="85"><span>86</span>模块 4｜安全：</button>
+<button type="button" data-goto="91"><span>92</span>给 openclaw 的岗位</button>
+<button type="button" data-goto="97"><span>98</span>可复制的提示词 ：</button>
+<button type="button" data-goto="98"><span>99</span>明天课程</button>
+</nav>
+<main class="deck" aria-label="小号夜校-龙虾、Vibe Coding 与逻辑重构">
+<section class="slide is-title has-image" id="slide-1" data-index="0" data-title="欢迎" data-chapter="欢迎">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>欢迎</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h1>欢迎</h1>
+<figure><img src="https://r2.inkx.cc/899097.png" alt="" loading="lazy"><figcaption></figcaption></figure>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-2" data-index="1" data-title="简要介绍 3 天的内容" data-chapter="简要介绍 3 天的内容">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>简要介绍 3 天的内容</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>简要介绍 3 天的内容</h2>
+<p>第一天：AI范式转变，Openclaw 作为案例讲解，安全，安装 openclaw<br>第二天：AI 生态地图。我如何使用 AI，大家会怎么使用 ai<br>第三天：设计 skills。很多厚问题混杂着很多层，而廉价的答案会冒充原来的需求。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-3" data-index="2" data-title="问卷情况" data-chapter="问卷情况">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>问卷情况</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>问卷情况</h2>
+<p>大部分人每月 ai 的成本都在 0-100 左右。<br>AI 的成本很贵，性价比不高<br>AI 是生产力工具，AI 制作非常的便宜，性价比很高</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-4" data-index="3" data-title="模块一：范式转变" data-chapter="模块一：范式转变">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块一：范式转变</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>模块一：范式转变</h2>
+<h3>“以运行时编排为中心的 AI 系统”，而动态上下文工程是其中最核心的机制</h3>
+<p>今天的 AI不是只会回答，而是会继承上下文、调用工具、维持状态。<br>“上下文被工程化”了。<br>他们是想将 AI 从通用大模型，放到一个定制的认知场景里发挥作用，<br>好的标准，可以是输出的强度高，也可以是大众的接受度广。<br>但是你总知道特定的人的好的标准。比如特定的人，根据自己的需要定制一套工作现场，模型接入进来了解信息，就不那么多废话了。</p>
+<p>说人话：<br>现在的 Ai 的转变是整体都转向做 agent 了，模型的发展一个是基础能力的发展，你说一个要求它给一个回答，而且越来越好。另一个是他们开始设计新的机制了，在这些机制下你发现以前的思路有时候不如以前好了。但是一旦你明白它的机制，就能知道为什么并加以利用。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-5" data-index="4" data-title="Prompt engineering 提示词工程" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>Prompt engineering 提示词工程</h2>
+<p>Prompt 本质是优化指令表达，让模型在一次或少数几次推理里更靠近目标。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-6" data-index="5" data-title="现在仍是基础能力" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>现在仍是基础能力<br>只是它更适合单轮、局部、可控任务，而不是长期代理。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-7" data-index="6" data-title="一个好的 prompt 是什么样的" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>一个好的 prompt 是什么样的</h3>
+<p>问题的核心是：<br><strong>在一个会自动补全、自动收敛、自动替你定义任务的系统里，怎样重新夺回问题定义权。</strong></p>
+<p>有些极简单、低风险、一次性的任务，根本不需要复杂 prompt。比如“把这段英文翻成中文”“列 10 个标题备选”。这种场景里，prompt 简短反而更好。因为任务空间本来就小，过度约束会让输出发僵，甚至增加噪音。</p>
+<p>一种 prompt 只是触发器。<br>比如“帮我总结这篇文章”。这种 prompt 能启动任务，但几乎没有控制力。模型会自己补全场景，自己猜重点，自己决定输出方式。很多时候看起来流畅，但其实问题定义权已经让出去了。</p>
+<p>另一种 prompt 是约束系统。<br>它不只说“做什么”，还规定“不要做什么”“遇到不确定怎么办”“输出按什么结构组织”“哪些判断必须标注成推断”。这种 prompt 不是为了让模型更会说，而是为了让它少乱说。</p>
+<p>好的 Prompt接近一种最小可运行的任务协议。<br>它能把四件事同时说清楚：现在要做什么、凭什么做、做到什么算好、做不到时怎么停。很多时候说清楚这些需要大量的文本。</p>
+<p>坏 prompt 有时候第一次看起来很惊艳，但一改就塌，因为底层任务定义不稳。</p>
+    </article>
+  </div>
+</section>
+<section class="slide has-table" id="slide-8" data-index="7" data-title="不同模型单次上下文的长度：" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>不同模型单次上下文的长度：</strong></p>
+<div class="table-wrap"><table><thead><tr><th>模型系列</th><th>常用模型</th><th>上下文长度（K）</th><th>约等于汉字</th><th>约等于英文单词</th></tr></thead><tbody>
+<tr><td>ChatGPT</td><td>GPT‑4o / 4o‑mini</td><td>128K</td><td>9.6 万字</td><td>9.6 万词</td></tr>
+<tr><td></td><td>GPT‑4 (32K)</td><td>32K</td><td>2.4 万字</td><td>2.4 万词</td></tr>
+<tr><td></td><td>GPT‑3.5‑turbo</td><td>16K</td><td>1.2 万字</td><td>1.2 万词</td></tr>
+<tr><td>Gemini</td><td>1.5 Pro / Flash</td><td>1000K</td><td>75 万字</td><td>75 万词</td></tr>
+<tr><td>DeepSeek</td><td>V3 / R1</td><td>128K</td><td>9.6 万字</td><td>9.6 万词</td></tr>
+<tr><td>Kimi</td><td>2.0</td><td>2000K</td><td>150 万字</td><td>150 万词</td></tr>
+<tr><td>GLM</td><td>GLM‑4</td><td>128K</td><td>9.6 万字</td><td>9.6 万词</td></tr>
+<tr><td>MiniMax</td><td>Pro</td><td>128K</td><td>9.6 万字</td><td>9.6 万词</td></tr>
+</tbody></table></div>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-9" data-index="8" data-title="为什么不够了" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>为什么不够了</h3>
+<p>任务跨越多轮、多文件、多工具、多状态<br>上下文肥胖、上下文爆炸、上下文腐坏。</p>
+<p>这次推理前，哪些信息该进上下文，哪些不该进。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-10" data-index="9" data-title="Context engineering 上下文工程" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>Context engineering 上下文工程</h3>
+<p><strong>上下文工程是对整套可用 token 的选择：排序、压缩、刷新、继承与隔离</strong></p>
+<p>上下文工程包括系统指令、工具、MCP、外部数据、消息历史等整套上下文状态的编排</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-11" data-index="10" data-title="流式的对话窗口，是当前认知预算" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>流式的对话窗口，是当前认知预算<br>现在所谓“最优 token 选择”，本质上是先确保规则不丢，再确保当前操作对象不丢，再让检索把补充材料按需叫进来。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-12" data-index="11" data-title="**所谓“最优 token”：" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>**所谓“最优 token”：</h3>
+<p>现在几乎没有哪家真在做全局最优求解，主流做法仍然是启发式混合策略。**</p>
+<p>把上下文拆成几层：</p>
+<ul>
+<li>固定指令层、</li>
+<li>当前工作集层、</li>
+<li>可检索知识层、</li>
+<li>压缩后的轨迹层、</li>
+<li>长时记忆层，</li>
+</ul>
+<ul>
+<li>再用规则、检索、摘要、切任务、子代理、检查点去控制这些层怎么进入同一个窗口。</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide has-table" id="slide-13" data-index="12" data-title="目前各家 agent 工具的上下文工程的策略" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>目前各家 agent 工具的上下文工程的策略</h3>
+<div class="table-wrap"><table><thead><tr><th>工具</th><th>核心上下文管理模式（一句话定义）</th><th>核心架构 / 分层</th><th>关键机制</th></tr></thead><tbody>
+<tr><td><strong>Claude Code</strong></td><td>前置少量固定文档 + 运行时检索（混合路线）</td><td>系统提示缓存层 → 会话状态层 → 动态附件层</td><td>提示缓存、多级压缩、固定前缀 + 检索混合</td></tr>
+<tr><td><strong>Cursor</strong></td><td>重仓索引检索 + IDE 实时上下文</td><td>IDE 实时编辑层 → 索引 / RAG 层 → 代理执行层</td><td>Tree-sitter 解析、向量索引、两阶段语义检索</td></tr>
+<tr><td><strong>OpenAI/Codex</strong></td><td>对话上下文 + 会话状态 + 模组化（AGENTS.md/Skills）</td><td>系统指令 → AGENTS.md → Skills → 会话历史 → 文件快照</td><td>自动压缩、AGENTS.md 分级覆盖、Skills 模块化</td></tr>
+<tr><td><strong>Antigravity</strong></td><td>工作区中心 + 持续记忆 + 语义检索 + 计划工件（代理模型）</td><td>Knowledge Items → Skills → Artifacts → 本地 RAG</td><td>知识提炼、规划编号、本地知识图谱检索</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td><strong>Cherry Studio</strong></td><td>会话中心 + 外挂检索 / 工具（拼接模型）</td><td>会话上下文（对话历史）→ 持久记忆层（SQLite + 向量）→ 外挂 MCP / 检索层</td><td>混合向量 + 关键词检索、会话分组、MCP 工具接入</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td><strong>OpenClaw</strong></td><td>分层记忆引擎 + 状态外化 + 可插拔上下文组装（Agent 原生框架）</td><td>热层 (工作记忆) → 温层 (摘要 / Compaction) → 冷层 (向量检索 / Memory Flush) → 持久化文件 (soul.md/memory.md)</td><td>Compaction 智能压缩、Memory Flush 状态外化、Context Pruning、可插拔 ContextEngine、soul.md 系统人格固化</td></tr>
+</tbody></table></div>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-14" data-index="13" data-title="主流工具都会至少保留" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>主流工具都会至少保留<br>一层“持久指令层”。<br>第二层通常是“确定性工作集”。<br>第三层是检索层。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-15" data-index="14" data-title="上下文工程：" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>上下文工程：</h3>
+<p><strong>排序、压缩、刷新、继承与隔离</strong></p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-16" data-index="15" data-title="排序 ：同样进入窗口，先后顺序怎么摆" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>排序 ：同样进入窗口，先后顺序怎么摆</h4>
+<p>实际排序大致长这样：<br><strong>系统/企业约束 → 用户或团队级规则 → 项目规则 → 当前任务说明 → 用户显式 pin / @mention 的工作集 → 检索回来的代码片段/文档 → 最近几轮轨迹 → 压缩摘要或记忆条目</strong>。<br>原因不复杂。越往前的内容，越像“约束”；越往后的内容，越像“证据”或“局部状态”。如果把证据排在约束前面，模型就更容易被局部材料带偏。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-17" data-index="16" data-title="压缩 ：窗口快满了，哪些东西能压，哪些不能压" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>压缩 ：窗口快满了，哪些东西能压，哪些不能压</h4>
+<p>不是“摘要一遍就行”。<br>OpenAI 已经把 compaction 做成显式能力。可以通过一个参数去调整比例。<br>Anthropic 把长时记忆与当前窗口分离得更彻底。有一个 memory tool，把学到的上下文存到一个目录里，然后按照需要去提取。</p>
+<p>验收标准、权限边界、术语边界、停机条件，这些不是“可被概括的背景”，而是高优先级约束。<br>该压的是中间讨论、尝试路径、临时观察、局部日志。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-18" data-index="17" data-title="刷新 ：什么时候更新上下文，不让旧状态变臭" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>刷新 ：什么时候更新上下文，不让旧状态变臭</h4>
+<p>缓存是复用策略<br>缓存优化的是算力与延迟，不自动解决“现在该不该继续继承这段历史”。</p>
+<p>真正的刷新，仍然要靠切任务、重新检索、重建工作集、或重新压缩。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-19" data-index="18" data-title="继承 ：哪些东西应该跨任务延续" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>继承 ：哪些东西应该跨任务延续</h4>
+<p>最稳的继承对象通常不是“上一轮说过的话”，而是这几类：</p>
+<ul>
+<li>项目规范</li>
+<li>术语边界</li>
+<li>工具和命令约定</li>
+<li>架构决策</li>
+<li>反复出现的验收标准</li>
+<li>触发式知识条目</li>
+</ul>
+<p>这些都更像制度，不像现场轨迹。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-20" data-index="19" data-title="隔离：怎么避免旧任务污染新任务" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>隔离：怎么避免旧任务污染新任务</h4>
+<p>这个问题比继承更关键。没有隔离，继承会变成污染。<br>隔离发生在三处：</p>
+<ul>
+<li>研究和执行之间</li>
+<li>有风险的自动化动作之前</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-21" data-index="20" data-title="连续任务" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>连续任务</h3>
+<p>不能把“继续聊天”当成唯一续接方式。<br><strong>连续任务</strong>不是“把上一轮聊天尽量多地带到下一轮”。<br>更接近：</p>
+<ol>
+<li>把不会频繁变化但必须服从的东西，放到稳定层。</li>
+<li>把这一步真正要操作的材料，放到工作集层。</li>
+<li>把历史轨迹压成可续接的摘要，而不是全文继承。</li>
+<li>把旧任务污染新任务的风险，交给隔离机制处理。</li>
+</ol>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-22" data-index="21" data-title="Prompt → Context 的跃迁，不是术语升级，而是任务形态" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>Prompt → Context 的跃迁，不是术语升级，而是任务形态升级</p>
+<p><strong>把认知现场带过来了</strong>。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-23" data-index="22" data-title="它为什么会让 AI 变好，也为什么会让 AI 变怪" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>它为什么会让 AI 变好，也为什么会让 AI 变怪</h3>
+<ul>
+<li>变好的原因：减少用户显式说明成本，积累长期任务状态</li>
+<li>变怪的原因：错误上下文、过期记忆、脏历史、错误继承、隐式假设都会持续污染后续行为</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-24" data-index="23" data-title="真正的失效点，不在 token 不够，而在边界错位" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>真正的失效点，不在 token 不够，而在边界错位<br><strong>失效一：把规范和轨迹混成一层。</strong><br>结果是每次摘要都会顺手改写规范，慢慢把“必须遵守”压成“可讨论背景”。<br><strong>失效二：把继承默认开太大。</strong><br>自动 memories、宽泛 knowledge、过胖 rules、永不清空的 pinned context，都会让旧任务幽灵一样附在新任务上。公开文档里，各家都在补 memory、rules、knowledge、pinning，但这恰恰意味着污染风险是真实存在的。<br><strong>失效三：把检索当理解。</strong><br>Cursor、Windsurf 都在强化索引与搜索，但“能找到相关片段”不等于“形成了正确的当前工作集”。检索强，只是减少盲找，不自动形成判断。<br><strong>失效四：把缓存当记忆。</strong><br>prompt caching 优化的是重复前缀的成本和延迟，不负责区分“该留下什么”。这一步跳快了，就会把速度误当成持续智能<br><strong>失效五：没有切任务协议。</strong><br>OpenAI 之所以把 compaction 做成原语，也是承认长轨迹直接拖着走会坏。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-25" data-index="24" data-title="Prompt 解决的是“你这次怎么说”" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>Prompt 解决的是“你这次怎么说”</h3>
+<h3>Context 解决的是“系统此刻让模型看见什么”</h3>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-26" data-index="25" data-title="连续 agent 的上下文，分五层结构：" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>连续 agent 的上下文，分五层结构：</h3>
+<ol>
+<li><strong>宪法层</strong>  （默认继承）</li>
+<p>规则、权限、禁区、验收标准。<br>不该被摘要改写，只能显式修改。</p>
+<li><strong>工作台层</strong>  （默认重建）</li>
+<p>当前 ticket 的文件、日志、diff、选中的文档。<br>这是最该进窗口的部分。</p>
+<li><strong>档案馆层</strong>  （默认检索）</li>
+<p>索引后的代码库、文档库、知识库。<br>默认不进窗口，只在需要时检索。</p>
+<li><strong>笔记层</strong>  （默认压缩）</li>
+<p>对已完成阶段的压缩摘要、handoff 交接、decision log。<br>用于续接，不用于替代规范。</p>
+<li><strong>隔离层</strong>  （任务边界默认隔离）</li>
+<p>子代理、新任务、检查点、回滚、权限限制。<br>它不是信息层，而是防串味装置。</p>
+</ol>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-27" data-index="26" data-title="了解这些知识会过期么 ？" data-chapter="Prompt engineering 提示词工程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>Prompt engineering 提示词工程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>了解这些知识会过期么 ？</h3>
+<p><strong>高波动：信息</strong><br>具体产品名、命名、功能入口、UI 交互、上下文上限、是否支持某种 hooks / subagents / cloud agent。<br>这个层会继续变。</p>
+<p><strong>中波动：方法</strong><br>Rules / AGENTS.md / Skills / Memory / RAG 检索 / Compaction / Checkpoints / Handoff。<br>这些组合方式会调整，但大框架大概率还会继续存在。</p>
+<p><strong>低波动：理解</strong><br>连续 agent 的关键从来不是“上下文越多越好”，而是<strong>控制文档、当前工作集、长时记忆、摘要轨迹、任务边界</strong>这五件东西必须拆开管理。<br>这个判断会比工具名寿命长得多。</p>
+    </article>
+  </div>
+</section>
+<section class="slide has-callout" id="slide-28" data-index="27" data-title="模块 2｜为什么 AI 有时像助手，有时像智识迷宫" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</h2>
+<div class="center-callout"><strong>AI 的失效来自三类错位：</strong><br><strong>问题定义错位</strong><br><strong>上下文错位</strong><br><strong>权限错位</strong></div>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-29" data-index="28" data-title="1. 问题定义错位" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>1. <strong>问题定义错位</strong></h4>
+<p>以为自己在求答案，实际需要的是拆问题。<br>实际任务没被定义清楚。于是 AI 只好代替你定义问题。</p>
+<ul>
+<li>以为自己缺答案，实际上缺的是问题拆解</li>
+<li>以为自己缺知识，实际上缺的是判断标准</li>
+<li>以为自己缺执行方案，实际上缺的是边界条件</li>
+<li>以为自己要一个最优解，实际上只需要几个可比较候选</li>
+<li>以为自己在做研究，实际上已经在做决策了</li>
+<li>以为自己在发散，实际上内心已经偷偷想收缩了</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-30" data-index="29" data-title="一旦任务类型认错，AI 就会非常“积极”地帮你补。" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>一旦任务类型认错，AI 就会非常“积极”地帮你补。</p>
+<ul>
+<li>把模糊问题翻译成它熟悉的问题</li>
+<li>把开放任务压缩成可回答任务</li>
+<li>把思辨问题改写成行动清单</li>
+</ul>
+<p>得到的回答往往不是“错”，而是<strong>答对了一个并不是你真正要问的问题</strong>。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-31" data-index="30" data-title="- AI 很快给出一个工整答案，但你心里更空了" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <ul>
+<li>AI 很快给出一个工整答案，但你心里更空了</li>
+<li>你感觉“它理解我了”，但你自己并没有更理解问题</li>
+<li>你开始围绕它的结构继续聊，而不是围绕自己的问题继续长</li>
+<li>你在修改它的措辞，而不是修改问题本身</li>
+<li>你得到的是组织良好的文本，不是认知上的推进</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-32" data-index="31" data-title="不是它胡说八道，而是它说得太像一回事了。但偷偷的改了问题。" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>不是它胡说八道，而是它说得太像一回事了。但偷偷的改了问题。<br>大语言模型本质上是在已有语言分布上，生成“在这个上下文里最像合理延续”的内容。它非常擅长把不完整输入补全成完整结构。<br>模型天然倾向于把这个未完成的问题“整理”成某种可答形态。</p>
+<p>对系统而言，这是能力；<br>对人而言，这也可能是替换。</p>
+<p>只要能形成一个像样的回答路径，它就会沿那条路径走下去。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-33" data-index="32" data-title="- 写作命名、理论抽象、选题判断" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <ul>
+<li>写作命名、理论抽象、选题判断</li>
+<li>职业决策、关系判断、人生取舍</li>
+<li>复杂项目规划</li>
+<li>任何“问题本身还在生长”的任务</li>
+</ul>
+<p>因为这些任务的真正价值，不在于最快给出答案，而在于保留问题的可演化性。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-34" data-index="33" data-title="2. 上下文错位" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>2. <strong>上下文错位</strong></h4>
+<p>给了太多无关信息，或者继承了错误历史<br>系统接收到的，不是“当前真正相关的信息”，而是“看起来很多但实际噪音很高的 材料”。<br>于是 AI 会基于错误材料生成看似连贯的推理。</p>
+<p>进入模型工作记忆的材料，和当前任务的相关性结构不对</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-35" data-index="34" data-title="- 给了大量背景，但没给当前最关键的约束" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <ul>
+<li>给了大量背景，但没给当前最关键的约束</li>
+<li>继承了很长的历史对话，其中混入旧判断、旧目标、旧误解</li>
+<li>为了“让 AI 更懂我”，灌入太多个人风格或项目信息，结果把局部任务淹没了</li>
+<li>当前问题明明需要新鲜事实，却继承了过时语境</li>
+<li>你想问 A，它却总在 B 的轨道上答</li>
+</ul>
+<p>于是模型并不是在“胡乱输出”，而是在<strong>忠实响应一个已经被污染的工作台</strong>。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-36" data-index="35" data-title="LLM 并没有稳定、完整的人类式长期记忆。它主要依赖当前窗口中的上下" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>LLM 并没有稳定、完整的人类式长期记忆。它主要依赖当前窗口中的上下文来决定如何生成。系统对哪些信息被放进窗口、怎样排序、是否压缩、是否继承，极其敏感。</p>
+<p>“模型能力 × 当前上下文结构”的乘积。<br>模型再强，如果拿到的是错位上下文，它也会在错误地基上盖很漂亮的楼。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-37" data-index="36" data-title="上下文错位为什么这么隐蔽" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>上下文错位为什么这么隐蔽</h4>
+<p><strong>因为它不像事实错误那样容易暴露。</strong></p>
+<ul>
+<li>回答越来越像你，但越来越没用</li>
+<li>结构越来越完整，但越来越偏题</li>
+<li>它开始忠实延续一个旧前提，而你已经忘了那个前提是怎么来的</li>
+<li>你觉得它“记得很多”，其实它也记住了很多不该继承的东西</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-38" data-index="37" data-title="3. 权限错位" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>3. <strong>权限错位</strong></h4>
+<p>本该由人保留的判断、取舍、停止条件，被提前交给系统。<br>于是 AI 不只是提供候选，而是在事实层面替你收缩问题。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-39" data-index="38" data-title="先让 AI 给结构、给排序、给建议，然后自己在它提供的收缩路径里做选" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>先让 AI 给结构、给排序、给建议，然后自己在它提供的收缩路径里做选择。</strong></p>
+<p>表面上判断权还在自己手里，实际上可选空间已经被系统预处理过了。</p>
+<p>这一步最危险的地方不在自动执行，而在<strong>自动合法化</strong>。</p>
+<p>系统给出一个足够工整、足够顺滑、足够像常识的方案后，人会天然降低对它的审查强度。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-40" data-index="39" data-title="- 没有认真定义问题，却开始比较方案" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <ul>
+<li>没有认真定义问题，却开始比较方案</li>
+<li>没有建立标准，却开始评分</li>
+<li>没有承担后果的准备，却开始执行建议</li>
+<li>没有确认现实约束，却把输出当成可落地方案</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-41" data-index="40" data-title="你看到它给的版本很顺，就开始围绕它改。" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>你看到它给的版本很顺，就开始围绕它改。<br>这时其实已经发生了一件事：<br><strong>主权开始从你的讲述判断，滑向模型生成的结构惯性。</strong></p>
+<p>你还在改，但改的是它的框架。<br>不是你自己的问题继续生长，而是你进入它给你的走廊。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-42" data-index="41" data-title="有三类任务，适合让 AI 来做：" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>有三类任务，适合让 AI 来做：</h3>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-43" data-index="42" data-title="1. 问题已经稳定的任务" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>1. 问题已经稳定的任务</h4>
+<p>比如：</p>
+<ul>
+<li>摘要</li>
+<li>改写</li>
+<li>格式整理</li>
+<li>初步分类</li>
+<li>模板化输出</li>
+<li>已知标准下的比较</li>
+</ul>
+<p>这里任务边界清楚，评价标准明确，AI 很容易起到压缩劳动的作用。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-44" data-index="43" data-title="2. 人已经掌握判断框架的任务" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>2. 人已经掌握判断框架的任务</h4>
+<p>你已经知道：</p>
+<ul>
+<li>自己在找什么</li>
+<li>哪些标准重要</li>
+<li>什么样的输出不能接受</li>
+<li>哪些地方必须人工复核</li>
+<p>这时 AI 的作用更像一个外脑助手，而不是问题塑形器。</p>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-45" data-index="44" data-title="3. 错误代价低、可逆性高的任务" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>3. 错误代价低、可逆性高的任务</h4>
+<ul>
+<li>头脑风暴</li>
+<li>多个标题候选</li>
+<li>初步文案草稿</li>
+<li>风格探索</li>
+<li>结构候选</li>
+</ul>
+<p>这里就算模型偏了，也容易拉回来。  这些任务不会伤人，反而有启发性。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-46" data-index="45" data-title="OpenClaw 本质上就是把这三种错位全部放大了。" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>OpenClaw 本质上就是把这三种错位全部放大了。</p>
+<p>OpenClaw 把错位从一次性回答失误，升级成可继承、可自动触发、可执行的系统偏差。<br>在普通聊天框里，错位通常只坏掉一轮回答；<br>在 OpenClaw 里，错误的问题定义会进入 AGENTS.md、SKILL.md、heartbeat 或 cron，<br>错误上下文会被 对话脚本、压缩摘要、记忆刷新  等过程持久化，<br>错误权限会通过 exec、browser、message、文件读写等工具变成真实动作。<br>于是问题不再只是“答错了”，而是“系统开始按错的理解持续运行”。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-47" data-index="46" data-title="更麻烦的地方在于它会稳定地沿着错的问题定义变得越来越勤奋。" data-chapter="模块 2｜为什么 AI 有时像助手，有时像智识迷宫">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 2｜为什么 AI 有时像助手，有时像智识迷宫</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>更麻烦的地方在于它会稳定地沿着错的问题定义变得越来越勤奋。</p>
+<p>比如一个人表面上说“帮我整理新闻”，实际需要的可能是“建立一个只保留对我有用信号的过滤框架”。<br>前者会把系统导向抓取、汇总、发送；后者才会逼它先定义领域、噪音阈值、可信源、时间窗、例外条件。</p>
+<p>OpenClaw 对前一种表述特别敏感，因为它擅长把模糊目标直接挂上自动化。<br>先把“何时不要继续自动完成”写进去，而不是先把“如何高效完成”写进去。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-48" data-index="47" data-title="模块 3｜用 OpenClaw 拆开一个代理系统" data-chapter="模块 3｜用 OpenClaw 拆开一个代理系统">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 3｜用 OpenClaw 拆开一个代理系统</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>模块 3｜用 OpenClaw 拆开一个代理系统</h2>
+<ul>
+<li><strong>它不是更聪明的模型，而是更完整的代理壳</strong></li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-49" data-index="48" data-title="大家对 openclaw 的了解有多少？" data-chapter="模块 3｜用 OpenClaw 拆开一个代理系统">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 3｜用 OpenClaw 拆开一个代理系统</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>大家对 openclaw 的了解有多少？</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-50" data-index="49" data-title="[[OpenClaw Soul]] MD文件翻译" data-chapter="模块 3｜用 OpenClaw 拆开一个代理系统">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 3｜用 OpenClaw 拆开一个代理系统</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><span class="wiki-link">OpenClaw Soul</span> MD文件翻译</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-51" data-index="50" data-title="OpenClaw 运行在自己的设备上，能接入多种消息渠道、工具和本地" data-chapter="模块 3｜用 OpenClaw 拆开一个代理系统">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 3｜用 OpenClaw 拆开一个代理系统</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>OpenClaw 运行在自己的设备上，能接入多种消息渠道、工具和本地环境，<br>重点是“<strong>一个模型如何被嵌入连续行动系统里</strong>” 。</p>
+<p>OpenClaw 为什么有时好用得惊人，因为它能把上下文、工具、记忆接成一个连续系统。<br>OpenClaw 为什么也会失效得很离谱？记忆错、检索错、上下文腐坏、权限过大</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-52" data-index="51" data-title="OpenClaw 的安装" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>OpenClaw 的安装</h2>
+<h3>安全和注意事项：</h3>
+<p>在电脑里安装 openclaw 相当于让一个陌生人来操作你的电脑。看你要给他什么权限。<br>最好的是安装在全新的电脑上。<br>其次是在主力电脑新建一个普通账户<br>在主力电脑上安装，也可以设置权限。<br>云主机，系统/软件/资产传输<br>云主机，需要付费，绑定的 coding plan</p>
+<h3>Openclaw 的成本：</h3>
+<p>长期开机的电费/云主机的费用<br>需要 API Key（基础使用/高强度使用）<br>贵的模型和便宜的模型的差别？<br>我怎么安装的，为什么这样装</p>
+<p>思考自己的任务成本合算吗？</p>
+<h3>Openclaw 的画像：</h3>
+<p>个人助理<br>给他一个电脑让他干一些活<br>操作软件，使用云服务。<br>你通过聊天软件下达任务<br>他现在 IT 方面比较强，（做网站、写程序）很多云软件都会用，很多厂商也愿意教他。但他比较油，很会写 KPI。努力倒是很努力，但是花钱啊。</p>
+<h3>安装</h3>
+<p>前提：VPN 环境</p>
+<p>Cherry studio<br>辅助管理：Codex、Opencode</p>
+<p>不同的 API 智力水平不一样。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-53" data-index="52" data-title="常见问题" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>常见问题</h3>
+<h4><strong>Workspace 到底是什么</strong></h4>
+<p>Workspace是 agent 的外部化状态空间。</p>
+<p>储存上下文信息的核心资产</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-54" data-index="53" data-title="核心资产" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h5>核心资产</h5>
+<p>OpenClaw 真正的核心资产不是“聊天记录本身”，而是那组能持续重建代理身份、边界、记忆与工作方式的 Markdown 文件。聊天是流，文件才是形。文档里甚至直接把 workspace 视为 agent 的“home”与“memory”，并建议把 <code>AGENTS.md</code> 和记忆文件放进私有 Git 备份。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-55" data-index="54" data-title="第一层，代理宪法：AGENTS.md、SOUL.md、USER.md" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第一层，代理宪法：<code>AGENTS.md</code>、<code>SOUL.md</code>、<code>USER.md</code>。<br>第二层，长期记忆：<code>MEMORY.md</code>。<br>第三层，过程记忆：<code>memory/YYYY-MM-DD.md</code>。<br>第四层，用户成果：workspace 中由你和 agent 共同写出来的项目文件、skills、脚本、文稿、导出物。</p>
+<p><code>/workspace</code> 里只放三类东西：</p>
+<p>一类是 bootstrap/identity/memory 的 <code>.md</code> 主文件；<br>一类是 <code>memory/</code> 这种过程记忆；<br>一类是 <code>projects/</code>、<code>skills/</code>、<code>exports/</code> 这种用户成果。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-56" data-index="55" data-title="OpenClaw 真正像 agent，不是因为它“更会聊天”，而是因" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>OpenClaw 真正像 agent，不是因为它“更会聊天”，而是因为它把聊天外部化了。<br>人格在 <code>SOUL.md</code>，<br>规则在 <code>AGENTS.md</code>，<br>工具经验在 <code>TOOLS.md</code>，<br>用户画像在 <code>USER.md</code>，<br>长期信息在 <code>MEMORY.md</code>，<br>会话史在 JSONL transcript，<br>工具能力在 typed tools，<br>工具使用习惯在 skills。</p>
+<p>也就是说，它把原本散落在一次次提示词里的东西，拆成了几类可持久化对象。</p>
+<p>AGENTS.md 管行为，SOUL.md 管气质，USER.md 管对象，IDENTITY.md 管自我识别，TOOLS.md 管环境映射，HEARTBEAT.md 管周期性注意力，BOOTSTRAP.md 管首次成形，BOOT.md 管重启动作，MEMORY.md 和 daily memory 管连续性。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-57" data-index="56" data-title="AGENTS.md 是宪法层，也是最像“操作系统内核说明”的那一个。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>AGENTS.md</code> 是宪法层，也是最像“操作系统内核说明”的那一个。原文不是轻薄的几条原则，而是一整套会话启动顺序、记忆写入规则、红线、群聊发言策略、平台格式要求、heartbeat 与 cron 的分工，甚至还写了反应 emoji 的使用方式。它要求 session startup 先读 <code>SOUL.md</code>、<code>USER.md</code>、最近两天的 daily memory，在 main session 里还要读 <code>MEMORY.md</code>。</p>
+<p>它把“行为约束”从人格文风里剥出来了，这一步很对。很多 agent 系统把所有要求塞进一个巨型 prompt，最后人格、权限、流程、记忆全缠在一起。OpenClaw 至少意识到了：<strong>行为规约应该有一层单独文件</strong>。这会让后续迭代有地方落。</p>
+<p>但麻烦也在这里。这个文件现在已经不只是宪法，它开始兼任群聊礼仪手册、heartbeat 策略说明、平台输出规范，甚至一部分 social behavior 脚本。文件太肥，职责开始溢出。再加上官方 issue 已经出现过模板标题与 compaction 恢复代码不一致的问题，这说明它不只是“长”，而是<strong>长到足以和运行时耦合出故障</strong>。从系统设计上说，它现在有点像把 constitution、playbook 和 runtime hints 塞进了同一个仓库。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-58" data-index="57" data-title="SOUL.md 是人格层。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>SOUL.md</code> 是人格层。<br>不要“表演性地帮助”，不要一上来套客服腔；可以有偏好，可以不同意；外部动作要谨慎，内部整理和学习可以大胆；要记得自己是在接触一个人的生活。<br>它还明确把这些 workspace files 称作记忆，并允许 agent 演化自己的 soul。</p>
+<p><code>SOUL.md</code> 的问题也很清楚。它把人格和价值倾向、边界意识、行动风格放在一起，边界并不完全清晰。官方已经有人提出要单独增加 <code>VALUE.md</code>，理由正是 <code>SOUL.md</code> 现在一边承载 persona，一边又被迫承担更稳定的价值判断与长期取舍，这两者相关，但不一样。这个提议本身就反证了当前分层还没完全稳。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-59" data-index="58" data-title="USER.md 是用户模型层。官方模板非常克制，只让你记录名字、称呼" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>USER.md</code> 是用户模型层。官方模板非常克制，只让你记录名字、称呼、时区、注记，然后特别加一句，不是在建 个人档案。<br>它承认 agent 需要“知道你是谁”，但又试图防止它把用户建模变成信息囤积。<br>它的方向对，但模板过轻。官方把这些更多留给后续慢慢长出来，这很克制。轻的好处是隐私压力小、启动快；轻的坏处是，真正有用的用户模型往往不是“姓名时区”，而是工作风格、风险偏好、沟通容忍度、哪些事一定先问、哪些事可以先做。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-60" data-index="59" data-title="IDENTITY.md 是自我识别层。它记录 name、creatu" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>IDENTITY.md</code> 是自我识别层。它记录 name、creature、vibe、emoji、avatar。这个文件看起来最“戏剧化”，最像角色设定卡。<br><strong>它把“我是哪个 agent”显式化</strong><br>多渠道、多 agent、多 workspace 时，没有 identity 层，很容易出现声线漂移、角色混叠、输出风格失真。<br>尤其在 OpenClaw 这种明显鼓励多渠道存在感的系统里，名字、emoji、avatar 其实是运行时一致性的一部分。<br>它很容易把用户往“把 agent 当人格实体养成”那个方向推。对 onboarding 这很有效，对系统边界未必总是好事。特别是当 <code>BOOTSTRAP.md</code> 也在鼓励你“figure out who you are”时，这种叙事会增强亲密感，但也会掩盖一个事实：底层仍然是提示注入、文件读写、工具调用与会话状态恢复。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-61" data-index="60" data-title="TOOLS.md 是环境层。官方说得很明确：skills 定义工具怎" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>TOOLS.md</code> 是环境层。官方说得很明确：skills 定义工具怎么工作，这个文件只放你本地环境特有的东西，比如摄像头名字、SSH 主机、TTS 偏好、设备昵称。并且专门解释了为什么要把它跟 skills 分开，因为 skills 是共享的，你的本地基础设施不是。<br>这个设计我给很高评价。这里真正要分开的，不是“工具说明”和“工具使用”，而是<strong>通用能力</strong>与<strong>本地映射表</strong>。这一层拆得对，才有分享 skill 而不泄漏私有基础设施的可能。它几乎就是 agent 时代的 <code>.env.example</code> 加操作注释，只不过用 Markdown 写。<br>当然，风险也非常直接。因为一旦用户把真实 SSH 入口、内网主机别名、设备位置、甚至语音播报目标全都写进去，这个文件就会变成你私有环境的索引。官方也反复提醒 workspace 应该私有、不要提交 secrets，真正的配置、认证、sessions 都在 <code>~/.openclaw/</code> 下，不该进 repo。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-62" data-index="61" data-title="HEARTBEAT.md 是节律层。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>HEARTBEAT.md</code> 是节律层。<br>官方模板极短，甚至带一点反常识：把它留空或只放注释，就可以跳过 heartbeat API calls；真的需要周期检查时，再把任务写进去，而且要尽量短，避免 token burn。与此同时，配置参考又提供了 heartbeat 的 <code>lightContext</code> 模式，开启后 heartbeat 运行只保留 <code>HEARTBEAT.md</code> 这一份 bootstrap context。</p>
+<p>这个设计好在它承认“主动性”是有成本的。很多 agent 系统一说自动巡检，就默认主动越多越好。OpenClaw 至少在模板层说了一句：默认不做事也是一种设计。保持空文件，等于明确告诉系统，此刻不需要周期性注意力。</p>
+<p>但这里也有一个错位。虽然官方把 <code>HEARTBEAT.md</code> 设计得很小，真正大量的 heartbeat 行为规范其实塞在 <code>AGENTS.md</code> 里了，包括何时说话、何时安静、检查哪些东西、如何维护记忆。这说明它还没有把“周期任务清单”和“周期行为哲学”彻底分开。会载入大量上下文。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-63" data-index="62" data-title="BOOTSTRAP.md 是出生层，也是一种 onboarding " data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>BOOTSTRAP.md</code> 是出生层，也是一种 onboarding ritual。原文不是硬配置，而是引导 agent 第一次上线时去和用户一起确认名字、性质、vibe、emoji，再把结果写回 <code>IDENTITY.md</code> 和 <code>USER.md</code>，顺便讨论 <code>SOUL.md</code> 的边界与偏好，最后删掉自己。</p>
+<p>这个文件写得很聪明。它不是让用户面对一堆空模板发愣，而是把“初始化配置”戏剧化成一次对话。对初学者和非工程用户，这个门槛下降非常明显。</p>
+<p>但它也有实打实的问题。官方 issue 里已经出现过 <code>BOOTSTRAP.md</code> 在不该重跑时导致 identity 被冲掉的情况。也就是说，这个文件一旦残留、或者系统对“是否首次运行”的判断有偏差，出生脚本就会重新闯进来，把已经稳定的 agent 又拉回婴儿期。这个风险不是哲学问题，是运行时问题。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-64" data-index="63" data-title="BOOT.md 则不是出生层，而是重启层。官方模板很短，只说一件事：" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>BOOT.md</code> 则不是出生层，而是重启层。官方模板很短，只说一件事：网关启动时如果启用了内部 hooks，就按这里的短指令做；若任务要发消息，用 message tool 然后回 <code>NO_REPLY</code>。</p>
+<p>这两个文件最容易被混淆。一个是“你是谁”的首次建立，一个是“系统重启以后你要顺手检查什么”。名字都带 boot，但语义完全不同。这里真正该防的是命名错位。<code>BOOTSTRAP.md</code> 偏身份建构，<code>BOOT.md</code> 偏启动动作。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-65" data-index="64" data-title="Memory.md" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><code>Memory.md</code><br>OpenClaw 的记忆就是写进 workspace 的纯 Markdown，没有隐藏状态。<br>长期记忆是 <code>MEMORY.md</code>，日记式的短期连续性是 <code>memory/YYYY-MM-DD.md</code>，另外还有实验性的 <code>DREAMS.md</code>。<br>它还提供 <code>memory_search</code>、<code>memory_get</code>，并在 compaction 前自动做一次 silent memory flush。</p>
+<p>很多人以为 agent 的“记忆”是一种神秘黑箱。OpenClaw 把这件事暴露得非常朴素：记忆不是神经元里长出来的，是写盘。你没写下来的，它就不稳定；你写错地方的，它就会在错误层级稳定下来。<br>官方 issue 里已经有人指出 <code>MEMORY.md</code> 会整份进入 system prompt，造成 token 浪费；也有人指出它会在接近 20 K 字符时被静默截断；还有人提出需要 <code>STATE.md</code>、<code>WORKING.md</code>、<code>VALUE.md</code> 这类额外文件，来承接那些既不像长期记忆、又不该塞回 AGENTS 或 SOUL 的内容。这个现象说明：<strong>OpenClaw 已经意识到单纯的 long-term memory 不够了，但更细的分层还在长。</strong></p>
+<p>典型错误</p>
+<ul>
+<li>记忆写错了</li>
+<li>记忆写对了，但检索错了</li>
+<li>上下文太脏，继承了不该继承的历史</li>
+<li>工具权限太大，但验收机制太弱</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-66" data-index="65" data-title="如何备份" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>如何备份</h3>
+<p>优先保存“能重建代理”的 Markdown（一旦丢失，就不再是同一个 OpenClaw）；其次保存“能重建工作”的项目文件；需要审计时再单独保存 sessions；不要把凭证、配置和索引混进主仓库。这个判断与 OpenClaw 官方推荐一致：把 workspace 当成 private memory，用私有 Git 仓库备份；同时不要把 <code>~/.openclaw/</code> 下的配置、认证资料、凭证、原始聊天转储直接提交进去。</p>
+<p>把历史会话另做一层“冷备份”。也就是不放进主 Git 仓库，但定期压缩保存 <code>~/.openclaw/agents/&lt;agentId&gt;/sessions/</code>。因为这些文件价值在审计和回溯，不在日常协作。官方也明确说 sessions 与 config 要单独复制。</p>
+<p><code>~/.openclaw/</code> 只当作系统私有区：配置、授权、session、索引，全都不碰主仓库。<br>而 session transcript 不是前四层内部的“同类项”，它更像黑匣子。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-67" data-index="66" data-title="在 Openclaw 里一条消息发出，发生了什么？" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>在 Openclaw 里一条消息发出，发生了什么？</h3>
+<p>Openclaw的上下文引擎是如何取舍如何运作的？</p>
+<p>**在 OpenClaw 里，一条消息不是“喂给模型一句话然后等回答”。<br>它更像是：触发一次绑定在某个 session 上的 agent loop。这个 loop 会先决定这条消息属于谁、落到哪个会话、带上哪些上下文、是否调用工具、结果怎么写回、哪些内容要留到下次。**</p>
+<p>OpenClaw 官方把这条主链路直接定义为：接收 → 上下文组装 → 模型推理 → 工具执行 → 流式回复 → 持久化。并且它强调，这是一条“authoritative path”，也就是系统真正把消息变成动作和答复的主路径。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-68" data-index="67" data-title="第一步，不是理解消息，而是先给消息找“归属”。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第一步，不是理解消息，而是先给消息找“归属”。</strong><br>OpenClaw 会先根据<em>来源</em>把消息路由到一个 <em>session</em>。DM 默认共享会话，群聊按群隔离，房间/频道按 room 隔离，cron 每次新会话，webhook 也隔离。对 channel plugin 来说，平台侧的 conversation id、thread id、parent fallback 这些映射，不是模型临场猜出来的，而是插件负责解析，OpenClaw 核心只保留统一的 message 工具和外层 dispatch。也就是说，消息先被变成“某个会话里的一个事件”，不是先变成“一个问题”。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-69" data-index="68" data-title="第二步，系统会先处理并发和秩序，而不是立刻思考。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第二步，系统会先处理并发和秩序，而不是立刻思考。</strong><br>OpenClaw 的 agent loop 会按 session 串行化运行，同一个 session 同时只允许一条 run 真正落地，这样可以避免工具调用和会话写入互相踩踏。若当前已有运行中的任务，新消息会按 queue mode 处理，比如 steer、followup、collect。默认是 collect，也就是把一批消息并成一个后续回合，而不是每来一条都立刻生成一次。这里已经能看出一点原理：OpenClaw 首先是一个会话调度系统，然后才是推理系统。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-70" data-index="69" data-title="第三步，才轮到 session 和 workspace 的准备。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第三步，才轮到 session 和 workspace 的准备。</strong><br>在真正送给模型前，OpenClaw 会解析 workspace，必要时创建它；若启用了 sandbox，某些运行还会被重定向到沙盒 workspace。随后它会加载 skills snapshot，解析 bootstrap/context files，并在流式输出前拿到 session write lock，打开 SessionManager。session transcript 默认存在 <code>~/.openclaw/agents/&lt;agentId&gt;/sessions/&lt;SessionId&gt;.jsonl</code>，而 workspace 则是另一个东西，默认在 <code>~/.openclaw/workspace</code>。这两个地方不要混淆：<strong>session 更像对话历史与运行记录，workspace 更像 agent 的长期操作环境与可注入上下文。</strong></p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-71" data-index="70" data-title="第四步，真正关键的地方来了：上下文装配。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第四步，真正关键的地方来了：上下文装配。</strong><br>OpenClaw 不是只把聊天历史塞进模型。它会构建 system prompt，把 base prompt、skills prompt、bootstrap context、per-run overrides 组合起来，并且受模型 token 限制和 compaction reserve 约束。文档里还明确说，workspace 里的 <code>AGENTS.md</code>、<code>SOUL.md</code>、<code>TOOLS.md</code>、<code>IDENTITY.md</code>、<code>USER.md</code>、<code>HEARTBEAT.md</code>、<code>BOOTSTRAP.md</code>，以及存在时的 <code>MEMORY.md</code>，都会作为 Project Context 注入；大文件会被裁切并打上标记。这里最重要的一层理解是：<strong>OpenClaw 的“人格”“规则”“偏好”“工具习惯”不是散落在聊天里，而是被文件化后反复注入。</strong></p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-72" data-index="71" data-title="第五步，skills 不是装饰，而是“让模型会用工具”的行为说明。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第五步，skills 不是装饰，而是“让模型会用工具”的行为说明。</strong><br>官方把 OpenClaw 分成三层：tools 是 agent 真正调用的函数，skills 是告诉 agent 何时以及如何调用这些工具的 markdown 指南，plugins 则把 channel、tool、skill、model provider 等能力打成包。对模型来说，工具以结构化函数定义的形式出现；对行为来说，skills 以 prompt 中的约束和操作说明出现。所以 OpenClaw 的“智能感”并不只来自模型本体，而是来自“模型 + 可调用函数 + 可注入操作规范”的组合。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-73" data-index="72" data-title="第六步，模型开始运行，但它不是孤立生成文本，而是在 loop 里边想" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第六步，模型开始运行，但它不是孤立生成文本，而是在 loop 里边想边调用。</strong><br>Agent loop 文档写得很直接：它会建立 pi session，订阅事件流，把 assistant delta、tool event、lifecycle event 桥接回 OpenClaw 的 agent stream。也就是说，你看到的不是一个整块答案突然落下，而是一个带生命周期的流式过程。工具调用前后还可以被 hook 拦截，比如 <code>before_prompt_build</code>、<code>before_agent_reply</code>、<code>before_tool_call</code>、<code>after_tool_call</code>、<code>tool_result_persist</code>。所以一条消息背后，不是一次单纯 completion，而是一条可插桩、可中断、可改写的运行管线。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-74" data-index="73" data-title="第七步，记忆不是“模型脑子里还记得”，而是“有没有写回磁盘”。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第七步，记忆不是“模型脑子里还记得”，而是“有没有写回磁盘”。</strong><br>OpenClaw 的 memory 文档说得非常硬：它通过往 agent workspace 写 Markdown 文件来记忆，<strong>没有 hidden state</strong>。长期记忆是 <code>MEMORY.md</code>，日记式上下文是 <code>memory/YYYY-MM-DD.md</code>，还有实验性的 <code>DREAMS.md</code>。<code>memory_search</code> 和 <code>memory_get</code> 负责查找和读取这些内容；内建 backend 默认是 SQLite，可做关键词、向量和混合检索。这里真正的结构是：<strong>对话历史、被注入的固定上下文、以及被显式写入/检索的记忆，是三套不同东西。</strong></p>
+<p><strong>文档对“记忆如何进入当前回合”用了两种表述。</strong> memory overview 说 <code>MEMORY.md</code> 和 daily notes 会自动加载；但 system prompt 文档又强调 daily memory files 不会自动注入，而是通过 <code>memory_search</code> / <code>memory_get</code> 按需访问。更稳妥的理解是：<strong>OpenClaw 至少把“长期记忆注入”和“日常记忆检索”分成了两层机制，不要把“会记得”理解成一条单一路径。</strong> 这类细节属于高波动实现面，版本演化时最容易变化。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-75" data-index="74" data-title="第八步，历史不是无限累加，而是会被压缩。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><strong>第八步，历史不是无限累加，而是会被压缩。</strong><br>当会话逼近上下文窗口时，OpenClaw 会 compact older turns，把旧消息总结成 compact entry，写回 transcript，保留近端消息不动。官方还特别强调，完整历史仍然在磁盘上，compaction 改变的是下一轮模型看到什么，不是把历史物理删除。更关键的是，在 compaction 前它会先触发一次 silent turn，提醒 agent 把重要内容写入 memory files，避免总结时丢失关键上下文。也就是说，<strong>OpenClaw 的连续性不是靠无限长上下文维持的，而是靠“摘要化 transcript + 文件化记忆”共同维持。</strong></p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-76" data-index="75" data-title="任务分裂后，这条链如何变化。" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>任务分裂后，这条链如何变化。</h4>
+<p><strong>sub-agent / delegate / ACP</strong><br>一旦进入子代理，注入文件会变少，路由和上下文隔离也会改变</p>
+<p><strong>任务一旦被分裂，OpenClaw 不会让多个子体共享同一份“大脑”。它做的是：新建会话，重组上下文，缩减或替换注入文件，重新定义工具面和权限，再通过“announce / bind / routing”把结果折回主链。</strong></p>
+<p>所以多代理不是“复制主代理”，而是“重新开一个受控的运行面”。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-77" data-index="76" data-title="第一处变化，" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第一处变化，<br>是<strong>“一条消息触发一次 loop”变成“父 loop 发起子会话，再等待或接收回流”</strong>。</p>
+<p>主代理不再自己把所有事情做完，而是通过 <code>sessions_spawn</code> 把某部分工作外包出去。这个 spawn 本身不会阻塞当前回合，子任务结束后通过 announce 机制把结果推回请求者聊天通道。官方还强调，完成回传是 push-based，不建议靠轮询 <code>sessions_list</code> 或 <code>sessions_history</code> 来傻等。换句话说，主代理从执行者，部分变成了编排者。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-78" data-index="77" data-title="第二处变化，" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第二处变化，<br>是<strong>上下文不再完整继承，而是被有意削薄</strong>。</p>
+<p>普通 agent run 的 system prompt 会把 <code>AGENTS.md</code>、<code>SOUL.md</code>、<code>TOOLS.md</code>、<code>IDENTITY.md</code>、<code>USER.md</code>、<code>HEARTBEAT.md</code>、<code>BOOTSTRAP.md</code>，以及存在时的 <code>MEMORY.md</code> 注入到 Project Context。可 sub-agent 明确不是这样。官方写得很死：sub-agent context 只注入 <code>AGENTS.md + TOOLS.md</code>，不会带 <code>SOUL.md</code>、<code>IDENTITY.md</code>、<code>USER.md</code>、<code>HEARTBEAT.md</code>、<code>BOOTSTRAP.md</code>。这意味着任务分裂后，子体默认拿到的是“操作规程 + 工具说明”，而不是完整人格、自我叙事、用户画像与启动包。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-79" data-index="78" data-title="第三处变化，" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第三处变化，<br>是<strong>工具面被重新裁剪</strong>。</p>
+<p>sub-agent 默认拿到的不是完整 session tool 能力。<br>默认 sub-agents 拿到除 session tools 和 system tools 外的大多数工具；默认会被剥掉的包括 <code>sessions_list</code>、<code>sessions_history</code>、<code>sessions_send</code>、<code>sessions_spawn</code>。<br>不能再分裂任务了。也就是主 agent 是编排者。子 agent 负责智性</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-80" data-index="79" data-title="第四处变化，" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第四处变化，<br>是<strong>权限和身份边界开始分叉，而不是天然继承</strong>。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-81" data-index="80" data-title="第五处变化，" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第五处变化，<br>是<strong>返回主链的不是原始子过程，而是被包装过的交接物</strong>。<br>代理用正常 assistant voice 重写，而不是直接转发内部元数据。也就是说，主代理拿到的不是“子代理原始脑流”，而是一种经过净化和约束的回执。<br>父代理与子代理之间，不是“透明脑连接”，而是“摘要式 handoff”。优点是主聊天面更干净，不会把内部控制信号直接漏出来。代价是细节会折损，尤其是当子代理内部跑了复杂工具链、踩了很多边界条件，但最终 announce 只回一个压缩结果时。对于研究型任务，这种折损有时会让主代理看起来“总结得很好，但依据感变薄了”。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-82" data-index="81" data-title="第六处变化，" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第六处变化，<br>是<strong>上下文生命周期本身可以被 context engine 接管</strong>。<br>OpenClaw 默认用内建 <code>legacy</code> context engine 负责 context assembly 与 compaction；但如果换了插件型 context engine，OpenClaw 会把 context assembly、<code>/compact</code>，以及 related subagent context lifecycle hooks 委托给那个 engine。也就是说，任务分裂后的上下文边界，不一定是固定实现，它本身是可插拔的。这个点很重要，因为它说明“子代理拿到什么、旧历史怎样压缩、跨子代理边界如何管理”在架构上不是硬编码死的。</p>
+    </article>
+  </div>
+</section>
+<section class="slide has-image" id="slide-83" data-index="82" data-title="拓扑图" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>拓扑图</h4>
+<figure><img src="https://r2.inkx.cc/98b447.png" alt="" loading="lazy"><figcaption></figcaption></figure>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-84" data-index="83" data-title="一个 agent 委托另一个 agent 的情况：" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h4>一个 agent 委托另一个 agent 的情况：</h4>
+<p>delegate 不是简单的 child run，而是<strong>另一个长期存在、可被频道路由命中的代理主体</strong>。它有自己的 workspace、状态目录和会话存储；它的安全边界不该只靠 <code>SOUL.md</code> 之类的“人格文件”，还应该在 Gateway 层做 per-agent tool policy。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-85" data-index="84" data-title="OpenClaw 的失效点，很多时候不在模型回答错，而在这条链的别处" data-chapter="OpenClaw 的安装">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>OpenClaw 的安装</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>OpenClaw 的失效点，很多时候不在模型回答错，而在这条链的别处。<br>比如消息路由错了，进错 session；<br>queue mode 让多条消息被合并得太狠；<br>workspace 文件过大导致注入被截断；<br>记忆没有写盘；<br>compaction 摘要把关键标识压坏；<br>hook 改写了 prompt 或 tool result。</p>
+<p>这类问题看起来像“模型忽然变笨”，其实常常是上下文装配和状态管理出了问题。<br>官方文档里对 queue、compaction、bootstrap truncation、hook interception 都给了明确机制，这也是为什么 OpenClaw 比单纯聊天更强，也更脆。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-86" data-index="85" data-title="模块 4｜安全：" data-chapter="模块 4｜安全：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 4｜安全：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>模块 4｜安全：</h2>
+<h3>不是“它会不会泄密”，而是“谁在代替谁行动”，</h3>
+<p><strong>代理系统的安全，不只是信息安全，而是身份、权限、环境、资产四层的边界管理。</strong></p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-87" data-index="86" data-title="1. 身份安全" data-chapter="模块 4｜安全：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 4｜安全：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <ol>
+<li><strong>身份安全</strong></li>
+<p>Cookie、登录态、API key、浏览器会话<br>这里要讲的是：很多“被攻击”并不是因为密码被猜到，而是因为身份凭证被继承、盗用、替代。</p>
+<li><strong>权限安全</strong></li>
+<p>谁能读，谁能写，谁能执行，谁能联网<br>一旦 agent 能跑命令、改文件，权限模型就比聊天模型重要得多。</p>
+<li><strong>环境安全</strong></li>
+<p>本机目录、shell、依赖、第三方 skills、供应链<br>风险不只是“恶意代码”，还有“错误操作破坏环境”。</p>
+<li><strong>资产安全</strong></li>
+<p>哪些是核心资产，哪些只是缓存<br>哪些应该进 Git，哪些应该排除，哪些要冷备<br>核心资产文件</p>
+</ol>
+<p>某些持久化 workspace <code>.md</code> 文件会作为受信上下文持续注入 agent turn，<br>“<strong>写进工作区</strong>的恶意提示”可能变成长期污染源，而不仅仅是一条临时消息 。</p>
+<p>提示词注入 不是一次性的骚扰，可能变成持久化配置污染。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-88" data-index="87" data-title="划重点：" data-chapter="模块 4｜安全：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 4｜安全：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>划重点：</h3>
+<p>隔离设备：可能会破坏电脑环境。普通账户也有访问的权限。</p>
+<p><strong>设置隔离账户</strong>：当你和 Agent 共用一个浏览器的时候，很多信息都是被暴露的。</p>
+<p>当 Agent 可以调用系统工具的时候，它可以通过命令打印你的 Cookie 和 Token。有了这些，就直接获取到你的用户身份。<br>相当于把电脑和数字资产交给别人。</p>
+<p>YouTube KOL 被白嫖的事件背后的网络安全。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-89" data-index="88" data-title="除非明确自己不用某些功能。" data-chapter="模块 4｜安全：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 4｜安全：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>除非明确自己不用某些功能。<br>如果它只是纯本机、单人、不开任何消息通道，不开 browser、不跑 exec、不装外部插件、不做远程 UI，那很多“被别人诱导执行”的风险会骤降。这时主要风险就不在外部触发，而在<strong>本机账户权限、日志、会话转录、API key 留痕</strong>。所以后面这套建议，不是说每个人都要上满，而是要先看你到底是在做“本地思考工具”，还是“接入现实世界的代理”。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-90" data-index="89" data-title="用环境变量保存重要的 API Key 信息。" data-chapter="模块 4｜安全：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 4｜安全：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>用环境变量保存重要的 API Key 信息。<br>很多 key 可能有对你账户的很多权限。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-91" data-index="90" data-title="用 openclaw 自己的安全检查：" data-chapter="模块 4｜安全：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>模块 4｜安全：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>用 openclaw 自己的安全检查：<br>OpenClaw 的“自带安全检查”更接近<strong>配置审计器</strong>，不是一个自动替你建好安全边界的壳。它很适合抓出误配置，尤其是入口开放、DM 串会话、group 暴露、browser/exec 权限过大、sandbox 配了但没生效、插件安装不稳、日志不脱敏这类问题；但真正的安全，还是要靠你自己把<strong>谁能触发、触发后能看到什么、能动什么、宿主机能被碰到哪里</strong>这四层切开。更关键的一点是，OpenClaw 官方现在明确把它定义成<strong>单一可信操作者边界</strong>下的 personal assistant 模型，不是同一个 gateway 里给多个互不信任用户做隔离的系统。</p>
+<p>openclaw security audit<br>openclaw security audit --deep<br>openclaw security audit --json | jq '.summary'<br>openclaw security audit --deep --json | jq '.findings[] | select(.severity=="critical") | .checkId'<br>openclaw security audit --fix</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-92" data-index="91" data-title="给 openclaw 的岗位" data-chapter="给 openclaw 的岗位">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>给 openclaw 的岗位</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>给 openclaw 的岗位</h2>
+<p>主要的任务类型，大概是这几类。</p>
+<p>一类是“反复出现、规则相对稳定的个人运营任务”。<br>比如每日简报、日程扫描、未读邮件分拣、待办提醒、项目进度巡检、固定时间点的资料收集。这类事情适合 heartbeat + cron + standing orders 的组合。它们最像“真正的助理工作”，因为问题定义已经差不多稳定了。</p>
+<p>一类是“围绕工作区的生产任务”。<br>比如整理 <code>AGENTS.md</code>、更新项目记忆、把分散资料归档到 workspace、跑脚本、批量改文件、抓网页、截图、补丁修改、做简单分析。因为 OpenClaw 的文件工具、浏览器、shell、Python 分析和 message/canvas/nodes 都已经在工具层给出来了，这类任务比普通聊天框更自然。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-93" data-index="92" data-title="第一种岗位，" data-chapter="给 openclaw 的岗位">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>给 openclaw 的岗位</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第一种岗位，</p>
+<p>是“收件员”。</p>
+<p>这种用法很稳。让它驻守在 Telegram、Discord 、飞书之类入口，负责接收、分类、提醒、转述、草拟回复，而不是直接代表你发言。OpenClaw 官方把这种能力做成了多渠道 Gateway，也给 agent 提供了会话工具，可以跨 session 查看历史、发消息、拉起子代理。Slack 侧当前公开动作包括发送、上传文件、下载文件、读取、编辑、删除、pin、unpin、列出 pin、成员信息和 emoji 列表。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-94" data-index="93" data-title="第二种岗位，" data-chapter="给 openclaw 的岗位">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>给 openclaw 的岗位</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第二种岗位，</p>
+<p>是“执行员”。</p>
+<p>OpenClaw 的 built-in tools 现在已经覆盖了 shell 命令、后台进程、Python 分析、Chromium 浏览器控制、网页搜索与抓取、工作区文件读写修改、跨渠道发送消息、调度 cron、设备节点、图像分析与生成、音乐和视频生成、TTS，以及 session/subagent orchestration。也就是说，它不是只能“建议你怎么做”，而是有条件去实际做。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-95" data-index="94" data-title="第三种岗位，" data-chapter="给 openclaw 的岗位">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>给 openclaw 的岗位</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第三种岗位，<br>是“巡检员”。</p>
+<p>这恰好是 OpenClaw 很适合的地方。它有两个容易被混在一起的机制。Heartbeat 是定期在主 session 里唤醒 agent，看有没有需要提醒你的事情；Cron 是 Gateway 内置的调度器，持久化任务、到点唤醒 agent，还能把结果投递回聊天渠道或 webhook。Standing Orders 则是把长期操作规则写进工作区文件里，规定作用范围、触发条件、审批门槛和升级规则。三者连起来，才像一个真正“值班”的合作者。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-96" data-index="95" data-title="第四种岗位，" data-chapter="给 openclaw 的岗位">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>给 openclaw 的岗位</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>第四种岗位，</p>
+<p>是“分工器”。</p>
+<p>OpenClaw 支持多 agent 路由，每个 agent 可以有自己的 workspace、<code>agentDir</code>、sessions 和 auth profiles；也支持 sub-agents，在独立 session 里做后台工作，完成后再把结果汇报回来。这个设计非常适合把“写代码”“内容整理”“社交发布”“私人事务”拆成不同 agent，而不是全塞给一个混合人格的大虾。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-97" data-index="96" data-title="可复制的提示词 ：把 OpenClaw 写成员工评估报告" data-chapter="给 openclaw 的岗位">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>给 openclaw 的岗位</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h3>可复制的提示词 ：把 OpenClaw 写成员工评估报告</h3>
+<p>请基于 OpenClaw 当前官方文档与公开机制，把它拟人化成一个员工，但不要写成段子。<br>要求：</p>
+<ol>
+<li>先给核心判断：它最像什么岗位的员工</li>
+<li>明确区分：</li>
+</ol>
+<ul>
+<li>事实：当前公开能力</li>
+<li>推断：这些能力对应什么员工气质</li>
+<li>建议：适合给他什么活</li>
+<li>假设：哪些判断依赖权限配置和工具边界</li>
+</ul>
+<ol>
+<li>从这几个角度展开：</li>
+</ol>
+<ul>
+<li>他的岗位</li>
+<li>他的工作风格</li>
+<li>他的优势</li>
+<li>他的短板</li>
+<li>他的危险点</li>
+<li>他的最佳使用方式</li>
+</ul>
+<ol>
+<li>结尾给一句“人事评语”</li>
+</ol>
+<p>风格：</p>
+<ul>
+<li>不要写成产品说明书</li>
+<li>要像在辨认一个员工的结构位置</li>
+<li>允许使用拟人化，但必须贴着机制</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide is-title" id="slide-98" data-index="97" data-title="可复制的提示词 ：" data-chapter="可复制的提示词 ：">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>可复制的提示词 ：</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h1>可复制的提示词 ：</h1>
+<p>请基于 OpenClaw 当前官方公开能力，给它做一个完整的“员工画像”。</p>
+<p>要求：</p>
+<ol>
+<li>先给核心判断</li>
+<li>先给一个可能推翻当前判断的反例</li>
+<li>再区分四层：</li>
+</ol>
+<ul>
+<li>事实</li>
+<li>推断</li>
+<li>建议</li>
+<li>假设</li>
+</ul>
+<ol>
+<li>把它拟人化成一个员工，说明：</li>
+</ol>
+<ul>
+<li>它最像什么岗位</li>
+<li>它的工作气质是什么</li>
+<li>它现在能做哪些任务</li>
+<li>它不适合做哪些任务</li>
+<li>它最大的价值是什么</li>
+<li>它最大的风险是什么</li>
+</ul>
+<ol>
+<li>重点解释：</li>
+</ol>
+<ul>
+<li>为什么它像“执行型幕僚”</li>
+<li>为什么它不是“战略合伙人”</li>
+<li>为什么它需要 standing orders、heartbeat、sandbox、tool policy</li>
+</ul>
+<ol>
+<li>最后给一个一句话人事评语</li>
+</ol>
+<p>风格：</p>
+<ul>
+<li>像是在认真辨认一个系统的位置</li>
+<li>不是营销文案</li>
+<li>允许拟人化，但要贴着公开机制</li>
+</ul>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-99" data-index="98" data-title="明天课程" data-chapter="明天课程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>明天课程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <h2>明天课程</h2>
+<p>AI Agent 不光有 Openclaw。现在的 AI 生态能用的很多。<br>明天介绍一下其他的软件。有一些具体的 API key 怎么买省钱？哪些东西非常值，哪些纯骗人。<br>我用啥软件，怎么用啊之类的。<br>当然每个人的认知现场不同。我主要介绍我的工作方式。</p>
+<p>大家也可以想一下自己的场景。<br>介绍一下自己的认知现场是什么样的，平时怎么工作，是怎么用 AI 的。哪些工作会被 AI 替代？</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-100" data-index="99" data-title="明天见！" data-chapter="明天课程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>明天课程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>明天见！</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-101" data-index="100" data-title="www.inkx.cc" data-chapter="明天课程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>明天课程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>www.inkx.cc</p>
+    </article>
+  </div>
+</section>
+<section class="slide is-pause" id="slide-102" data-index="101" data-title="停顿" data-chapter="明天课程">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>明天课程</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <div class="pause-mark"><span>继续</span></div>
+    </article>
+  </div>
+</section>
+</main>
+<div class="hud" aria-hidden="true"><div class="progress"><span></span></div></div>
+<div class="version">课程讲稿版本：2026-04-14 · /workshops/ai-01/</div>
+<div class="counter" aria-hidden="true"><b data-current>01</b><span>/</span><span data-total>102</span></div>
+<script>
+(() => {
+  const deck = document.querySelector('.deck');
+  const slides = [...document.querySelectorAll('.slide')];
+  const progress = document.querySelector('.progress span');
+  const current = document.querySelector('[data-current]');
+  const total = document.querySelector('[data-total]');
+  const toc = document.querySelector('.toc');
+  const tocToggle = document.querySelector('.toc-toggle');
+  const tocButtons = [...document.querySelectorAll('.toc button')];
+  let active = 0;
+  let lastWheelAt = 0;
+  const WHEEL_COOLDOWN = 1100;
+  total.textContent = String(slides.length).padStart(2, '0');
+  function go(index) {
+    const next = Math.max(0, Math.min(slides.length - 1, index));
+    slides[next].scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  }
+  function setActive(index) {
+    active = index;
+    current.textContent = String(index + 1).padStart(2, '0');
+    progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+    tocButtons.forEach((button) => button.classList.toggle('is-active', Number(button.dataset.goto) === index));
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) setActive(Number(entry.target.dataset.index)); });
+  }, { root: deck, threshold: 0.58 });
+  slides.forEach((slide) => observer.observe(slide));
+  deck.addEventListener('wheel', (event) => {
+    const pane = event.target.closest('.slide-scroll, .table-wrap');
+    if (pane && pane.scrollHeight > pane.clientHeight) {
+      const atTop = pane.scrollTop <= 0;
+      const atBottom = pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2;
+      if ((event.deltaY < 0 && !atTop) || (event.deltaY > 0 && !atBottom)) return;
+    }
+    event.preventDefault();
+    const now = Date.now();
+    if (now - lastWheelAt < WHEEL_COOLDOWN) return;
+    lastWheelAt = now;
+    go(active + (event.deltaY > 0 ? 1 : -1));
+  }, { passive: false });
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === ' ') { event.preventDefault(); go(active + 1); }
+    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') { event.preventDefault(); go(active - 1); }
+    if (event.key === 'Home') { event.preventDefault(); go(0); }
+    if (event.key === 'End') { event.preventDefault(); go(slides.length - 1); }
+    if (event.key.toLowerCase() === 't') toc.classList.toggle('is-open');
+    if (event.key === 'Escape') toc.classList.remove('is-open');
+  });
+  tocToggle.addEventListener('click', () => toc.classList.toggle('is-open'));
+  tocButtons.forEach((button) => button.addEventListener('click', () => { go(Number(button.dataset.goto)); toc.classList.remove('is-open'); }));
+  setActive(0);
+})();
+</script>
+</body>
+</html>
