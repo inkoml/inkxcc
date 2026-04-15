@@ -16,7 +16,7 @@
 <body>
 <button class="toc-toggle" type="button" aria-label="打开目录">目录 T</button>
 <nav class="toc" aria-label="章节目录">
-<button type="button" data-goto="0"><span>01</span>开场</button>
+<button type="button" data-goto="0"><span>01</span>开场海报</button>
 <button type="button" data-goto="2"><span>03</span>工具层</button>
 <button type="button" data-goto="3"><span>04</span>生产力工具：</button>
 <button type="button" data-goto="4"><span>05</span>完全免费工具：</button>
@@ -31,10 +31,11 @@
 <button type="button" data-goto="25"><span>26</span>日常使用</button>
 <button type="button" data-goto="26"><span>27</span>创作：Vibes</button>
 <button type="button" data-goto="27"><span>28</span>创作：Coding</button>
-<button type="button" data-goto="29"><span>30</span>深度研究</button>
-<button type="button" data-goto="34"><span>35</span>画面生成式</button>
-<button type="button" data-goto="35"><span>36</span>内容生产</button>
-<button type="button" data-goto="36"><span>37</span>案例解析：</button>
+<button type="button" data-goto="30"><span>31</span>深度研究</button>
+<button type="button" data-goto="33"><span>34</span>工具层</button>
+<button type="button" data-goto="35"><span>36</span>画面生成式</button>
+<button type="button" data-goto="36"><span>37</span>内容生产</button>
+<button type="button" data-goto="38"><span>39</span>案例解析：</button>
 </nav>
 <main class="deck" aria-label="小号夜校-第二讲：AI 生态与使用地图">
 <section class="slide has-image" id="slide-1" data-index="0" data-title="开场海报" data-chapter="开场">
@@ -76,7 +77,7 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-5" data-index="4" data-title="完全免费工具：" data-chapter="完全免费工具：">
+<section class="slide is-title" id="slide-5" data-index="4" data-title="完全免费工具：" data-chapter="完全免费工具：">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>完全免费工具：</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -141,18 +142,7 @@
   <div class="slide-scroll">
     <article class="slide-content">
       <h3>每次问答的计算成本</h3>
-<div class="table-wrap"><table><thead><tr><th>排名</th><th>模型</th><th>我采用的官方计费口径</th><th>输入价</th><th>输出价</th><th>折算后单次成本（人民币/次）</th><th>来源</th></tr></thead><tbody>
-<tr><td>1</td><td>豆包（Doubao-Seed-2.0-Lite，补充）</td><td>标准按量，最低档</td><td>¥0.6 / 1M tokens</td><td>¥3.6 / 1M tokens</td><td><strong>¥0.0042</strong></td><td>火山引擎官方 (<a href="https://www.volcengine.com/product/doubao?utm_source=chatgpt.com &quot;豆包大模型&quot;" target="_blank" rel="noopener">volcengine.com</a>)</td></tr>
-<tr><td>2</td><td>GLM 4（按 GLM-4.5-Air）</td><td>标准按量，最低档</td><td>¥0.8 / 1M tokens</td><td>¥6 / 1M tokens</td><td><strong>¥0.0068</strong></td><td>智谱官方 (<a href="https://bigmodel.cn/pricing?utm_source=chatgpt.com &quot;产品价格&quot;" target="_blank" rel="noopener">智谱AI</a>)</td></tr>
-<tr><td>3</td><td>MiniMax M2.7</td><td>标准按量</td><td>$0.3 / 1M tokens</td><td>$1.2 / 1M tokens</td><td><strong>¥0.0103</strong></td><td>MiniMax 官方 (<a href="https://platform.minimax.io/docs/guides/pricing-paygo &quot;Pay as You Go - MiniMax API Docs&quot;" target="_blank" rel="noopener">MiniMax API Docs</a>)</td></tr>
-<tr><td>4</td><td>豆包（Doubao-Seed-2.0-Pro）</td><td>标准按量，最低档</td><td>¥3.2 / 1M tokens</td><td>¥16 / 1M tokens</td><td><strong>¥0.0192</strong></td><td>火山引擎官方 (<a href="https://www.volcengine.com/product/doubao?utm_source=chatgpt.com &quot;豆包大模型&quot;" target="_blank" rel="noopener">volcengine.com</a>)</td></tr>
-<tr><td>5</td><td>GLM 5</td><td>标准按量，最低档</td><td>¥4 / 1M tokens</td><td>¥18 / 1M tokens</td><td><strong>¥0.0220</strong></td><td>智谱官方 (<a href="https://bigmodel.cn/pricing?utm_source=chatgpt.com &quot;产品价格&quot;" target="_blank" rel="noopener">智谱AI</a>)</td></tr>
-<tr><td>6</td><td>GPT-5</td><td>标准按量</td><td>$1.25 / 1M tokens</td><td>$10 / 1M tokens</td><td><strong>¥0.0769</strong></td><td>OpenAI 官方 ([OpenAI开发者](https://developers.openai.com/api/docs/models/gpt-5?utm_source=chatgpt.com "GPT-5 Model \</td><td>OpenAI API"))</td></tr>
-<tr><td>7</td><td>Gemini 2.5 Pro</td><td>Standard，≤200k tokens</td><td>$1.25 / 1M tokens</td><td>$10 / 1M tokens</td><td><strong>¥0.0769</strong></td><td>Google 官方 ([Google AI for Developers](https://ai.google.dev/gemini-api/docs/pricing "Gemini Developer API pricing  \</td><td>Gemini API  \</td><td>Google AI for Developers"))</td></tr>
-<tr><td>8</td><td>GPT-4o</td><td>标准按量</td><td>$2.50 / 1M tokens</td><td>$10 / 1M tokens</td><td><strong>¥0.0854</strong></td><td>OpenAI 官方 ([OpenAI开发者](https://developers.openai.com/api/docs/models/gpt-4o?utm_source=chatgpt.com "GPT-4o Model \</td><td>OpenAI API"))</td></tr>
-<tr><td>9</td><td>Gemini 3.1 Pro</td><td>Standard，≤200k tokens</td><td>$2.00 / 1M tokens</td><td>$12 / 1M tokens</td><td><strong>¥0.0957</strong></td><td>Google 官方 ([Google AI for Developers](https://ai.google.dev/gemini-api/docs/gemini-3?utm_source=chatgpt.com "Gemini 3 Developer Guide \</td><td>Gemini API"))</td></tr>
-<tr><td>10</td><td>ChatGPT 5.4（按 GPT-5.4 API 折算）</td><td>标准按量</td><td>$2.50 / 1M tokens</td><td>$15 / 1M tokens</td><td><strong>¥0.1196</strong></td><td>OpenAI 官方 ([OpenAI](https://openai.com/api/pricing/ "OpenAI API Pricing \</td><td>OpenAI"))</td></tr>
-</tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>排名</th><th>模型</th><th>我采用的官方计费口径</th><th>输入价</th><th>输出价</th><th>折算后单次成本（人民币/次）</th><th>来源</th></tr></thead><tbody><tr><td>1</td><td>豆包（Doubao-Seed-2.0-Lite，补充）</td><td>标准按量，最低档</td><td>¥0.6 / 1M tokens</td><td>¥3.6 / 1M tokens</td><td><strong>¥0.0042</strong></td><td>火山引擎官方 (<a href="https://www.volcengine.com/product/doubao?utm_source=chatgpt.com &amp;quot;豆包大模型&amp;quot;" target="_blank" rel="noopener">volcengine.com</a>)</td></tr><tr><td>2</td><td>GLM 4（按 GLM-4.5-Air）</td><td>标准按量，最低档</td><td>¥0.8 / 1M tokens</td><td>¥6 / 1M tokens</td><td><strong>¥0.0068</strong></td><td>智谱官方 (<a href="https://bigmodel.cn/pricing?utm_source=chatgpt.com &amp;quot;产品价格&amp;quot;" target="_blank" rel="noopener">智谱AI</a>)</td></tr><tr><td>3</td><td>MiniMax M2.7</td><td>标准按量</td><td>$0.3 / 1M tokens</td><td>$1.2 / 1M tokens</td><td><strong>¥0.0103</strong></td><td>MiniMax 官方 (<a href="https://platform.minimax.io/docs/guides/pricing-paygo &amp;quot;Pay as You Go - MiniMax API Docs&amp;quot;" target="_blank" rel="noopener">MiniMax API Docs</a>)</td></tr><tr><td>4</td><td>豆包（Doubao-Seed-2.0-Pro）</td><td>标准按量，最低档</td><td>¥3.2 / 1M tokens</td><td>¥16 / 1M tokens</td><td><strong>¥0.0192</strong></td><td>火山引擎官方 (<a href="https://www.volcengine.com/product/doubao?utm_source=chatgpt.com &amp;quot;豆包大模型&amp;quot;" target="_blank" rel="noopener">volcengine.com</a>)</td></tr><tr><td>5</td><td>GLM 5</td><td>标准按量，最低档</td><td>¥4 / 1M tokens</td><td>¥18 / 1M tokens</td><td><strong>¥0.0220</strong></td><td>智谱官方 (<a href="https://bigmodel.cn/pricing?utm_source=chatgpt.com &amp;quot;产品价格&amp;quot;" target="_blank" rel="noopener">智谱AI</a>)</td></tr><tr><td>6</td><td>GPT-5</td><td>标准按量</td><td>$1.25 / 1M tokens</td><td>$10 / 1M tokens</td><td><strong>¥0.0769</strong></td><td>OpenAI 官方 ([OpenAI开发者](https://developers.openai.com/api/docs/models/gpt-5?utm_source=chatgpt.com &quot;GPT-5 Model \</td><td>OpenAI API&quot;))</td></tr><tr><td>7</td><td>Gemini 2.5 Pro</td><td>Standard，≤200k tokens</td><td>$1.25 / 1M tokens</td><td>$10 / 1M tokens</td><td><strong>¥0.0769</strong></td><td>Google 官方 ([Google AI for Developers](https://ai.google.dev/gemini-api/docs/pricing &quot;Gemini Developer API pricing  \</td><td>Gemini API  \</td><td>Google AI for Developers&quot;))</td></tr><tr><td>8</td><td>GPT-4o</td><td>标准按量</td><td>$2.50 / 1M tokens</td><td>$10 / 1M tokens</td><td><strong>¥0.0854</strong></td><td>OpenAI 官方 ([OpenAI开发者](https://developers.openai.com/api/docs/models/gpt-4o?utm_source=chatgpt.com &quot;GPT-4o Model \</td><td>OpenAI API&quot;))</td></tr><tr><td>9</td><td>Gemini 3.1 Pro</td><td>Standard，≤200k tokens</td><td>$2.00 / 1M tokens</td><td>$12 / 1M tokens</td><td><strong>¥0.0957</strong></td><td>Google 官方 ([Google AI for Developers](https://ai.google.dev/gemini-api/docs/gemini-3?utm_source=chatgpt.com &quot;Gemini 3 Developer Guide \</td><td>Gemini API&quot;))</td></tr><tr><td>10</td><td>ChatGPT 5.4（按 GPT-5.4 API 折算）</td><td>标准按量</td><td>$2.50 / 1M tokens</td><td>$15 / 1M tokens</td><td><strong>¥0.1196</strong></td><td>OpenAI 官方 ([OpenAI](https://openai.com/api/pricing/ &quot;OpenAI API Pricing \</td><td>OpenAI&quot;))</td></tr></tbody></table></div>
     </article>
   </div>
 </section>
@@ -244,7 +234,7 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-19" data-index="18" data-title="全量付费" data-chapter="全量付费">
+<section class="slide is-title" id="slide-19" data-index="18" data-title="全量付费" data-chapter="全量付费">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>全量付费</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -270,7 +260,7 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-21" data-index="20" data-title="按项目计费" data-chapter="按项目计费">
+<section class="slide is-title" id="slide-21" data-index="20" data-title="按项目计费" data-chapter="按项目计费">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>按项目计费</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -290,7 +280,7 @@
     </article>
   </div>
 </section>
-<section class="slide is-title" id="slide-23" data-index="22" data-title="必装的软件" data-chapter="必装的软件">
+<section class="slide" id="slide-23" data-index="22" data-title="必装的软件" data-chapter="必装的软件">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>必装的软件</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -357,11 +347,24 @@
     <article class="slide-content">
       <h3>认知和深度思考</h3>
 <p><span class="wiki-link">我如何使用 ChatGPT 来做认知和深度思考的。</span></p>
-<p>ChatGPT<br>ChatGPT 的 自定义指令 是账号级偏好，像你的写作口气、回答结构、禁忌和稳定原则；会立即作用到所有聊天；<br>Projects 则能把聊天、上传文件和项目级指令放进同一个上下文枢纽，适合一个长期研究主题；<br>GPTs 是为特定目的配置的 ChatGPT 版本，负责可复用的人设 + 能力包，适合做特定用途助手。创建 / 编辑 GPTs 需要付费订阅。</p>
+<p>关于认知和深度思考的问题，我通常都会用 ChatGPT 来回答。我会让它给我一个问题展开的方式，提供更多的视角，而不是迅速的给我一个收敛的答案。<br>很多问题我总会反复地去问，然后他给我答案，有时候觉得很好，但我总是没法直接解决这个问题。这些问题跟我的身体性有关系。</p>
+<p>我在跟他交流的过程之中产生的一些思路。就是我需要保持住对问题的敏感，以及问题产生和思考的路径。<br>然后他给我的回答里，我得到的最有启发的是他创造性的解释。<br>现在通过我迭代好的提示词，他通常都会给我的问题一个很好的结构，把我的问题说的很明白。<br>我过去都是聊着聊着不知道在问什么了。Ai 会很快的推进，比如给你一个答案之后，然后告诉你是否要进一步推进。我只能一路点是，好。但往往这种推进没有什么好的结果。<br>所以我现在是让它保存我的问题，展开我的问题，让思考的决策权在我的手里，让问题的演化由我推进的，而不是它主导。</p>
+<p>现在在这种模式下，我发现减慢了节奏反而思考更快了。</p>
+<p>我倾向于使用单一的产品和模型来做这部分的内容，而不是混着用。<br>这也是将工作模块化的一个过程。</p>
+<p>举例：<br>酒后胡话-分析，发展，重新生成灵感</p>
     </article>
   </div>
 </section>
-<section class="slide" id="slide-30" data-index="29" data-title="深度研究" data-chapter="深度研究">
+<section class="slide" id="slide-30" data-index="29" data-title="ChatGPT" data-chapter="创作：Coding">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>创作：Coding</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p>ChatGPT<br>ChatGPT 的 自定义指令 是账号级偏好，像你的写作口气、回答结构、禁忌和稳定原则；会立即作用到所有聊天；<br>Projects 则能把聊天、上传文件和项目级指令放进同一个上下文枢纽，适合一个长期研究主题；<br>GPTs 是为特定目的配置的 ChatGPT 版本，负责可复用的人设 + 能力包，适合做特定用途助手。创建 / 编辑 GPTs 需要付费订阅。</p>
+    </article>
+  </div>
+</section>
+<section class="slide" id="slide-31" data-index="30" data-title="深度研究" data-chapter="深度研究">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>深度研究</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -374,20 +377,20 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-31" data-index="30" data-title="浏览器插件 ：" data-chapter="深度研究">
+<section class="slide" id="slide-32" data-index="31" data-title="浏览器插件 ：" data-chapter="深度研究">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>深度研究</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
     <article class="slide-content">
       <h4>浏览器插件 ：</h4>
 <h5>沉浸式翻译 - 网页翻译插件 | PDF 翻译</h5>
-<p><a href="https://chromewebstore.google.com/detail/immersive-translate-trans/bpoadfkcbjbfhfodiogcnhhhpibjhbnh?pli=1" target="_blank" rel="noopener">https://chromewebstore.google.com/detail/immersive-translate-trans/bpoadfkcbjbfhfodiogcnhhhpibjhbnh?pli=1</a></p>
+<p>https://chromewebstore.google.com/detail/immersive-translate-trans/bpoadfkcbjbfhfodiogcnhhhpibjhbnh?pli=1</p>
 <h5>NotebookLM Jetpack</h5>
-<p><a href="https://chromewebstore.google.com/detail/notebooklm-jetpack/jgjgpfgcbdblgejodmooigkhlciejjhg" target="_blank" rel="noopener">https://chromewebstore.google.com/detail/notebooklm-jetpack/jgjgpfgcbdblgejodmooigkhlciejjhg</a></p>
+<p>https://chromewebstore.google.com/detail/notebooklm-jetpack/jgjgpfgcbdblgejodmooigkhlciejjhg</p>
     </article>
   </div>
 </section>
-<section class="slide" id="slide-32" data-index="31" data-title="Youtube 长论文" data-chapter="深度研究">
+<section class="slide" id="slide-33" data-index="32" data-title="Youtube 长论文" data-chapter="深度研究">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>深度研究</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -399,7 +402,7 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-33" data-index="32" data-title="工具层" data-chapter="工具层">
+<section class="slide" id="slide-34" data-index="33" data-title="工具层" data-chapter="工具层">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>工具层</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -410,7 +413,7 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-34" data-index="33" data-title="Antigravity" data-chapter="工具层">
+<section class="slide" id="slide-35" data-index="34" data-title="Antigravity" data-chapter="工具层">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>工具层</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -420,30 +423,42 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-35" data-index="34" data-title="画面生成式" data-chapter="画面生成式">
+<section class="slide" id="slide-36" data-index="35" data-title="画面生成式" data-chapter="画面生成式">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>画面生成式</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
     <article class="slide-content">
       <h2>画面生成式</h2>
-<p>tapnow.ai<br><a href="https://app.tapnow.ai/canvas/918a3101-fca8-44de-b896-965205562f96" target="_blank" rel="noopener">https://app.tapnow.ai/canvas/918a3101-fca8-44de-b896-965205562f96</a></p>
+<p>tapnow.ai<br>https://app.tapnow.ai/canvas/918a3101-fca8-44de-b896-965205562f96</p>
 <p>loveart.ai</p>
-<p><a href="https://www.liblib.tv" target="_blank" rel="noopener">https://www.liblib.tv</a></p>
+<p>https://www.liblib.tv</p>
     </article>
   </div>
 </section>
-<section class="slide" id="slide-36" data-index="35" data-title="内容生产" data-chapter="内容生产">
+<section class="slide" id="slide-37" data-index="36" data-title="内容生产" data-chapter="内容生产">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>内容生产</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
     <article class="slide-content">
       <h2>内容生产</h2>
 <p>这个部分定制性的内容比较强。有大量的 AI 产品都在具体的垂直领域做开发和探索。<br>这部分的分享更偏经验领域。但这种经验是不稳定的，而且每个人的实践和擅长的东西都是不同的。我倾向于大家互相交流和讨论。</p>
-<p><span class="wiki-link">我的写作场景是如何发展出来的</span></p>
     </article>
   </div>
 </section>
-<section class="slide is-title" id="slide-37" data-index="36" data-title="案例解析：" data-chapter="案例解析：">
+<section class="slide" id="slide-38" data-index="37" data-title="小故事" data-chapter="内容生产">
+  <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>内容生产</span></div>
+  <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="slide-scroll">
+    <article class="slide-content">
+      <p><em>小故事</em><br>我有个场景是写作，这是对整体已经有的一个结构的输出。<br>不管是你看了很多书，或者是研究了很多资料。你需要把你的视野带进来，然后有一个你自己的大纲。</p>
+<p>但是写作的时候缺少很多材料。这时候我会用 NotebookLM 我会整理一个知识库、资料库，里面放了很多研究的书籍。</p>
+<p>我会把我的问题给它，让它找其中最能佐证的材料。<br>我看过<a href="https://mp.weixin.qq.com/s/8Ac6l0JTP16IM82dkYnc-Q?scene=1" target="_blank" rel="noopener">一篇文章</a>。<br>特别有早期连线杂志的那种写科技史的感觉。<br>他会先写一个在历史里发生的具体的故事，而且非常的有细节。然后会写到我们当下发生的这个事情里，一个更本地化的状态，比如，在中国发生的这个事情，跟历史里那个事情有些一些相似。然后他会把他自身在做的事情引入过来，就像是一个解决方案，也像是前面的东西给他一个背书。我觉得他的这个写作的方法非常好。</p>
+<p>也让我关联到，很早期我对科学史、技术史感兴趣，他们也是这样的写作方式。<br>虽然那些历史里的细节，不一定是真实的。但它提供了一种感觉，让你觉得这个事情并不是偶发事件，而是不断的在历史中出现。那些细节带来的是一种场景，是一种沉浸质感。是一种联想。</p>
+<p>所以我用 Notebook LM 做了一个知识库。然后，我让他提供我某一个问题里，在这所有的上百本书里的故事细节。我已经有这方面的认识了，只是让他来提供写作的材料。这种精心挑选的知识范围可以提供高质量的素材。</p>
+    </article>
+  </div>
+</section>
+<section class="slide is-title" id="slide-39" data-index="38" data-title="案例解析：" data-chapter="案例解析：">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>案例解析：</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -452,19 +467,20 @@
     </article>
   </div>
 </section>
-<section class="slide" id="slide-38" data-index="37" data-title="明天见" data-chapter="案例解析：">
+<section class="slide" id="slide-40" data-index="39" data-title="明天见" data-chapter="案例解析：">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>案例解析：</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
     <article class="slide-content">
       <p><strong>明天见</strong></p>
+<p>---</p>
     </article>
   </div>
 </section>
 </main>
 <div class="hud" aria-hidden="true"><div class="progress"><span></span></div></div>
 <div class="version">课程讲稿版本：2026-04-15 · /workshops/ai-02/</div>
-<div class="counter" aria-hidden="true"><div class="counter-line"><b data-current>01</b><span>/</span><span data-total>38</span></div><div class="nav-hint desktop-hint">用键盘翻页 ↑↓ / Space</div><div class="nav-hint mobile-hint">上下滑动翻页</div></div>
+<div class="counter" aria-hidden="true"><div class="counter-line"><b data-current>01</b><span>/</span><span data-total>40</span></div><div class="nav-hint desktop-hint">用键盘翻页 ↑↓ / Space</div><div class="nav-hint mobile-hint">上下滑动翻页</div></div>
 <script>
 (() => {
   const deck = document.querySelector('.deck');

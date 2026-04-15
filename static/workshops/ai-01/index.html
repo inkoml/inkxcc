@@ -20,6 +20,34 @@
   .has-table .slide-scroll{overflow:auto;-webkit-overflow-scrolling:touch}
   .has-table .table-wrap{overflow:auto;-webkit-overflow-scrolling:touch}
 }
+.deck{height:100svh;overflow:hidden;scroll-snap-type:none}
+.slide{position:absolute;inset:0;min-height:100svh;height:100svh;scroll-snap-align:none;scroll-snap-stop:normal;opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity .44s var(--ease),transform .44s var(--ease)}
+.slide.is-active{opacity:1;transform:translateY(0);pointer-events:auto}
+.slide-scroll{height:100%;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.slide-content>*{animation:none}
+.slide.is-active .slide-content>*{animation:rise .62s var(--ease) both}
+.slide.is-active .slide-content>*:nth-child(2){animation-delay:.05s}
+.slide.is-active .slide-content>*:nth-child(3){animation-delay:.1s}
+.slide.is-active .slide-content>*:nth-child(4){animation-delay:.15s}
+.slide.is-active .slide-content>*:nth-child(n+5){animation-delay:.2s}
+.counter{display:flex;flex-direction:column;gap:2px;align-items:flex-end}
+.counter-line{display:flex;gap:8px;align-items:baseline}
+.nav-hint{font-size:12px;color:var(--amber);letter-spacing:.04em}
+.mobile-hint{display:none}
+@media (max-width:760px){
+  html,body{height:100%;overflow:hidden;overscroll-behavior-y:contain}
+  .deck{height:100svh;overflow:hidden;scroll-snap-type:none;touch-action:pan-y}
+  .slide{position:absolute;inset:0;height:100svh;min-height:100svh;overflow:hidden}
+  .slide-scroll{height:100%;min-height:0;overflow:auto;padding:54px 6px 76px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .slide-content{justify-content:center;min-height:calc(100svh - 130px);overflow:visible}
+  figure{place-items:center;width:100%;overflow:visible}
+  figure img{display:block;width:100%!important;max-width:100%!important;height:auto!important;max-height:52svh;object-fit:contain}
+  .counter{display:flex!important;position:fixed!important;right:14px!important;bottom:12px!important;z-index:40!important;align-items:flex-end}
+  .counter b{font-size:28px}
+  .nav-hint{font-size:11px}
+  .desktop-hint{display:none}
+  .mobile-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -1313,7 +1341,7 @@
 </main>
 <div class="hud" aria-hidden="true"><div class="progress"><span></span></div></div>
 <div class="version">课程讲稿版本：2026-04-14 · /workshops/ai-01/</div>
-<div class="counter" aria-hidden="true"><b data-current>01</b><span>/</span><span data-total>103</span></div>
+<div class="counter" aria-hidden="true"><div class="counter-line"><b data-current>01</b><span>/</span><span data-total>103</span></div><div class="nav-hint desktop-hint">用键盘翻页 ↑↓ / Space</div><div class="nav-hint mobile-hint">上下滑动翻页</div></div>
 <script>
 (() => {
   const deck = document.querySelector('.deck');
@@ -1324,13 +1352,16 @@
   const toc = document.querySelector('.toc');
   const tocToggle = document.querySelector('.toc-toggle');
   const tocButtons = [...document.querySelectorAll('.toc button')];
+  const coarse = window.matchMedia('(pointer: coarse)').matches;
   let active = 0;
-  let lastWheelAt = 0;
-  const WHEEL_COOLDOWN = 1100;
+  let touchStartY = 0;
+  let touchStartX = 0;
   total.textContent = String(slides.length).padStart(2, '0');
   function go(index) {
     const next = Math.max(0, Math.min(slides.length - 1, index));
-    slides[next].scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === next));
+    slides[next].querySelector('.slide-scroll')?.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    setActive(next);
   }
   function setActive(index) {
     active = index;
@@ -1338,34 +1369,38 @@
     progress.style.width = `${((index + 1) / slides.length) * 100}%`;
     tocButtons.forEach((button) => button.classList.toggle('is-active', Number(button.dataset.goto) === index));
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => { if (entry.isIntersecting) setActive(Number(entry.target.dataset.index)); });
-  }, { root: deck, threshold: 0.58 });
-  slides.forEach((slide) => observer.observe(slide));
-  deck.addEventListener('wheel', (event) => {
-    const pane = event.target.closest('.slide-scroll, .table-wrap');
-    if (pane && pane.scrollHeight > pane.clientHeight) {
-      const atTop = pane.scrollTop <= 0;
-      const atBottom = pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2;
-      if ((event.deltaY < 0 && !atTop) || (event.deltaY > 0 && !atBottom)) return;
-    }
-    event.preventDefault();
-    const now = Date.now();
-    if (now - lastWheelAt < WHEEL_COOLDOWN) return;
-    lastWheelAt = now;
-    go(active + (event.deltaY > 0 ? 1 : -1));
-  }, { passive: false });
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === ' ') { event.preventDefault(); go(active + 1); }
-    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') { event.preventDefault(); go(active - 1); }
+    if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') { event.preventDefault(); go(active + 1); }
+    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); go(active - 1); }
     if (event.key === 'Home') { event.preventDefault(); go(0); }
     if (event.key === 'End') { event.preventDefault(); go(slides.length - 1); }
     if (event.key.toLowerCase() === 't') toc.classList.toggle('is-open');
     if (event.key === 'Escape') toc.classList.remove('is-open');
   });
+  deck.addEventListener('touchstart', (event) => {
+    if (!coarse || event.touches.length !== 1) return;
+    touchStartY = event.touches[0].clientY;
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+  deck.addEventListener('touchend', (event) => {
+    if (!coarse || !touchStartY) return;
+    const touch = event.changedTouches[0];
+    const dy = touch.clientY - touchStartY;
+    const dx = touch.clientX - touchStartX;
+    touchStartY = 0;
+    if (Math.abs(dy) < 58 || Math.abs(dy) < Math.abs(dx) * 1.25) return;
+    const pane = event.target.closest('.slide-scroll, .table-wrap');
+    if (pane && pane.scrollHeight > pane.clientHeight) {
+      const atTop = pane.scrollTop <= 2;
+      const atBottom = pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2;
+      if ((dy > 0 && !atTop) || (dy < 0 && !atBottom)) return;
+    }
+    event.preventDefault();
+    go(active + (dy < 0 ? 1 : -1));
+  }, { passive: false });
   tocToggle.addEventListener('click', () => toc.classList.toggle('is-open'));
   tocButtons.forEach((button) => button.addEventListener('click', () => { go(Number(button.dataset.goto)); toc.classList.remove('is-open'); }));
-  setActive(0);
+  go(0);
 })();
 </script>
 </body>
