@@ -48,6 +48,14 @@
   .desktop-hint{display:none}
   .mobile-hint{display:block}
 }
+html,body{height:100vh;height:100svh}
+.deck{height:100vh;height:100svh}
+.slide{height:100vh;min-height:100vh;height:100svh;min-height:100svh}
+@media (max-width:760px){
+  html,body{height:100vh;height:100svh}
+  .deck{height:100vh;height:100svh}
+  .slide{height:100vh;min-height:100vh;height:100svh;min-height:100svh}
+}
 </style>
 </head>
 <body>
@@ -67,7 +75,7 @@
 <button type="button" data-goto="99"><span>100</span>明天课程</button>
 </nav>
 <main class="deck" aria-label="小号夜校-龙虾、Vibe Coding 与逻辑重构">
-<section class="slide is-title has-image" id="slide-1" data-index="0" data-title="欢迎" data-chapter="欢迎">
+<section class="slide is-title has-image is-active" id="slide-1" data-index="0" data-title="欢迎" data-chapter="欢迎">
   <div class="topline"><span>小号夜校-龙虾、Vibe Coding 与逻辑重构</span><span>欢迎</span></div>
   <div class="node-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="slide-scroll">
@@ -1352,7 +1360,6 @@
   const toc = document.querySelector('.toc');
   const tocToggle = document.querySelector('.toc-toggle');
   const tocButtons = [...document.querySelectorAll('.toc button')];
-  const coarse = window.matchMedia('(pointer: coarse)').matches;
   let active = 0;
   let touchStartY = 0;
   let touchStartX = 0;
@@ -1360,7 +1367,8 @@
   function go(index) {
     const next = Math.max(0, Math.min(slides.length - 1, index));
     slides.forEach((slide, i) => slide.classList.toggle('is-active', i === next));
-    slides[next].querySelector('.slide-scroll')?.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const activePane = slides[next].querySelector('.slide-scroll');
+    if (activePane && activePane.scrollTo) activePane.scrollTo(0, 0);
     setActive(next);
   }
   function setActive(index) {
@@ -1378,19 +1386,19 @@
     if (event.key === 'Escape') toc.classList.remove('is-open');
   });
   deck.addEventListener('touchstart', (event) => {
-    if (!coarse || event.touches.length !== 1) return;
+    if (event.touches.length !== 1) return;
     touchStartY = event.touches[0].clientY;
     touchStartX = event.touches[0].clientX;
   }, { passive: true });
   deck.addEventListener('touchend', (event) => {
-    if (!coarse || !touchStartY) return;
+    if (!touchStartY) return;
     const touch = event.changedTouches[0];
     const dy = touch.clientY - touchStartY;
     const dx = touch.clientX - touchStartX;
     touchStartY = 0;
     if (Math.abs(dy) < 58 || Math.abs(dy) < Math.abs(dx) * 1.25) return;
     const pane = event.target.closest('.slide-scroll, .table-wrap');
-    if (pane && pane.scrollHeight > pane.clientHeight) {
+    if (pane && pane.scrollHeight - pane.clientHeight > 120) {
       const atTop = pane.scrollTop <= 2;
       const atBottom = pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2;
       if ((dy > 0 && !atTop) || (dy < 0 && !atBottom)) return;
