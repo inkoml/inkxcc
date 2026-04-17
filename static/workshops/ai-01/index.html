@@ -35,26 +35,20 @@
 .nav-hint{font-size:12px;color:var(--amber);letter-spacing:.04em}
 .mobile-hint{display:none}
 @media (max-width:760px){
-  html,body{height:100%;overflow:hidden;overscroll-behavior-y:contain}
-  .deck{height:100svh;overflow:hidden;scroll-snap-type:none;touch-action:pan-y}
-  .slide{position:absolute;inset:0;height:100svh;min-height:100svh;overflow:hidden}
-  .slide-scroll{height:100%;min-height:0;overflow:auto;padding:54px 6px 76px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-  .slide-content{justify-content:center;min-height:calc(100svh - 130px);overflow:visible}
+  html,body{height:auto;min-height:100%;overflow:auto;overscroll-behavior-y:auto}
+  body{overflow:auto}
+  .deck{height:auto;min-height:100vh;overflow:visible;scroll-snap-type:none;touch-action:pan-y}
+  .slide{position:relative;inset:auto;height:auto;min-height:100vh;overflow:visible;opacity:1;transform:none;pointer-events:auto;transition:none}
+  .slide-scroll{height:auto;min-height:100vh;overflow:visible;padding:54px 6px 76px;overscroll-behavior:auto;-webkit-overflow-scrolling:touch}
+  .slide-content{justify-content:center;min-height:calc(100vh - 130px);overflow:visible}
   figure{place-items:center;width:100%;overflow:visible}
   figure img{display:block;width:100%!important;max-width:100%!important;height:auto!important;max-height:52svh;object-fit:contain}
   .counter{display:flex!important;position:fixed!important;right:14px!important;bottom:12px!important;z-index:40!important;align-items:flex-end}
   .counter b{font-size:28px}
   .nav-hint{font-size:11px}
   .desktop-hint{display:none}
-  .mobile-hint{display:block}
-}
-html,body{height:100vh;height:100svh}
-.deck{height:100vh;height:100svh}
-.slide{height:100vh;min-height:100vh;height:100svh;min-height:100svh}
-@media (max-width:760px){
-  html,body{height:100vh;height:100svh}
-  .deck{height:100vh;height:100svh}
-  .slide{height:100vh;min-height:100vh;height:100svh;min-height:100svh}
+  .mobile-hint{display:block;color:var(--amber)}
+  .version{display:none}
 }
 </style>
 </head>
@@ -1360,12 +1354,18 @@ html,body{height:100vh;height:100svh}
   const toc = document.querySelector('.toc');
   const tocToggle = document.querySelector('.toc-toggle');
   const tocButtons = [...document.querySelectorAll('.toc button')];
+  const mobile = window.matchMedia('(max-width: 760px)').matches;
   let active = 0;
   let touchStartY = 0;
   let touchStartX = 0;
   total.textContent = String(slides.length).padStart(2, '0');
   function go(index) {
     const next = Math.max(0, Math.min(slides.length - 1, index));
+    if (mobile) {
+      slides[next].scrollIntoView({ block: 'start', behavior: 'smooth' });
+      setActive(next);
+      return;
+    }
     slides.forEach((slide, i) => slide.classList.toggle('is-active', i === next));
     const activePane = slides[next].querySelector('.slide-scroll');
     if (activePane && activePane.scrollTo) activePane.scrollTo(0, 0);
@@ -1376,6 +1376,18 @@ html,body{height:100vh;height:100svh}
     current.textContent = String(index + 1).padStart(2, '0');
     progress.style.width = `${((index + 1) / slides.length) * 100}%`;
     tocButtons.forEach((button) => button.classList.toggle('is-active', Number(button.dataset.goto) === index));
+  }
+  if (mobile) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(Number(entry.target.dataset.index));
+        });
+      }, { threshold: 0.55 });
+      slides.forEach((slide) => observer.observe(slide));
+    }
+    setActive(0);
+    return;
   }
   window.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') { event.preventDefault(); go(active + 1); }
